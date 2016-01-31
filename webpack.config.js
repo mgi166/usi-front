@@ -1,7 +1,10 @@
+var path = require('path');
+
 module.exports = {
   "context": "./frontend",
   "entry": "./index.js",
   "output": {
-    "filename": "./dist/bundle.js"
+    "path": path.join(__dirname, 'dist'),
+    "filename": 'webpack.bundle.js'
   }
 };
