@@ -6,5 +6,10 @@ module.exports = {
   "output": {
     "path": path.join(__dirname, 'dist'),
     "filename": 'webpack.bundle.js'
+  },
+  module: {
+    loaders: [
+      { test: /\.js$/, loader: 'babel' }
+    ]
   }
 };
