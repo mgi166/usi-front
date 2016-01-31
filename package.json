@@ -17,6 +17,7 @@
     "webpack": "^1.12.9"
   },
   "dependencies": {
+    "express": "^4.13.4",
     "react": "^0.14.7"
   }
 }
