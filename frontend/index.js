@@ -1,4 +1,16 @@
-import path from 'path';
 import React from 'react';
-import express from 'express';
-import config from '../webpack.config.js';
+import ReactDOM from 'react-dom';
+
+class Box extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <h1>hello</h1>
+    );
+  }
+}
+
+ReactDOM.render(<Box />, document.getElementById('root'));
