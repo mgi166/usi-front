@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Board from './components/board';
 
 class Root extends React.Component {
   constructor(props) {
@@ -7,8 +8,11 @@ class Root extends React.Component {
   }
 
   render() {
-    return(
-      <h1>hello</h1>
+    return (
+      <div>
+        <h1>hello</h1>
+        <Board />
+      </div>
     );
   }
 }
