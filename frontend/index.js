@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Box extends React.Component {
+class Root extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -13,4 +13,4 @@ class Box extends React.Component {
   }
 }
 
-ReactDOM.render(<Box />, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
