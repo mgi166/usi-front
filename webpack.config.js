@@ -4,7 +4,11 @@ var webpack = require('webpack');
 
 module.exports = {
   context: path.join(process.env.PWD, 'frontend'),
-  entry: "./index.js",
+  entry: [
+    "webpack-dev-server/client?http://localhost:8080",
+    "webpack/hot/dev-server",
+    "./index.js"
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'webpack.bundle.js'
@@ -14,7 +18,8 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     loaders: [
