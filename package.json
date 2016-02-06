@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
-    "start": "webpack && node server.js"
+    "start": "webpack-dev-server --hot --inline"
   },
   "keywords": [],
   "author": "",
