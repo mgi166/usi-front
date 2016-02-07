@@ -16,8 +16,10 @@ export default class Board extends React.Component {
 
   render() {
     var tbody = this.state.board.map((row, y) => {
+      var yCor = y + 1;
       var rows = row.map((piece, x) => {
-        return(<td key={x}>{x + 1},{y + 1}</td>);
+        var xCor = 10 - x - 1;
+        return(<td key={x}>{xCor},{yCor}</td>);
       });
       return(<tr key={y}>{rows}</tr>);
     });
