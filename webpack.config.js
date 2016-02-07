@@ -24,7 +24,8 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel' }
+      { test: /\.js$/, loader: 'babel' },
+      { test: /\.png$/, loader: 'url-loader?limit=20000' }
     ]
   }
 };
