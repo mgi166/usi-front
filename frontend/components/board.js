@@ -27,7 +27,11 @@ export default class Board extends React.Component {
       var yCor = y + 1;
       var rows = row.map((piece, x) => {
         var xCor = 10 - x - 1;
-        return(<td key={x}>{xCor},{yCor}</td>);
+        return(
+          <td key={x}>
+            <Piece type={piece} x={x} y={y} />
+          </td>
+        );
       });
       return(<tr key={y}>{rows}</tr>);
     });
@@ -37,7 +41,6 @@ export default class Board extends React.Component {
         <table className="board" background={boardImage}>
           <tbody>{tbody}</tbody>
         </table>
-        <Piece />
       </div>
     );
   }
