@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Board from './components/board';
+import Game from './components/game';
 
 class Root extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class Root extends React.Component {
     return (
       <div>
         <h1>hello</h1>
-        <Board />
+        <Game />
       </div>
     );
   }
