@@ -14,8 +14,10 @@ class Root extends React.Component {
   render() {
     return (
       <Provider store={Store}>
-        <h1>hello</h1>
-        <Game />
+        <div>
+          <h1>hello</h1>
+          <Game />
+        </div>
       </Provider>
     );
   }
