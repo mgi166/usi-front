@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './board';
+import { changeTurn } from '../actions/turn';
 
 export default class Game extends React.Component {
   render () {
@@ -10,3 +11,17 @@ export default class Game extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    state: "black"
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClick: () => {
+      dispatch(changeTurn());
+    }
+  };
+};
