@@ -1,6 +1,10 @@
 import { createStore } from 'redux';
 import changeTurn from '../reducers/turn';
 
-let store = createStore(changeTurn);
+const initialState = {
+  turn: 'black'
+};
+
+let store = createStore(changeTurn, initialState);
 
 export default store;
