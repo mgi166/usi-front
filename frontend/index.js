@@ -4,7 +4,7 @@ import Game from './components/game';
 import { connect } from 'redux';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import Store from './stores/index';
+import store from './stores/index';
 
 class Root extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Root extends React.Component {
 
   render() {
     return (
-      <Provider store={Store}>
+      <Provider store={store}>
         <div>
           <h1>hello</h1>
           <Game />
@@ -22,5 +22,7 @@ class Root extends React.Component {
     );
   }
 }
+
+
 
 ReactDOM.render(<Root />, document.getElementById('root'));
