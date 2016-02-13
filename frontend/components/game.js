@@ -11,17 +11,3 @@ export default class Game extends React.Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    state: "black"
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onClick: () => {
-      dispatch(changeTurn());
-    }
-  };
-};
