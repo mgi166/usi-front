@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import changeTurn from '../reducers/turn';
+import changeTurn from '../reducers';
 
 const initialState = {
   turn: 'black'
