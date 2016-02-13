@@ -23,6 +23,4 @@ class Root extends React.Component {
   }
 }
 
-store.dispatch({type: 'CHANGE_TURN', turn: 'black'});
-
 ReactDOM.render(<Root />, document.getElementById('root'));
