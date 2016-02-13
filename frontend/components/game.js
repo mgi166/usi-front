@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from './board';
-import { changeTurn } from '../actions/turn';
+import { changeTurn } from '../actions';
 
 export default class Game extends React.Component {
   render () {
