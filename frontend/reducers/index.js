@@ -20,20 +20,17 @@ function board(state, action) {
   return state;
 }
 
-function changeTurn(state, action) {
+function turn(state, action) {
   console.log(state);
-  if (state === undefined) {
-    return { turn: 'black' };
-  }
 
   // TODO: fix Object.assign, return
-  switch (state.turn) {
+  switch (state) {
   case 'black':
-    return Object.assign({}, state, { turn: 'white' });
+    return 'white';
   case 'white':
-    return Object.assign({}, state, { turn: 'black' });
+    return 'black';
   default:
-    return Object.assign({}, state, { turn: 'black' });
+    return 'black';
   }
 }
 
@@ -56,7 +53,7 @@ function holdPiece(state, action) {
 
 const Shogi = combineReducers({
   board,
-  changeTurn,
+  turn,
   holdPiece
 });
 
