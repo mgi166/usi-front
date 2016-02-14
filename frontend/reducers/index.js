@@ -1,5 +1,25 @@
 import { combineReducers } from 'redux';
 
+function board(state, action) {
+  // initial state
+  if (state === undefined) {
+    return(
+      [
+        ['l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l'],
+        ['*', 'b', '*', '*', '*', '*', '*', 'r', '*'],
+        ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+        ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+        ['*', 'B', '*', '*', '*', '*', '*', 'R', '*'],
+        ['L', 'N', 'S', 'G', 'K', 'G', 'S', 'N', 'L']
+      ]
+    );
+  }
+  return state;
+}
+
 function changeTurn(state, action) {
   console.log(state);
   if (state === undefined) {
@@ -35,6 +55,7 @@ function holdPiece(state, action) {
 }
 
 const Shogi = combineReducers({
+  board,
   changeTurn,
   holdPiece
 });
