@@ -34,27 +34,23 @@ function turn(state, action) {
   }
 }
 
-function holdPiece(state, action) {
+function isHolded(state, action) {
   console.log(state);
 
-  if (state === undefined) {
-    return { isHolded: false };
-  }
-
-  switch (state.isHolded) {
+  switch (state) {
   case true:
     // no return new state
   case false:
-    return Object.assign({}, state, { isHolded: true });
+    return true;
   default:
-    return Object.assign({}, state, { isHolded: false });
+    return false;
   }
 }
 
 const Shogi = combineReducers({
   board,
   turn,
-  holdPiece
+  isHolded
 });
 
 export default Shogi;
