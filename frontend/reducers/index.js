@@ -23,7 +23,6 @@ function board(state, action) {
 function turn(state, action) {
   console.log(state);
 
-  // TODO: fix Object.assign, return
   switch (state) {
   case 'black':
     return 'white';
