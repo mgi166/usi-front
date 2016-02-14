@@ -21,8 +21,6 @@ function board(state, action) {
 }
 
 function turn(state, action) {
-  console.log(state);
-
   switch (state) {
   case 'black':
     return 'white';
@@ -34,8 +32,6 @@ function turn(state, action) {
 }
 
 function isHolded(state, action) {
-  console.log(state);
-
   switch (state) {
   case true:
     // no return new state
