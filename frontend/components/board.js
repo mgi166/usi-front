@@ -12,7 +12,7 @@ export default class Board extends React.Component {
         var xCor = 10 - x - 1;
         return(
           <td key={x}>
-            <Piece type={piece} x={x} y={y} onClick={() => { store.dispatch({type: 'HOLD_PIECE', x: x, y: y }); }}/>
+            <Piece type={piece} onClick={() => { store.dispatch({type: 'HOLD_PIECE', x: x, y: y }); }}/>
           </td>
         );
       });
