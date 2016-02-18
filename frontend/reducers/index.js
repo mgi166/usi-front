@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import Shogi from '../src/shogi';
 
 function board(state, action) {
   // initial state
