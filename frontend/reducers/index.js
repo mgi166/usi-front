@@ -42,10 +42,10 @@ function isHolded(state, action) {
   }
 }
 
-const Shogi = combineReducers({
+const ShogiReducer = combineReducers({
   board,
   turn,
   isHolded
 });
 
-export default Shogi;
+export default ShogiReducer;
