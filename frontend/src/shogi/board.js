@@ -1,7 +1,12 @@
-import Shogi from '../shogi';
+import Piece from './piece';
 
-export Shogi.Board = class Board {
+export default class Board {
   constructor() {
+    this.board = this.createBoard();
+  }
+
+  board() {
+    return this.board;
   }
 
   initialUsiBoard() {
