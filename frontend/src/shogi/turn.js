@@ -26,4 +26,8 @@ export default class Turn {
       return undefined;
     }
   }
+
+  inspect() {
+    return { turn: this.turn };
+  }
 }
