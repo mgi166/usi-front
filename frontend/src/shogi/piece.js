@@ -1,6 +1,6 @@
 import Shogi from '../shogi';
 
-Shogi.Piece = class Piece {
+export default class Piece {
   constructor(type, x, y) {
     this.type = type;
     this.x = x;
