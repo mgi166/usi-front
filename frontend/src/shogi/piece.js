@@ -12,6 +12,11 @@ Shogi.Piece = class Piece {
     return this.type;
   }
 
+  unpromote() {
+    this.type = this.usiUnPromoteTypes(this.type) || this.type;
+    return this.type;
+  }
+
   usiPromoteTypes() {
     return {
       p: 'p+',
@@ -26,6 +31,23 @@ Shogi.Piece = class Piece {
       S: 'S+',
       B: 'B+',
       R: 'R+'
+    };
+  }
+
+  usiUnPromoteTypes() {
+    return {
+      'p+': 'p',
+      'l+': 'l',
+      'n+': 'n',
+      's+': 's',
+      'b+': 'b',
+      'r+': 'r',
+      'P+': 'P',
+      'L+': 'L',
+      'N+': 'N',
+      'S+': 'S',
+      'B+': 'B',
+      'R+': 'R'
     };
   }
 };
