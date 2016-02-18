@@ -13,4 +13,17 @@ export default class Turn {
       return undefined;
     }
   }
+
+  changeTurn() {
+    switch(this.turn) {
+    case 'black':
+      this.turn = 'white';
+      return this;
+    case 'white':
+      this.turn = 'black';
+      return this;
+    default:
+      return undefined;
+    }
+  }
 }
