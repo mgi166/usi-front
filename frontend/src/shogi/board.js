@@ -5,10 +5,6 @@ export default class Board {
     this.board = this.createBoard();
   }
 
-  board() {
-    return this.board;
-  }
-
   initialUsiBoard() {
     return (
       [
