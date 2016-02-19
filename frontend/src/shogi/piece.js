@@ -59,6 +59,9 @@ export default class Piece {
     case 'b+':
     case 'B+':
       return { fly: [[1, 1], [1, -1], [-1, 1], [-1, -1]], just: [[1, -1], [1, 1], [-1, 1], [-1, -1]] };
+    case 'k':
+    case 'K':
+      return { just: [[1, 1], [1, 0], [1, -1], [0, 1], [0, -1], [-1, -1], [-1, 0], [-1, 1]] };
     default:
       return undefined;
     }
