@@ -24,7 +24,7 @@ describe('Borad', () => {
 
       it('change property of piece that is moved', () => {
         var testBoard = new Board;
-        var piece = new Piece('P', 2, 6);
+        var piece = new Piece({ type: 'P', x: 2, y: 6 });
 
         testBoard.setBoard(board);
         testBoard.enhanceMovablePoint(piece);
@@ -36,7 +36,7 @@ describe('Borad', () => {
         });
 
         [].concat.apply([], result).should.eql(
-          [new Piece('*', 2, 5, true)]
+          [new Piece({ type: '*', x: 2, y: 5, movable: true })]
         );
       });
     });

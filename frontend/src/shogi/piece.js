@@ -1,5 +1,5 @@
 export default class Piece {
-  constructor(type, x, y, movable = false) {
+  constructor({ type, x, y, movable = false }) {
     this.type = type;
     this.movable = movable;
     this.x = x;

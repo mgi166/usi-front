@@ -31,7 +31,7 @@ export default class Board {
       var rows = row.map((type, x) => {
         var xCor = 10 - x - 1;
         return (
-          new Piece(type, xCor, yCor)
+          new Piece({ type: type, x: xCor, y: yCor })
         );
       });
       return(rows);
