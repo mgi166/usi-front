@@ -2,7 +2,7 @@ import Piece from './piece';
 
 export default class Board {
   constructor() {
-    this.board = this.createBoard();
+    this.setBoard(this.initialUsiBoard());
   }
 
   initialUsiBoard() {
@@ -19,6 +19,10 @@ export default class Board {
         ['L', 'N', 'S', 'G', 'K', 'G', 'S', 'N', 'L']
       ]
     );
+  }
+
+  setBoard(board) {
+    this.board = this.createBoard(board);
   }
 
   createBoard() {
