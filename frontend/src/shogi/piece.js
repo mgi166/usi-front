@@ -6,7 +6,7 @@ export default class Piece {
   }
 
   promote() {
-    this.type = this.usiPromoteTypes[this.type] || this.type;
+    this.type = this.usiPromoteTypes()[this.type] || this.type;
     return this.type;
   }
 
