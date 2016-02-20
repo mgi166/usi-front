@@ -25,16 +25,19 @@ describe('Borad', () => {
       it('change property of piece that is moved', () => {
         var testBoard = new Board;
         var piece = new Piece('P', 2, 6);
-        testBoard.board = board;
+
+        testBoard.setBoard(board);
         testBoard.enhanceMovablePoint(piece);
 
         var result = [];
-
-        var movable = testBoard.board().forEach((row) => {
-          var cell = row.filter((cell) => { return(cell.isMovable); });
+        var movable = testBoard.board.forEach((row) => {
+          var cell = row.filter((cell) => { return(cell.movable); });
           if (cell.length) { result.push(cell); }
         });
-        result.should.eql([new Piece('*', 2, 5)]);
+
+        [].concat.apply([], result).should.eql(
+          [new Piece('*', 2, 5, true)]
+        );
       });
     });
   });
