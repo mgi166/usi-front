@@ -39,4 +39,36 @@ export default class Board {
 
     return _board;
   }
+
+  enhanceMovablePoint(piece) {
+    var [xCor, yCor] = [piece.x, piece.y];
+    var moveDef = piece.moveDef();
+    var [x, y] = this.invertCor(xCor, yCor);
+
+    if (moveDef.just) {
+      moveDef.just.forEach((def) => {
+        var [defX, defY] = def;
+        this.board[y + defY][x + defX].movable = true;
+        console.log(this.board[y + defY][x + defX]);
+      });
+    }
+  }
+
+  invertToIndexX(xCor) {
+    return 9 - xCor;
+  }
+
+  invertToIndexY(yCor) {
+    return yCor - 1;
+  }
+
+  invertCor(xCor, yCor) {
+    return [this.invertToIndexX(xCor), this.invertToIndexY(yCor)];
+  }
+
+  // transposeToCorX(xIndex) {
+  // }
+
+  // transposeToCorY(xIndex) {
+  // }
 };
