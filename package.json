@@ -18,8 +18,10 @@
     "babel-preset-react": "^6.3.13",
     "file-loader": "^0.8.5",
     "mocha": "^2.4.5",
+    "power-assert": "^1.2.0",
     "redux-devtools": "^3.1.1",
     "rimraf": "^2.5.1",
+    "should": "^8.2.2",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
