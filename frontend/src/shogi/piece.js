@@ -1,5 +1,3 @@
-import Shogi from '../shogi';
-
 export default class Piece {
   constructor(type, x, y) {
     this.type = type;
