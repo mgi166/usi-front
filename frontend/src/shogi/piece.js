@@ -19,9 +19,9 @@ export default class Piece {
   usiMoveDef() {
     switch (this.type) {
     case 'p':
-      return { just: [[0, -1]] };
-    case 'P':
       return { just: [[0, 1]] };
+    case 'P':
+      return { just: [[0, -1]] };
     case 'l':
       return { fly: [[0, -1]] };
     case 'L':
