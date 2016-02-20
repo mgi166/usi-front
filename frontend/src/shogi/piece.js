@@ -16,6 +16,10 @@ export default class Piece {
     return this.type;
   }
 
+  moveDef() {
+    return this.usiMoveDef();
+  }
+
   usiMoveDef() {
     switch (this.type) {
     case 'p':
