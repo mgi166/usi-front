@@ -45,6 +45,23 @@ export default class Board {
     var moveDef = piece.moveDef();
     var [x, y] = this.invertCor(xCor, yCor);
 
+    // if piece of argument is not match piece in the board, throw exception
+    //
+    if (
+      typeof this.findPiece(x, y) === 'undefined' ||
+        !this.findPiece(x, y).equals(
+          new Piece({
+            x: piece.x,
+            y: piece.y,
+            type: piece.type,
+            movable: piece.movable
+          })
+        )
+    ) {
+      var pos = `xCor = ${xCor}, yCor = ${yCor}`;
+      throw new Error(`Does not match coordinates in board. ${pos}`);
+    }
+
     if (moveDef.just) {
       moveDef.just.forEach((def) => {
         var [defX, defY] = def;

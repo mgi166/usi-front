@@ -20,6 +20,15 @@ export default class Piece {
     return this.usiMoveDef();
   }
 
+  equals(piece) {
+    return (
+      this.type === piece.type &&
+      this.movable === piece.movable &&
+      this.x === piece.x &&
+      this.y === piece.y
+    );
+  }
+
   usiMoveDef() {
     switch (this.type) {
     case 'p':
