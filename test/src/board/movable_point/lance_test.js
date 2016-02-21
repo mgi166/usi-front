@@ -79,6 +79,44 @@ describe('black', () => {
     });
 
     context('other piece exists', () => {
+      var board = memo().is(() => {
+        var _board = new Board;
+        _board.setBoard(position());
+        return(_board);
+      });
+
+      var position = memo().is(() => {
+        return (
+          [
+            ['*', '*', '*'],
+            ['*', 'p', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', 'L', '*'],
+            ['*', '*', '*']
+          ]
+        );
+      });
+
+      it('change property of piece but not change property above other piece', () => {
+        var piece = new Piece({ type: 'L', x: 8, y: 5 });
+
+        board().enhanceMovablePoint(piece);
+
+        var movablePieces = board().board.map((row) => {
+          return (
+            row.filter((cell) => { return(cell.movable); })
+          );
+        });
+
+        _.flattenDeep(movablePieces).should.eql(
+          [
+            new Piece({ type: 'p', x: 8, y: 2, movable: true }),
+            new Piece({ type: '*', x: 8, y: 3, movable: true }),
+            new Piece({ type: '*', x: 8, y: 4, movable: true })
+          ]
+        );
+      });
     });
   });
 
