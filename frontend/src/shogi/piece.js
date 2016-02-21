@@ -36,9 +36,9 @@ export default class Piece {
     case 'P':
       return { just: [[0, -1]] };
     case 'l':
-      return { fly: [[0, -1]] };
-    case 'L':
       return { fly: [[0, 1]] };
+    case 'L':
+      return { fly: [[0, -1]] };
     case 'n':
       return { just: [[-1, -2], [1, -2]] };
     case 'N':
