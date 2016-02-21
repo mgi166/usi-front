@@ -62,6 +62,8 @@ export default class Board {
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
+    // if moveDef has just property, piece moves just coordinates on board.
+    //
     if (moveDef.just) {
       moveDef.just.forEach((def) => {
         var [defX, defY] = def;
