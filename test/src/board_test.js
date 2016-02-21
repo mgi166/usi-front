@@ -92,15 +92,7 @@ describe('Borad', () => {
           it('throw exception', () => {
             var piece = new Piece({ type: 'P', x: 8, y: 2 });
 
-            board().enhanceMovablePoint(piece);
-
-            var movablePieces = board().board.map((row) => {
-              return (
-                row.filter((cell) => { return(cell.movable); })
-              );
-            });
-
-            _.flattenDeep(movablePieces).should.eql([]);
+            (() => { return board().enhanceMovablePoint(piece); }).should.throw();;
           });
         });
 
