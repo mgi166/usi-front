@@ -25,8 +25,8 @@ export default class Board {
     this.board = this.createBoard(board);
   }
 
-  createBoard() {
-    var _board = this.initialUsiBoard().map((row, y) => {
+  createBoard(board) {
+    var _board = board.map((row, y) => {
       var yCor = y + 1;
       var rows = row.map((type, x) => {
         var xCor = 10 - x - 1;
