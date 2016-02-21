@@ -62,6 +62,9 @@ describe('Borad', () => {
             [].concat.apply([], result).should.eql([]);
           });
         });
+
+        context.skip('if move piece, king is taken', () => {
+        });
       });
     });
   });
