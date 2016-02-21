@@ -69,6 +69,27 @@ export default class Board {
         if (piece) { piece.movable = true; }
       });
     }
+
+    // if moveDef has fly property, piece moves recursion on board.
+    //
+    if (moveDef.fly) {
+      moveDef.fly.forEach((def) => {
+        var [defX, defY] = def;
+        var dx, dy;
+
+        dx = x + defX;
+        dy = y + defY;
+
+        var piece = this.findPiece(dx, dy);
+
+        while (piece) {
+          piece.movable = true;
+          dx = dx + defX;
+          dy = dy + defY;
+          piece = this.findPiece(dx, dy);
+        }
+      });
+    }
   }
 
   invertToIndexX(xCor) {
