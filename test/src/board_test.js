@@ -1,6 +1,7 @@
 import Board from '../../frontend/src/shogi/board';
 import Piece from '../../frontend/src/shogi/piece';
 import memo from 'memo-is';
+import _ from 'lodash';
 
 describe('Borad', () => {
   describe('#enhanceMovablePoint', () => {
@@ -23,13 +24,13 @@ describe('Borad', () => {
             testBoard.setBoard(board());
             testBoard.enhanceMovablePoint(piece);
 
-            var result = [];
-            var movable = testBoard.board.forEach((row) => {
-              var cell = row.filter((cell) => { return(cell.movable); });
-              if (cell.length) { result.push(cell); }
+            var movablePieces = testBoard.board.map((row) => {
+              return (
+                row.filter((cell) => { return(cell.movable); })
+              );
             });
 
-            [].concat.apply([], result).should.eql(
+            _.flattenDeep(movablePieces).should.eql(
               [new Piece({ type: '*', x: 8, y: 1, movable: true })]
             );
           });
@@ -52,13 +53,13 @@ describe('Borad', () => {
             testBoard.setBoard(board());
             testBoard.enhanceMovablePoint(piece);
 
-            var result = [];
-            var movable = testBoard.board.forEach((row) => {
-              var cell = row.filter((cell) => { return(cell.movable); });
-              if (cell.length) { result.push(cell); }
+            var movablePieces = testBoard.board.map((row) => {
+              return (
+                row.filter((cell) => { return(cell.movable); })
+              );
             });
 
-            [].concat.apply([], result).should.eql([]);
+            _.flattenDeep(movablePieces).should.eql([]);
           });
         });
 
