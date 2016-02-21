@@ -57,7 +57,7 @@ describe('Borad', () => {
             var testBoard = new Board;
             var piece = new Piece({ type: 'P', x: 9, y: 1 });
 
-            testBoard.setBoard(board);
+            testBoard.setBoard(board());
             testBoard.enhanceMovablePoint(piece);
 
             var result = [];

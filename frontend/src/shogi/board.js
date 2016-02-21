@@ -48,8 +48,8 @@ export default class Board {
     if (moveDef.just) {
       moveDef.just.forEach((def) => {
         var [defX, defY] = def;
-        this.board[y + defY][x + defX].movable = true;
-        console.log(this.board[y + defY][x + defX]);
+        var piece = this.findPiece(x + defX, y + defY);
+        if (piece) { piece.movable = true; }
       });
     }
   }
@@ -64,6 +64,11 @@ export default class Board {
 
   invertCor(xCor, yCor) {
     return [this.invertToIndexX(xCor), this.invertToIndexY(yCor)];
+  }
+
+  findPiece(xIndex, yIndex) {
+    var row = this.board[yIndex];
+    return row ? row[xIndex] : undefined;
   }
 
   // transposeToCorX(xIndex) {
