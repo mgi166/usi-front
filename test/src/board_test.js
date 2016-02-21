@@ -75,5 +75,16 @@ describe('Borad', () => {
         });
       });
     });
+
+    context('case of white', () => {
+      context('exists movable coordinates', () => {
+      });
+
+      context('does not exist movable coordinates', () => {
+      });
+
+      context.skip('if move piece, king is taken', () => {
+      });
+    });
   });
 });
