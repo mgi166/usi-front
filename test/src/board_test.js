@@ -42,6 +42,33 @@ describe('Borad', () => {
             );
           });
         });
+
+        context('does not exist movable coordinates', () => {
+          var board = memo().is(() => {
+            return (
+              [
+                ['P', '*', '*'],
+                ['*', '*', '*']
+              ]
+            );
+          });
+
+          it('does not change property of piece', () => {
+            var testBoard = new Board;
+            var piece = new Piece({ type: 'P', x: 9, y: 1 });
+
+            testBoard.setBoard(board);
+            testBoard.enhanceMovablePoint(piece);
+
+            var result = [];
+            var movable = testBoard.board.forEach((row) => {
+              var cell = row.filter((cell) => { return(cell.movable); });
+              if (cell.length) { result.push(cell); }
+            });
+
+            [].concat.apply([], result).should.eql([]);
+          });
+        });
       });
     });
   });
