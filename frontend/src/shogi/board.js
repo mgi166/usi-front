@@ -88,7 +88,13 @@ export default class Board {
           piece.movable = true;
           dx = dx + defX;
           dy = dy + defY;
+
           piece = this.findPiece(dx, dy);
+
+          if (piece && piece.type !== '*') {
+            piece.movable = true;
+            break;
+          }
         }
       });
     }
