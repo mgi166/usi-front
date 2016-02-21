@@ -83,6 +83,26 @@ describe('black', () => {
   });
 
   context('mismatch the piece of coordinate', () => {
+    var board = memo().is(() => {
+      var _board = new Board;
+      _board.setBoard(position());
+      return(_board);
+    });
+
+    var position = memo().is(() => {
+      return (
+        [
+          ['*', '*', '*'],
+          ['*', 'L', '*']
+        ]
+      );
+    });
+
+    it('throw exception', () => {
+      var piece = new Piece({ type: 'L', x: 7, y: 2 });
+
+      (() => { return board().enhanceMovablePoint(piece); }).should.throw();
+    });
   });
 
   context.skip('if move piece, king is taken', () => {
