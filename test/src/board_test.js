@@ -11,24 +11,17 @@ describe('Borad', () => {
           var board = memo().is(() => {
             return (
               [
-                ['l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l'],
-                ['*', 'b', '*', '*', '*', '*', '*', 'r', '*'],
-                ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
-                ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
-                ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
-                ['*', '*', '*', '*', '*', '*', '*', 'P', '*'],
-                ['P', 'P', 'P', 'P', 'P', 'P', 'P', '*', 'P'],
-                ['*', 'B', '*', '*', '*', '*', '*', 'R', '*'],
-                ['L', 'N', 'S', 'G', 'K', 'G', 'S', 'N', 'L']
+                ['*', '*', '*'],
+                ['*', 'P', '*']
               ]
             );
           });
 
           it('change property of piece that is moved', () => {
             var testBoard = new Board;
-            var piece = new Piece({ type: 'P', x: 2, y: 6 });
+            var piece = new Piece({ type: 'P', x: 8, y: 2 });
 
-            testBoard.setBoard(board);
+            testBoard.setBoard(board());
             testBoard.enhanceMovablePoint(piece);
 
             var result = [];
@@ -38,7 +31,7 @@ describe('Borad', () => {
             });
 
             [].concat.apply([], result).should.eql(
-              [new Piece({ type: '*', x: 2, y: 5, movable: true })]
+              [new Piece({ type: '*', x: 8, y: 1, movable: true })]
             );
           });
         });
