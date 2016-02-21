@@ -70,7 +70,7 @@ describe('black', () => {
     });
   });
 
-  context('does not match the piece to coordinate', () => {
+  context('mismatch the piece to coordinate', () => {
     var board = memo().is(() => {
       var _board = new Board;
       _board.setBoard(position());
