@@ -223,6 +223,44 @@ describe('white', () => {
     });
 
     context('other piece exists', () => {
+      var board = memo().is(() => {
+        var _board = new Board;
+        _board.setBoard(position());
+        return(_board);
+      });
+
+      var position = memo().is(() => {
+        return (
+          [
+            ['*', '*', '*'],
+            ['*', 'l', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', 'P', '*'],
+            ['*', '*', '*']
+          ]
+        );
+      });
+
+      it('change property of piece but not change property above other piece', () => {
+        var piece = new Piece({ type: 'l', x: 8, y: 2 });
+
+        board().enhanceMovablePoint(piece);
+
+        var movablePieces = board().board.map((row) => {
+          return (
+            row.filter((cell) => { return(cell.movable); })
+          );
+        });
+
+        _.flattenDeep(movablePieces).should.eql(
+          [
+            new Piece({ type: '*', x: 8, y: 3, movable: true }),
+            new Piece({ type: '*', x: 8, y: 4, movable: true }),
+            new Piece({ type: 'P', x: 8, y: 5, movable: true })
+          ]
+        );
+      });
     });
   });
 
