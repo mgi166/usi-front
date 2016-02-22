@@ -47,17 +47,7 @@ export default class Board {
 
     // if piece of argument is not match piece in the board, throw exception
     //
-    if (
-      typeof this.findPiece(x, y) === 'undefined' ||
-        !this.findPiece(x, y).equals(
-          new Piece({
-            x: piece.x,
-            y: piece.y,
-            type: piece.type,
-            movable: piece.movable
-          })
-        )
-    ) {
+    if (! this.matchPiece(piece)) {
       var pos = `xCor = ${xCor}, yCor = ${yCor}`;
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
@@ -73,6 +63,25 @@ export default class Board {
     if (moveDef.fly) {
       this.movablePointsByFly(piece);
     }
+  }
+
+  // if piece of argument is match in the board, return true, else return false
+  //
+  matchPiece(piece) {
+    var [xCor, yCor] = [piece.x, piece.y];
+    var [x, y] = this.invertCor(xCor, yCor);
+
+    var isUndefined = typeof this.findPiece(x, y) === 'undefined';
+    var isEqualPiece = this.findPiece(x, y).equals(
+      new Piece({
+        x: piece.x,
+        y: piece.y,
+        type: piece.type,
+        movable: piece.movable
+      })
+    );
+
+    return (isUndefined || isEqualPiece);
   }
 
   // if moveDef has just property, piece moves just coordinates on board.
