@@ -65,39 +65,57 @@ export default class Board {
     // if moveDef has just property, piece moves just coordinates on board.
     //
     if (moveDef.just) {
-      moveDef.just.forEach((def) => {
-        var [defX, defY] = def;
-        var piece = this.findPiece(x + defX, y + defY);
-        if (piece) { piece.movable = true; }
-      });
+      this.movablePointsByJust(piece);
     }
 
     // if moveDef has fly property, piece moves recursion on board.
     //
     if (moveDef.fly) {
-      moveDef.fly.forEach((def) => {
-        var [defX, defY] = def;
-        var dx, dy;
-
-        dx = x + defX;
-        dy = y + defY;
-
-        var piece = this.findPiece(dx, dy);
-
-        while (piece) {
-          piece.movable = true;
-          dx = dx + defX;
-          dy = dy + defY;
-
-          piece = this.findPiece(dx, dy);
-
-          if (piece && piece.type !== '*') {
-            piece.movable = true;
-            break;
-          }
-        }
-      });
+      this.movablePointsByFly(piece);
     }
+  }
+
+  // if moveDef has just property, piece moves just coordinates on board.
+  //
+  movablePointsByJust(piece) {
+    var [xCor, yCor] = [piece.x, piece.y];
+    var moveDef = piece.moveDef();
+    var [x, y] = this.invertCor(xCor, yCor);
+
+    moveDef.just.forEach((def) => {
+      var [defX, defY] = def;
+      var piece = this.findPiece(x + defX, y + defY);
+      if (piece) { piece.movable = true; }
+    });
+  }
+
+  movablePointsByFly(piece) {
+    var [xCor, yCor] = [piece.x, piece.y];
+    var moveDef = piece.moveDef();
+    var [x, y] = this.invertCor(xCor, yCor);
+
+    moveDef.fly.forEach((def) => {
+      var [defX, defY] = def;
+      var dx, dy;
+
+      dx = x + defX;
+      dy = y + defY;
+
+      var piece = this.findPiece(dx, dy);
+
+      while (piece) {
+        piece.movable = true;
+        dx = dx + defX;
+        dy = dy + defY;
+
+        piece = this.findPiece(dx, dy);
+
+        if (piece && piece.type !== '*') {
+          piece.movable = true;
+          break;
+        }
+      }
+    });
   }
 
   invertToIndexX(xCor) {
