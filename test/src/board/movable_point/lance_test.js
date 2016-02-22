@@ -146,3 +146,22 @@ describe('black', () => {
   context.skip('if move piece, king is taken', () => {
   });
 });
+
+describe('white', () => {
+  context('match the piece of coordinate', () => {
+    context('exists movable coordinates', () => {
+    });
+
+    context('does not exist movable coordinates', () => {
+    });
+
+    context('other piece exists', () => {
+    });
+  });
+
+  context('mismatch the piece of coordinate', () => {
+  });
+
+  context.skip('if move piece, king is taken', () => {
+  });
+});
