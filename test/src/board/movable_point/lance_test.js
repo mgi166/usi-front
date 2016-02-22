@@ -192,6 +192,34 @@ describe('white', () => {
     });
 
     context('does not exist movable coordinates', () => {
+      var board = memo().is(() => {
+        var _board = new Board;
+        _board.setBoard(position());
+        return(_board);
+      });
+
+      var position = memo().is(() => {
+        return (
+          [
+            ['*', '*', '*'],
+            ['*', 'l', '*']
+          ]
+        );
+      });
+
+      it('does not change property of piece', () => {
+        var piece = new Piece({ type: 'l', x: 8, y: 2 });
+
+        board().enhanceMovablePoint(piece);
+
+        var movablePieces = board().board.map((row) => {
+          return (
+            row.filter((cell) => { return(cell.movable); })
+          );
+        });
+
+        _.flattenDeep(movablePieces).should.eql([]);
+      });
     });
 
     context('other piece exists', () => {
