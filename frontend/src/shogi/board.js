@@ -43,7 +43,6 @@ export default class Board {
   enhanceMovablePoint(piece) {
     var [xCor, yCor] = [piece.x, piece.y];
     var moveDef = piece.moveDef();
-    var [x, y] = this.invertCor(xCor, yCor);
 
     // if piece of argument is not match piece in the board, throw exception
     //
