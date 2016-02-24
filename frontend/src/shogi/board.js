@@ -143,6 +143,14 @@ export default class Board {
     return row ? row[xIndex] : undefined;
   }
 
+  toArray() {
+    return this.board.map((row) => {
+      return row.map((piece) => {
+        return piece.type;
+      });
+    });
+  }
+
   // transposeToCorX(xIndex) {
   // }
 
