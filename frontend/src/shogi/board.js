@@ -48,14 +48,14 @@ export default class Board {
     var [fromCorX, fromCorY] = [fromPiece.x, fromPiece.y];
     var [fromIdxX, fromIdxY] = this.invertCor(fromCorX, fromCorY);
 
-    var piece = this.board[toIdxY][toIdxX];
+    var destPiece = this.board[toIdxY][toIdxX];
 
-    if (typeof piece === 'undefined' || ! piece.movable) {
+    if (typeof destPiece === 'undefined' || ! destPiece.movable) {
       return;
     }
 
-    fromPiece.x = piece.x;
-    fromPiece.y = piece.y;
+    fromPiece.x = destPiece.x;
+    fromPiece.y = destPiece.y;
 
     this.board[toIdxY][toIdxX] = fromPiece;
     this.board[fromIdxY][fromIdxX].type = '*';
