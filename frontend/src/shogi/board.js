@@ -40,6 +40,29 @@ export default class Board {
     return _board;
   }
 
+  movePiece(fromPiece, toPiece) {
+    this.enhanceMovablePoint(fromPiece);
+
+    var [toCorX, toCorY] = [toPiece.x, toPiece.y];
+    var [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
+    var [fromCorX, fromCorY] = [fromPiece.x, fromPiece.y];
+    var [fromIdxX, fromIdxY] = this.invertCor(fromCorX, fromCorY);
+
+    var piece = this.board[toIdxY][toIdxX];
+
+    if (typeof piece === 'undefined' || ! piece.movable) {
+      return;
+    }
+
+    fromPiece.x = piece.x;
+    fromPiece.y = piece.y;
+
+    this.board[toIdxY][toIdxX] = fromPiece;
+    this.board[fromIdxY][fromIdxX].type = '*';
+
+    return;
+  }
+
   enhanceMovablePoint(piece) {
     var [xCor, yCor] = [piece.x, piece.y];
     var moveDef = piece.moveDef();
