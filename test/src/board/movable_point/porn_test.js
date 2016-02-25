@@ -190,3 +190,16 @@ describe('white', () => {
   context.skip('if move piece, king is taken', () => {
   });
 });
+
+describe('#movePiece', () => {
+  context('match piece of first argument and piece in the board', () => {
+    context('destination has movable property', () => {
+    });
+
+    context('destination does not have movable property', () => {
+    });
+  });
+
+  context('mismatch piece of first argument and piece in the board', () => {
+  });
+});
