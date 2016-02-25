@@ -194,6 +194,41 @@ describe('white', () => {
 describe('#movePiece', () => {
   context('match piece of first argument and piece in the board', () => {
     context('destination has movable property', () => {
+      context.skip('promote', () => {
+      });
+
+      context('no promote', () => {
+        var board = memo().is(() => {
+          var _board = new Board;
+          _board.setBoard(position());
+          return(_board);
+        });
+
+        var position = memo().is(() => {
+          return (
+            [
+              ['*', '*', '*'],
+              ['*', 'P', '*'],
+              ['*', '*', '*']
+            ]
+          );
+        });
+
+        it('moves piece', () => {
+          var fromPiece = new Piece({ type: 'P', x: 8, y: 2 });
+          var toPiece = new Piece({ type: '*', x: 8, y: 1 });
+
+          board().movePiece(fromPiece, toPiece);
+
+          board().toArray().should.eql(
+            [
+              ['*', 'P', '*'],
+              ['*', '*', '*'],
+              ['*', '*', '*']
+            ]
+          );
+        });
+      });
     });
 
     context('destination does not have movable property', () => {
