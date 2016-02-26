@@ -232,6 +232,35 @@ describe('#movePiece', () => {
     });
 
     context('destination does not have movable property', () => {
+      var board = memo().is(() => {
+        var _board = new Board;
+        _board.setBoard(position());
+        return(_board);
+      });
+
+      var position = memo().is(() => {
+        return (
+          [
+            ['*', '*', '*'],
+            ['*', 'P', '*'],
+            ['*', '*', '*']
+          ]
+        );
+      });
+
+      it('does not move piece', () => {
+        var fromPiece = new Piece({ type: 'P', x: 8, y: 2 });
+        var toPiece = new Piece({ type: '*', x: 8, y: 3 });
+
+        board().movePiece(fromPiece, toPiece);
+        board().toArray().should.eql(
+          [
+            ['*', '*', '*'],
+            ['*', 'P', '*'],
+            ['*', '*', '*']
+          ]
+        );
+      });
     });
   });
 
