@@ -265,5 +265,27 @@ describe('#movePiece', () => {
   });
 
   context('mismatch piece of first argument and piece in the board', () => {
+    var board = memo().is(() => {
+      var _board = new Board;
+      _board.setBoard(position());
+      return(_board);
+    });
+
+    var position = memo().is(() => {
+      return (
+        [
+          ['*', '*', '*'],
+          ['*', 'P', '*'],
+          ['*', '*', '*']
+        ]
+      );
+    });
+
+    it('throw exception', () => {
+      var fromPiece = new Piece({ type: 'P', x: 8, y: 3 });
+      var toPiece = new Piece({ type: '*', x: 8, y: 1 });
+
+      (() => { board().movePiece(fromPiece, toPiece); }).should.throw();
+    });
   });
 });

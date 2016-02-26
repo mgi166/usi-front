@@ -41,6 +41,13 @@ export default class Board {
   }
 
   movePiece(fromPiece, toPiece) {
+    // if piece of argument is not match piece in the board, throw exception
+    //
+    if (! this.matchPiece(fromPiece)) {
+      var pos = `xCor = ${fromPiece.x}, yCor = ${fromPiece.y}`;
+      throw new Error(`Does not match coordinates in board. ${pos}`);
+    }
+
     this.enhanceMovablePoint(fromPiece);
 
     var [toCorX, toCorY] = [toPiece.x, toPiece.y];
