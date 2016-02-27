@@ -86,14 +86,15 @@ export default class Board {
 
           // NOTE: NIFU
           if (_.includes(pornXcors, x)) { return; }
-          if (piece.type == '*') { piece.isPlaced = true; }
         }
 
         if (placePiece.type === 'p') {
           // NOTE: Does not move, if placed a piece in this point.
           if (y + moveDef.just[0][1] > 8) { return; }
-          if (piece.type == '*') { piece.isPlaced = true; }
+          if (_.includes(pornXcors, x)) { return; }
         }
+
+        if (piece.type == '*') { piece.isPlaced = true; }
       });
     });
   }
