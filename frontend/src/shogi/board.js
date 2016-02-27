@@ -70,7 +70,20 @@ export default class Board {
     return;
   }
 
-  enhancePlaceablePoint(piece) {
+  enhancePlaceablePoint(placePiece) {
+    this.board.forEach((rows, y) => {
+      rows.forEach((piece, x) => {
+        if (placePiece.type === 'P') {
+          var moveDef = placePiece.moveDef();
+
+          if (y + moveDef.just[0][1] < 0) { return; }
+
+          if (piece.type == '*') {
+            piece.isPlaced = true;
+          }
+        }
+      });
+    });
   }
 
   enhanceMovablePoint(piece) {
