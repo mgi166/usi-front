@@ -94,6 +94,10 @@ export default class Board {
           if (_.includes(pornXcors, x)) { return; }
         }
 
+        if (placePiece.type === 'L') {
+          if (y + moveDef.fly[0][1] < 0) { return; }
+        }
+
         if (piece.type == '*') { piece.isPlaced = true; }
       });
     });
