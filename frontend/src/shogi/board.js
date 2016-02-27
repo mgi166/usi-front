@@ -27,9 +27,9 @@ export default class Board {
 
   createBoard(board) {
     var _board = board.map((row, y) => {
-      var yCor = y + 1;
+      var yCor = this.transposeToCorY(y);
       var rows = row.map((type, x) => {
-        var xCor = 10 - x - 1;
+        var xCor = this.transposeToCorX(x);
         return (
           new Piece({ type: type, x: xCor, y: yCor })
         );
@@ -156,6 +156,14 @@ export default class Board {
     });
   }
 
+  transposeToCorX(xIndex) {
+    return 10 - xIndex - 1;
+  }
+
+  transposeToCorY(yIndex) {
+    return yIndex + 1;
+  }
+
   invertToIndexX(xCor) {
     return 9 - xCor;
   }
@@ -180,10 +188,4 @@ export default class Board {
       });
     });
   }
-
-  // transposeToCorX(xIndex) {
-  // }
-
-  // transposeToCorY(xIndex) {
-  // }
 };
