@@ -290,3 +290,15 @@ describe('white', () => {
   context.skip('if move piece, king is taken', () => {
   });
 });
+
+describe('#enhancePlaceablePoint', () => {
+  describe('black', () => {
+    context('the normal pattern', () => {
+    });
+  });
+
+  describe('white', () => {
+    context('the normal pattern', () => {
+    });
+  });
+});
