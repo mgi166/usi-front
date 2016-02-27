@@ -71,13 +71,12 @@ export default class Board {
   }
 
   enhanceMovablePoint(piece) {
-    var [xCor, yCor] = [piece.x, piece.y];
     var moveDef = piece.moveDef();
 
     // if piece of argument is not match piece in the board, throw exception
     //
     if (! this.matchPiece(piece)) {
-      var pos = `xCor = ${xCor}, yCor = ${yCor}`;
+      var pos = `xCor = ${piece.x}, yCor = ${piece.y}`;
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
