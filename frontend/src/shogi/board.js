@@ -96,11 +96,8 @@ export default class Board {
   // if piece of argument is match in the board, return true, else return false
   //
   matchPiece(piece) {
-    var [xCor, yCor] = [piece.x, piece.y];
-    var [x, y] = this.invertCor(xCor, yCor);
-
-    var isUndefined = typeof this.findPiece(x, y) === 'undefined';
-    var isEqualPiece = this.findPiece(x, y).equals(
+    var isUndefined = typeof this.fetchPiece(piece) === 'undefined';
+    var isEqualPiece = this.fetchPiece(piece).equals(
       new Piece({
         x: piece.x,
         y: piece.y,
