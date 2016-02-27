@@ -1,7 +1,8 @@
 export default class Piece {
-  constructor({ type, x, y, movable = false }) {
+  constructor({ type, x, y, movable = false, isPlace =  false }) {
     this.type = type;
     this.movable = movable;
+    this.isPlace = isPlace;
     this.x = x;
     this.y = y;
   }
