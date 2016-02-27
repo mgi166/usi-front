@@ -70,6 +70,9 @@ export default class Board {
     return;
   }
 
+  enhancePlaceablePoint(piece) {
+  }
+
   enhanceMovablePoint(piece) {
     var moveDef = piece.moveDef();
 

@@ -289,3 +289,27 @@ describe('#movePiece', () => {
     });
   });
 });
+
+describe('#enhancePlaceablePoint', () => {
+  describe('black', () => {
+    context('the normal pattern', () => {
+    });
+
+    context('`NIFU`', () => {
+    });
+
+    context.skip('`UCHI FU ZUME`', () => {
+    });
+  });
+
+  describe('white', () => {
+    context('the normal pattern', () => {
+    });
+
+    context('`NIFU`', () => {
+    });
+
+    context.skip('`UCHI FU ZUME`', () => {
+    });
+  });
+});
