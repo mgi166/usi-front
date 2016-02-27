@@ -181,6 +181,12 @@ export default class Board {
     return row ? row[xIndex] : undefined;
   }
 
+  fetchPiece(piece) {
+    var [toCorX, toCorY] = [piece.x, piece.y];
+    var [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
+    return this.findPiece(toIdxX, toIdxY);
+  }
+
   toArray() {
     return this.board.map((row) => {
       return row.map((piece) => {
