@@ -96,8 +96,8 @@ export default class Board {
   // if piece of argument is match in the board, return true, else return false
   //
   matchPiece(piece) {
-    var isUndefined = typeof this.fetchPiece(piece) === 'undefined';
-    var isEqualPiece = this.fetchPiece(piece).equals(
+    var isUndefined = typeof this.findPiece(piece) === 'undefined';
+    var isEqualPiece = this.findPiece(piece).equals(
       new Piece({
         x: piece.x,
         y: piece.y,
@@ -118,7 +118,7 @@ export default class Board {
 
     moveDef.just.forEach((def) => {
       var [defX, defY] = def;
-      var piece = this.findPiece(x + defX, y + defY);
+      var piece = this.fetchPiece(x + defX, y + defY);
       if (piece) { piece.movable = true; }
     });
   }
@@ -135,14 +135,14 @@ export default class Board {
       dx = x + defX;
       dy = y + defY;
 
-      var piece = this.findPiece(dx, dy);
+      var piece = this.fetchPiece(dx, dy);
 
       while (piece) {
         piece.movable = true;
         dx = dx + defX;
         dy = dy + defY;
 
-        piece = this.findPiece(dx, dy);
+        piece = this.fetchPiece(dx, dy);
 
         if (piece && piece.type !== '*') {
           piece.movable = true;
@@ -172,15 +172,15 @@ export default class Board {
     return [this.invertToIndexX(xCor), this.invertToIndexY(yCor)];
   }
 
-  findPiece(xIndex, yIndex) {
+  fetchPiece(xIndex, yIndex) {
     var row = this.board[yIndex];
     return row ? row[xIndex] : undefined;
   }
 
-  fetchPiece(piece) {
+  findPiece(piece) {
     var [toCorX, toCorY] = [piece.x, piece.y];
     var [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
-    return this.findPiece(toIdxX, toIdxY);
+    return this.fetchPiece(toIdxX, toIdxY);
   }
 
   toArray() {
