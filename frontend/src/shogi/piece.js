@@ -12,7 +12,7 @@ export default class Piece {
   }
 
   unpromote() {
-    this.type = this.usiUnPromoteTypes[this.type] || this.type;
+    this.type = this.usiUnPromoteTypes()[this.type] || this.type;
     return this.type;
   }
 
