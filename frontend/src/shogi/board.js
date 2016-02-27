@@ -81,7 +81,10 @@ export default class Board {
         if (placePiece.type === 'P') {
           var moveDef = placePiece.moveDef();
 
+          // NOTE: Does not move, if placed a piece in this point.
           if (y + moveDef.just[0][1] < 0) { return; }
+
+          // NOTE: NIFU
           if (_.includes(pornXcors, x)) { return; }
           if (piece.type == '*') { piece.isPlaced = true; }
         }
