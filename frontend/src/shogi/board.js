@@ -1,4 +1,5 @@
 import Piece from './piece';
+import _ from 'lodash';
 
 export default class Board {
   constructor() {
@@ -71,19 +72,31 @@ export default class Board {
   }
 
   enhancePlaceablePoint(placePiece) {
+    if (placePiece.type === 'P' || placePiece.type === 'p') {
+      var pornXcors = this.IndexXOfPiece(placePiece);
+    }
+
     this.board.forEach((rows, y) => {
       rows.forEach((piece, x) => {
         if (placePiece.type === 'P') {
           var moveDef = placePiece.moveDef();
 
           if (y + moveDef.just[0][1] < 0) { return; }
-
-          if (piece.type == '*') {
-            piece.isPlaced = true;
-          }
+          if (_.includes(pornXcors, x)) { return; }
+          if (piece.type == '*') { piece.isPlaced = true; }
         }
       });
     });
+  }
+
+  IndexXOfPiece(searchPiece) {
+    var pieces = this.board.map((rows) => {
+      return rows.map((piece, x) => {
+        return piece.type === searchPiece.type ? x : undefined;
+      });
+    });
+
+    return _.chain(pieces).flattenDeep().compact().uniq().value();
   }
 
   enhanceMovablePoint(piece) {
