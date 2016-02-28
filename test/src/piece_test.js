@@ -80,4 +80,50 @@ describe('Piece', () => {
       should(new Piece({ type: '*' }).team()).be.undefined();
     });
   });
+
+  describe('#isOwnTeam', () => {
+    context('same team', () => {
+      context('subject is black', () => {
+        it('returns true', () => {
+          new Piece({ type: 'P' })
+            .isOwnTeam(new Piece({ type: 'K' }))
+            .should.eql(true);
+        });
+      });
+
+      context('subject is white', () => {
+        it('returns true', () => {
+          new Piece({ type: 'p' })
+            .isOwnTeam(new Piece({ type: 'k' }))
+            .should.eql(true);
+        });
+      });
+    });
+
+    context('different team', () => {
+      context('subject is black', () => {
+        it('returns false', () => {
+          new Piece({ type: 'P' })
+            .isOwnTeam(new Piece({ type: 'k' }))
+            .should.eql(false);
+        });
+      });
+
+      context('subject is white', () => {
+        it('returns false', () => {
+          new Piece({ type: 'p' })
+            .isOwnTeam(new Piece({ type: 'K' }))
+            .should.eql(false);
+        });
+      });
+    });
+
+    context('other piece', () => {
+      it('returns false', () => {
+        new Piece({ type: '*' })
+          .isOwnTeam(new Piece({ type: 'K' }))
+          .should.eql(false);
+      });
+    });
+  });
 });

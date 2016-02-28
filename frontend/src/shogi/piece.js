@@ -134,6 +134,16 @@ export default class Piece {
     }
   }
 
+  isOwnTeam(piece) {
+    if (this.team() === 'black') {
+      return this.isUsiBlack(piece);
+    } else if (this.team() === 'white') {
+      return this.isUsiWhite(piece);
+    } else {
+      return false;
+    }
+  }
+
   isUsiBlack(piece) {
     const BLACK_PIECES = ['P', 'L', 'N', 'S', 'G', 'K', 'R', 'B'];
     return _.includes(BLACK_PIECES, piece.type);
