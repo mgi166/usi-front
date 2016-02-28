@@ -102,6 +102,14 @@ export default class Board {
           if (y + moveDef.fly[0][1] > 8) { return; }
         }
 
+        if (placePiece.type === 'N') {
+          if (y + moveDef.just[0][1] < 0) { return; }
+        }
+
+        if (placePiece.type === 'n') {
+          if (y + moveDef.just[0][1] > 8) { return; }
+        }
+
         if (piece.type == '*') { piece.isPlaced = true; }
       });
     });

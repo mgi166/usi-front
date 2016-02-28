@@ -41,9 +41,9 @@ export default class Piece {
     case 'L':
       return { fly: [[0, -1]] };
     case 'n':
-      return { just: [[-1, -2], [1, -2]] };
-    case 'N':
       return { just: [[-1, 2], [1, 2]] };
+    case 'N':
+      return { just: [[-1, -2], [1, -2]] };
     case 's':
       return { just: [[-1, -1], [-1, 0], [-1, 1], [1, -1], [1, 1]] };
     case 'S':
