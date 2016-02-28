@@ -73,7 +73,7 @@ export default class Board {
 
   enhancePlaceablePoint(placePiece) {
     if (placePiece.type === 'P' || placePiece.type === 'p') {
-      var pornXcors = this.IndexXOfPiece(placePiece);
+      var pawnXcors = this.IndexXOfPiece(placePiece);
     }
 
     this.board.forEach((rows, y) => {
@@ -85,13 +85,13 @@ export default class Board {
           if (y + moveDef.just[0][1] < 0) { return; }
 
           // NOTE: NIFU
-          if (_.includes(pornXcors, x)) { return; }
+          if (_.includes(pawnXcors, x)) { return; }
         }
 
         if (placePiece.type === 'p') {
           // NOTE: Does not move, if placed a piece in this point.
           if (y + moveDef.just[0][1] > 8) { return; }
-          if (_.includes(pornXcors, x)) { return; }
+          if (_.includes(pawnXcors, x)) { return; }
         }
 
         if (placePiece.type === 'L') {
