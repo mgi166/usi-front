@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default class Piece {
   constructor({ type, x, y, movable = false, isPlaced =  false }) {
     this.type = type;
@@ -112,5 +114,23 @@ export default class Piece {
       'B+': 'B',
       'R+': 'R'
     };
+  }
+
+  isBlack() {
+    this.isUsiBlack();
+  }
+
+  isWhite() {
+    this.isUsiWhite();
+  }
+
+  isUsiBlack() {
+    const BLACK_PIECES = ['P', 'L', 'N', 'S', 'G', 'K', 'R', 'B'];
+    return _.includes(BLACK_PIECES, this.type);
+  }
+
+  isUsiWhite() {
+    const WHITE_PIECES = ['p', 'l', 'n', 's', 'g', 'k', 'r', 'b'];
+    return _.includes(WHITE_PIECES, this.type);
   }
 };

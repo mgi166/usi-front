@@ -11,4 +11,44 @@ describe('Piece', () => {
       });
     });
   });
+
+  describe('#isUsiBlack', () => {
+    context('if black piece', () => {
+      it('returns true', () => {
+        new Piece({ type: 'P' }).isUsiBlack().should.eql(true);
+      });
+    });
+
+    context('if white piece', () => {
+      it('returns false', () => {
+        new Piece({ type: 'p' }).isUsiBlack().should.eql(false);
+      });
+    });
+
+    context('if empty piece', () => {
+      it('returns false', () => {
+        new Piece({ type: '*' }).isUsiBlack().should.eql(false);
+      });
+    });
+  });
+
+  describe('#isUsiWhite', () => {
+    context('if white piece', () => {
+      it('returns true', () => {
+        new Piece({ type: 'p' }).isUsiWhite().should.eql(true);
+      });
+    });
+
+    context('if black piece', () => {
+      it('returns false', () => {
+        new Piece({ type: 'P' }).isUsiWhite().should.eql(false);
+      });
+    });
+
+    context('if empty piece', () => {
+      it('returns false', () => {
+        new Piece({ type: '*' }).isUsiWhite().should.eql(false);
+      });
+    });
+  });
 });
