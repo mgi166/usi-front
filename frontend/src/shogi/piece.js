@@ -116,12 +116,22 @@ export default class Piece {
     };
   }
 
-  isBlack() {
-    this.isUsiBlack();
+  isBlack(piece) {
+    return this.isUsiBlack(piece);
   }
 
-  isWhite() {
-    this.isUsiWhite();
+  isWhite(piece) {
+    return this.isUsiWhite(piece);
+  }
+
+  team() {
+    if (this.isBlack(this)) {
+      return 'black';
+    } else if (this.isWhite(this)) {
+      return 'white';
+    } else {
+      return undefined;
+    }
   }
 
   isUsiBlack(piece) {

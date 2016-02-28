@@ -1,5 +1,6 @@
 //import assert from 'power-assert';
 import Piece from '../../frontend/src/shogi/piece';
+import should from 'should';
 
 describe('Piece', () => {
   describe('#promote', () => {
@@ -61,6 +62,22 @@ describe('Piece', () => {
           .isUsiWhite(new Piece({ type: '*' }))
           .should.eql(false);
       });
+    });
+  });
+
+  describe('#team', () => {
+    context('black piece', () => {
+      it('returns "black"', () => {
+        new Piece({ type: 'P' }).team().should.eql('black');
+      });
+    });
+
+    context('white piece', () => {
+      new Piece({ type: 'p' }).team().should.eql('white');
+    });
+
+    context('other piece', () => {
+      should(new Piece({ type: '*' }).team()).be.undefined();
     });
   });
 });
