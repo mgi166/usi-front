@@ -173,8 +173,11 @@ export default class Board {
 
     moveDef.just.forEach((def) => {
       var [defX, defY] = def;
-      var piece = this.fetchPiece(x + defX, y + defY);
-      if (piece) { piece.movable = true; }
+      var fetchPiece = this.fetchPiece(x + defX, y + defY);
+
+      if (fetchPiece && !piece.isOwnTeam(fetchPiece)) {
+        fetchPiece.movable = true;
+      }
     });
   }
 
