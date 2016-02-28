@@ -124,13 +124,13 @@ export default class Piece {
     this.isUsiWhite();
   }
 
-  isUsiBlack() {
+  isUsiBlack(piece) {
     const BLACK_PIECES = ['P', 'L', 'N', 'S', 'G', 'K', 'R', 'B'];
-    return _.includes(BLACK_PIECES, this.type);
+    return _.includes(BLACK_PIECES, piece.type);
   }
 
-  isUsiWhite() {
+  isUsiWhite(piece) {
     const WHITE_PIECES = ['p', 'l', 'n', 's', 'g', 'k', 'r', 'b'];
-    return _.includes(WHITE_PIECES, this.type);
+    return _.includes(WHITE_PIECES, piece.type);
   }
 };

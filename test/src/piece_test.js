@@ -15,19 +15,25 @@ describe('Piece', () => {
   describe('#isUsiBlack', () => {
     context('if black piece', () => {
       it('returns true', () => {
-        new Piece({ type: 'P' }).isUsiBlack().should.eql(true);
+        new Piece({ type: '*' })
+          .isUsiBlack(new Piece({ type: 'P' }))
+          .should.eql(true);
       });
     });
 
     context('if white piece', () => {
       it('returns false', () => {
-        new Piece({ type: 'p' }).isUsiBlack().should.eql(false);
+        new Piece({ type: '*' })
+          .isUsiBlack(new Piece({ type: 'p' }))
+          .should.eql(false);
       });
     });
 
     context('if empty piece', () => {
       it('returns false', () => {
-        new Piece({ type: '*' }).isUsiBlack().should.eql(false);
+        new Piece({ type: '*' })
+          .isUsiBlack(new Piece({ type: '*' }))
+          .should.eql(false);
       });
     });
   });
@@ -35,19 +41,25 @@ describe('Piece', () => {
   describe('#isUsiWhite', () => {
     context('if white piece', () => {
       it('returns true', () => {
-        new Piece({ type: 'p' }).isUsiWhite().should.eql(true);
+        new Piece({ type: '*' })
+          .isUsiWhite(new Piece({ type: 'p' }))
+          .should.eql(true);
       });
     });
 
     context('if black piece', () => {
       it('returns false', () => {
-        new Piece({ type: 'P' }).isUsiWhite().should.eql(false);
+        new Piece({ type: '*' })
+          .isUsiWhite(new Piece({ type: 'P' }))
+          .should.eql(false);
       });
     });
 
     context('if empty piece', () => {
       it('returns false', () => {
-        new Piece({ type: '*' }).isUsiWhite().should.eql(false);
+        new Piece({ type: '*' })
+          .isUsiWhite(new Piece({ type: '*' }))
+          .should.eql(false);
       });
     });
   });
