@@ -193,19 +193,22 @@ export default class Board {
       dx = x + defX;
       dy = y + defY;
 
-      var piece = this.fetchPiece(dx, dy);
+      var fetchPiece = this.fetchPiece(dx, dy);
 
-      while (piece) {
-        piece.movable = true;
+      while (fetchPiece) {
+        if (fetchPiece.type === '*') {
+          fetchPiece.movable = true;
+        } else if (piece.isOwnTeam(fetchPiece)) {
+          break;
+        } else {
+          fetchPiece.movable = true;
+          break;
+        }
+
         dx = dx + defX;
         dy = dy + defY;
 
-        piece = this.fetchPiece(dx, dy);
-
-        if (piece && piece.type !== '*') {
-          piece.movable = true;
-          break;
-        }
+        fetchPiece = this.fetchPiece(dx, dy);
       }
     });
   }
