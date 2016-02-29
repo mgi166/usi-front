@@ -38,7 +38,7 @@ export default class ShogiPiece extends React.Component {
   render() {
     return(
       <div className="piece" onClick={() => this.props.onPieceClick()}>
-        <span>{this.props.type}</span>
+        <span>{this.props.piece.type}</span>
       </div>
     );
   }

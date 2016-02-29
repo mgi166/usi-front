@@ -7,12 +7,10 @@ import store from '../stores/index';
 export default class Board extends React.Component {
   render() {
     var tbody = store.getState().board.map((row, y) => {
-      var yCor = y + 1;
       var rows = row.map((piece, x) => {
-        var xCor = 10 - x - 1;
         return(
           <td key={x}>
-            <Piece type={piece} onClick={() => { store.dispatch({type: 'HOLD_PIECE', x: x, y: y }); }}/>
+            <Piece piece={piece} onClick={() => { store.dispatch({type: 'HOLD_PIECE', x: x, y: y }); }}/>
           </td>
         );
       });
