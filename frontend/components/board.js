@@ -39,4 +39,11 @@ export default class ShogiBoard extends React.Component {
       </div>
     );
   }
-}
+};
+
+const Board = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShogiBoard);
+
+export default Board;
