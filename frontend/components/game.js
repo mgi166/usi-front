@@ -1,14 +1,18 @@
 import React from 'react';
 import Board from './board';
 import { changeTurn } from '../actions';
-import store from '../stores/index';
+import { connect } from 'react-redux';
 
-export default class Game extends React.Component {
+export default class ShogiGame extends React.Component {
   render () {
     return (
-        <div className="game" onClick={() => { store.dispatch({type: 'CHANGE_TURN', turn: store.getState().turn }); }}>
+      <div className="game">
         <Board />
       </div>
     );
   }
 }
+
+const Game = connect()(ShogiGame);
+
+export default Game;
