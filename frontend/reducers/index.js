@@ -1,45 +1,12 @@
-import { combineReducers } from 'redux';
 import Shogi from '../src/shogi';
 
-function board(state, action) {
-  // initial state
-  if (state === undefined) {
-    return (Shogi.Board.board);
-  }
+const InitialState = {
+  board: Shogi.Board.board,
+  isHoldingPiece: false
+};
+
+const ShogiReducer = (state = InitialState, action) => {
   return state;
-}
-
-function turn(state, action) {
-  switch (state) {
-  case 'black':
-    return 'white';
-  case 'white':
-    return 'black';
-  default:
-    return 'black';
-  }
-}
-
-function isHoldedPiece(state, action) {
-  if (state === undefined) {
-    return false;
-  }
-
-  switch (action.type) {
-  case 'HOLD_PIECE':
-    switch (state) {
-    case true:
-      return false;
-    case false:
-      return true;
-    }
-  }
-}
-
-const ShogiReducer = combineReducers({
-  board,
-  turn,
-  isHoldedPiece
-});
+};
 
 export default ShogiReducer;
