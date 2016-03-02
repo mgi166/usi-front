@@ -21,13 +21,18 @@ function turn(state, action) {
 }
 
 function isHolded(state, action) {
-  switch (state) {
-  case true:
-    // no return new state
-  case false:
-    return true;
-  default:
+  if (state === undefined) {
     return false;
+  }
+
+  switch (action.type) {
+  case 'HOLD_PIECE':
+    switch (state) {
+    case true:
+      return false;
+    case false:
+      return true;
+    }
   }
 }
 
