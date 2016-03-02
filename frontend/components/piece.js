@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    type: state.turn
+    turn: state.turn
   };
 };
 
