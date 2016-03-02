@@ -20,7 +20,7 @@ function turn(state, action) {
   }
 }
 
-function isHolded(state, action) {
+function isHoldedPiece(state, action) {
   if (state === undefined) {
     return false;
   }
@@ -39,7 +39,7 @@ function isHolded(state, action) {
 const ShogiReducer = combineReducers({
   board,
   turn,
-  isHolded
+  isHoldedPiece
 });
 
 export default ShogiReducer;
