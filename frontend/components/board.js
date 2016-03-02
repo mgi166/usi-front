@@ -24,7 +24,7 @@ export default class ShogiBoard extends React.Component {
       var rows = row.map((piece, x) => {
         return(
           <td key={x}>
-            <Piece piece={piece} onClick={this.props.onBoardClick()}/>
+            <Piece piece={piece} onClick={this.props.onBoardClick}/>
           </td>
         );
       });
