@@ -1,5 +1,5 @@
 import React from 'react';
-import { holdPiece } from '../actions';
+import { movePiece } from '../actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPieceClick: (piece) => {
-      dispatch(holdPiece(piece));
+    onPieceClick: (board, piece) => {
+      dispatch(movePiece(board, piece));
     }
   };
 };
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
 export default class ShogiPiece extends React.Component {
   render() {
     return(
-      <div className="piece" onClick={() => this.props.onPieceClick(this.props.piece)}>
+      <div className="piece" onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
         <span>{this.props.piece.type}</span>
       </div>
     );

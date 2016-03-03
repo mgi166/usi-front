@@ -7,7 +7,7 @@ const InitialState = {
 
 const ShogiReducer = (state = InitialState, action) => {
   switch (action.type) {
-  case 'HOLD_PIECE':
+  case 'MOVE_PIECE':
     // if same piece click, release piece.
     if (state.isHoldingPiece && state.isHoldingPiece.equals(action.piece)) {
       return Object.assign({}, state, { isHoldingPiece: undefined });
