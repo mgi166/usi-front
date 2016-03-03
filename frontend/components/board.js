@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { movePiece } from '../actions';
 
 const mapStateToProps = (state) => {
-  return { board: state.board };
+  return { board: state.board.board };
 };
 
 export default class ShogiBoard extends React.Component {
