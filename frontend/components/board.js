@@ -1,6 +1,7 @@
 import React from 'react';
 import boardImage from "../images/shogi_board/ban_kaya_d.png";
 import Piece from './piece';
+import DevTools from './dev_tools';
 import { connect } from 'react-redux';
 import { movePiece } from '../actions';
 
