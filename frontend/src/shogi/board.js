@@ -45,7 +45,7 @@ export default class Board {
     // if piece of argument is not match piece in the board, throw exception
     //
     if (! this.matchPiece(fromPiece)) {
-      var pos = `xCor = ${fromPiece.x}, yCor = ${fromPiece.y}`;
+      var pos = `type = ${fromPiece.type}, xCor = ${fromPiece.x}, yCor = ${fromPiece.y}`;
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
@@ -131,7 +131,7 @@ export default class Board {
     // if piece of argument is not match piece in the board, throw exception
     //
     if (! this.matchPiece(piece)) {
-      var pos = `xCor = ${piece.x}, yCor = ${piece.y}`;
+      var pos = `type = ${piece.type}, xCor = ${piece.x}, yCor = ${piece.y}`;
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
