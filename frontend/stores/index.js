@@ -8,9 +8,4 @@ let enhancer = compose(
 
 let store = createStore(Shogi, undefined, enhancer);
 
-// debug
-store.subscribe(
-  () => console.log(store.getState())
-);
-
 export default store;
