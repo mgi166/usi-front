@@ -62,10 +62,7 @@ export default class Board {
       return;
     }
 
-    fromPiece.x = destPiece.x;
-    fromPiece.y = destPiece.y;
-
-    this.board[toIdxY][toIdxX] = fromPiece;
+    this.board[toIdxY][toIdxX].type = fromPiece.type;
     this.board[fromIdxY][fromIdxX].type = '*';
 
     return;
