@@ -8,7 +8,8 @@ const InitialState = {
 const ShogiReducer = (state = InitialState, action) => {
   switch (action.type) {
   case 'MOVE_PIECE':
-    if (action.piece.type === '*') {
+    // if empty piece click when no holding piece, do nothing.
+    if (action.piece.type === '*' && typeof state.isHoldingPiece === 'undefined' ) {
       return state;
     }
 
