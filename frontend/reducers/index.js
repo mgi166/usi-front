@@ -14,11 +14,11 @@ const ShogiReducer = (state = InitialState, action) => {
     }
 
     // if same piece click, release piece.
-    if (state.isHoldingPiece && state.isHoldingPiece.equals(action.piece)) {
-      return Object.assign({}, state, { isHoldingPiece: undefined });
-    }
-
     if (state.isHoldingPiece) {
+      if (state.isHoldingPiece.equals(action.piece)) {
+        return Object.assign({}, state, { isHoldingPiece: undefined });
+      }
+
       state.board.movePiece(state.isHoldingPiece, action.piece);
       return Object.assign({}, { board: state.board }, { isHoldingPiece: undefined });
     } else {
