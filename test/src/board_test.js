@@ -5,7 +5,7 @@ import memo from 'memo-is';
 import _ from 'lodash';
 
 describe('isTakenKing', () => {
-  context("if take the piece, king is taken", () => {
+  context.skip("if take the piece, king is taken", () => {
     var board = memo().is(() => {
       var _board = new Board;
       _board.setBoard(position());
@@ -27,6 +27,6 @@ describe('isTakenKing', () => {
     });
   });
 
-  context("if moves the piece, king is taken", () => {
+  context.skip("if moves the piece, king is taken", () => {
   });
 });
