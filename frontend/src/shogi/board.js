@@ -62,10 +62,10 @@ export default class Board {
       return;
     }
 
-    this.board[toIdxY][toIdxX].type = fromPiece.type;
-    this.board[fromIdxY][fromIdxX].type = '*';
+    newBoard[toIdxY][toIdxX].type = fromPiece.type;
+    newBoard[fromIdxY][fromIdxX].type = '*';
 
-    return;
+    return newBoard;
   }
 
   enhancePlaceablePoint(placePiece) {
