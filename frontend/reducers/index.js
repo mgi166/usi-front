@@ -19,8 +19,11 @@ const ShogiReducer = (state = InitialState, action) => {
         return Object.assign({}, state, { isHoldingPiece: undefined });
       }
 
-      state.board.movePiece(state.isHoldingPiece, action.piece);
-      return Object.assign({}, { board: state.board }, { isHoldingPiece: undefined });
+      var movedBoard = state.board.movePiece(state.isHoldingPiece, action.piece);
+      var newBoard = new state.board.constructor;
+      newBoard.board = movedBoard;
+
+      return Object.assign({}, { board: newBoard }, { isHoldingPiece: undefined });
     } else {
       return Object.assign({}, state, { isHoldingPiece: action.piece });
     }
