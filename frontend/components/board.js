@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   return { board: state.board.board };
 };
 
-export default class ShogiBoard extends React.Component {
+class ShogiBoard extends React.Component {
   render() {
     var tbody = this.props.board.map((row, y) => {
       var rows = row.map((piece, x) => {
