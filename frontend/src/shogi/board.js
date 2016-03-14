@@ -2,8 +2,12 @@ import Piece from './piece';
 import _ from 'lodash';
 
 export default class Board {
-  constructor() {
-    this.setBoard(this.initialUsiBoard());
+  constructor(board = undefined) {
+    if (board) {
+      this.board = board;
+    } else {
+      this.setBoard(this.initialUsiBoard());
+    }
   }
 
   initialUsiBoard() {
