@@ -49,6 +49,8 @@ export default class Board {
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
+    var newBoard = this.board;
+
     this.enhanceMovablePoint(fromPiece);
 
     var [toCorX, toCorY] = [toPiece.x, toPiece.y];
