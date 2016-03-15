@@ -1,6 +1,6 @@
 import React from 'react';
 import Game from './game';
-import DevTools from './dev_tools';
+import DevTools from './devTools';
 import { connect } from 'redux';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';

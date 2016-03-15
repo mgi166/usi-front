@@ -1,5 +1,5 @@
 import { createStore, compose } from 'redux';
-import DevTools from '../components/dev_tools';
+import DevTools from '../components/devTools';
 import Shogi from '../reducers';
 
 let enhancer = compose(
