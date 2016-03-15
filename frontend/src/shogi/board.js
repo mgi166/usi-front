@@ -53,7 +53,7 @@ export default class Board {
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
-    var newBoard = this.board;
+    var _board = this.board;
 
     this.enhanceMovablePoint(fromPiece);
 
@@ -65,13 +65,13 @@ export default class Board {
     var destPiece = this.board[toIdxY][toIdxX];
 
     if (typeof destPiece === 'undefined' || ! destPiece.movable) {
-      return;
+      return _board;
     }
 
-    newBoard[toIdxY][toIdxX].type = fromPiece.type;
-    newBoard[fromIdxY][fromIdxX].type = '*';
+    _board[toIdxY][toIdxX].type = fromPiece.type;
+    _board[fromIdxY][fromIdxX].type = '*';
 
-    return newBoard;
+    return _board;
   }
 
   enhancePlaceablePoint(placePiece) {
