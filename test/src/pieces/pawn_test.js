@@ -24,4 +24,22 @@ describe('Pawn', () => {
       });
     });
   });
+
+  describe('#promote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var pawn = new Pawn({ type: 'P' });
+        pawn.promote();
+        pawn.should.have.property('type', 'P+');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var pawn = new Pawn({ type: 'p' });
+        pawn.promote();
+        pawn.should.have.property('type', 'p+');
+      });
+    });
+  });
 });
