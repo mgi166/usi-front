@@ -94,4 +94,72 @@ describe('Silver', () => {
       });
     });
   });
+
+  describe('#moveDef', () => {
+    context('black', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var silver = new Silver({ type: 'S' });
+          silver.moveDef().should.eql({
+            just: [
+              [1, -1],
+              [1, 0],
+              [1, 1],
+              [-1, -1],
+              [-1, 1]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var silver = new Silver({ type: 'S+' });
+          silver.moveDef().should.eql({
+            just: [
+              [1, -1],
+              [1, 0],
+              [1, 1],
+              [0, -1],
+              [0, 1],
+              [-1, 0]
+            ]
+          });
+        });
+      });
+    });
+
+    context('white', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var silver = new Silver({ type: 's' });
+          silver.moveDef().should.eql({
+            just: [
+              [-1, -1],
+              [-1, 0],
+              [-1, 1],
+              [1, -1],
+              [1, 1]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var silver = new Silver({ type: 's+' });
+          silver.moveDef().should.eql({
+            just: [
+              [-1, -1],
+              [-1, 0],
+              [-1, 1],
+              [0, -1],
+              [0, 1],
+              [1, 0]
+            ]
+          });
+        });
+      });
+    });
+  });
 });
