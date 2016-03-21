@@ -60,4 +60,38 @@ describe('Knight', () => {
       });
     });
   });
+
+  describe('#isPromoted', () => {
+    context('promoted', () => {
+      context('black', () => {
+        it('returns true', () => {
+          var knight = new Knight({ type: 'N+' });
+          knight.isPromoted().should.eql(true);
+        });
+      });
+
+      context('white', () => {
+        it('returns true', () => {
+          var knight = new Knight({ type: 'n+' });
+          knight.isPromoted().should.eql(true);
+        });
+      });
+    });
+
+    context('no promoted', () => {
+      context('black', () => {
+        it('returns false', () => {
+          var knight = new Knight({ type: 'N' });
+          knight.isPromoted().should.eql(false);
+        });
+      });
+
+      context('white', () => {
+        it('returns false', () => {
+          var knight = new Knight({ type: 'n' });
+          knight.isPromoted().should.eql(false);
+        });
+      });
+    });
+  });
 });
