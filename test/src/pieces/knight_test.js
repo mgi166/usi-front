@@ -24,4 +24,22 @@ describe('Knight', () => {
       });
     });
   });
+
+  describe('#promote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var knight = new Knight({ type: 'N' });
+        knight.promote();
+        knight.should.have.property('type', 'N+');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var knight = new Knight({ type: 'n' });
+        knight.promote();
+        knight.should.have.property('type', 'n+');
+      });
+    });
+  });
 });
