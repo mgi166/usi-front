@@ -13,3 +13,8 @@ export const USI_KNIGHT_BLACK_TYPE = 'N';
 export const USI_KNIGHT_BLACK_PROMOTE_TYPE = 'N+';
 export const USI_KNIGHT_WHITE_TYPE = 'n';
 export const USI_KNIGHT_WHITE_PROMOTE_TYPE = 'n+';
+
+export const USI_SILVER_BLACK_TYPE = 'S';
+export const USI_SILVER_BLACK_PROMOTE_TYPE = 'S+';
+export const USI_SILVER_WHITE_TYPE = 's';
+export const USI_SILVER_WHITE_PROMOTE_TYPE = 's+';
