@@ -9,6 +9,11 @@ export const USI_PAWN_BLACK_PROMOTE_TYPE = 'P+';
 export const USI_PAWN_WHITE_TYPE = 'p';
 export const USI_PAWN_WHITE_PROMOTE_TYPE = 'p+';
 
+export const USI_LANCE_BLACK_TYPE = 'L';
+export const USI_LANCE_BLACK_PROMOTE_TYPE = 'L+';
+export const USI_LANCE_WHITE_TYPE = 'l';
+export const USI_LANCE_WHITE_PROMOTE_TYPE = 'l+';
+
 export const USI_KNIGHT_BLACK_TYPE = 'N';
 export const USI_KNIGHT_BLACK_PROMOTE_TYPE = 'N+';
 export const USI_KNIGHT_WHITE_TYPE = 'n';
