@@ -42,4 +42,22 @@ describe('Silver', () => {
       });
     });
   });
+
+  describe('#unpromote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var silver = new Silver({ type: 'S+' });
+        silver.unpromote();
+        silver.should.have.property('type', 'S');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var silver = new Silver({ type: 's+' });
+        silver.unpromote();
+        silver.should.have.property('type', 's');
+      });
+    });
+  });
 });
