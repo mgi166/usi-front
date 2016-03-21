@@ -34,4 +34,15 @@ export default class Silver extends Piece {
     };
     return this;
   }
+
+  isPromoted() {
+    switch (this.type) {
+    case CONST.USI_SILVER_BLACK_PROMOTE_TYPE:
+      return true;
+    case CONST.USI_SILVER_WHITE_PROMOTE_TYPE:
+      return true;
+    default:
+      return false;
+    }
+  }
 }

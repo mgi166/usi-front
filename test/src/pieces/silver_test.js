@@ -60,4 +60,38 @@ describe('Silver', () => {
       });
     });
   });
+
+  describe('#isPromoted', () => {
+    context('promoted', () => {
+      context('black', () => {
+        it('returns true', () => {
+          var silver = new Silver({ type: 'S+' });
+          silver.isPromoted().should.eql(true);
+        });
+      });
+
+      context('white', () => {
+        it('returns true', () => {
+          var silver = new Silver({ type: 's+' });
+          silver.isPromoted().should.eql(true);
+        });
+      });
+    });
+
+    context('no promoted', () => {
+      context('black', () => {
+        it('returns false', () => {
+          var silver = new Silver({ type: 'S' });
+          silver.isPromoted().should.eql(false);
+        });
+      });
+
+      context('white', () => {
+        it('returns false', () => {
+          var silver = new Silver({ type: 's' });
+          silver.isPromoted().should.eql(false);
+        });
+      });
+    });
+  });
 });
