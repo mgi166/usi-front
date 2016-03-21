@@ -1,4 +1,6 @@
 import _ from 'lodash';
+import * as CONST from './constants/pieceTypes';
+import path from 'path';
 
 export default class Piece {
   constructor({ type, x, y, movable = false, isPlaced =  false }) {
@@ -145,12 +147,10 @@ export default class Piece {
   }
 
   isUsiBlack(piece) {
-    const BLACK_PIECES = ['P', 'L', 'N', 'S', 'G', 'K', 'R', 'B'];
-    return _.includes(BLACK_PIECES, piece.type);
+    return _.includes(CONST.USI_BLACK_PIECES, piece.type);
   }
 
   isUsiWhite(piece) {
-    const WHITE_PIECES = ['p', 'l', 'n', 's', 'g', 'k', 'r', 'b'];
-    return _.includes(WHITE_PIECES, piece.type);
+    return _.includes(CONST.USI_WHITE_PIECES, piece.type);
   }
 };
