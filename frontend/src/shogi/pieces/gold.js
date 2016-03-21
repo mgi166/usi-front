@@ -12,4 +12,9 @@ export default class Gold extends Piece {
 
     return this;
   }
+
+  promote() {
+    // NOTE: Do nothing. because gold can't promote.
+    return this;
+  }
 }

@@ -24,4 +24,22 @@ describe('Gold', () => {
       });
     });
   });
+
+  describe('#promote', () => {
+    context('black', () => {
+      it('does not update this.type', () => {
+        var gold = new Gold({ type: 'G' });
+        gold.promote();
+        gold.should.have.property('type', 'G');
+      });
+    });
+
+    context('white', () => {
+      it('does not update this.type', () => {
+        var gold = new Gold({ type: 'g' });
+        gold.promote();
+        gold.should.have.property('type', 'g');
+      });
+    });
+  });
 });
