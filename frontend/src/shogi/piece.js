@@ -128,18 +128,18 @@ export default class Piece {
 
   team() {
     if (this.isBlack(this)) {
-      return 'black';
+      return CONST.USI_BLACK_TEAM;
     } else if (this.isWhite(this)) {
-      return 'white';
+      return CONST.USI_WHITE_TEAM;
     } else {
       return undefined;
     }
   }
 
   isOwnTeam(piece) {
-    if (this.team() === 'black') {
+    if (this.team() === CONST.USI_BLACK_TEAM) {
       return this.isUsiBlack(piece);
-    } else if (this.team() === 'white') {
+    } else if (this.team() === CONST.USI_WHITE_TEAM) {
       return this.isUsiWhite(piece);
     } else {
       return false;
