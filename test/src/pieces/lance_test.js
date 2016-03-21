@@ -60,4 +60,38 @@ describe('Lance', () => {
       });
     });
   });
+
+  describe('#isPromoted', () => {
+    context('promoted', () => {
+      context('black', () => {
+        it('returns true', () => {
+          var lance = new Lance({ type: 'L+' });
+          lance.isPromoted().should.eql(true);
+        });
+      });
+
+      context('white', () => {
+        it('returns true', () => {
+          var lance = new Lance({ type: 'l+' });
+          lance.isPromoted().should.eql(true);
+        });
+      });
+    });
+
+    context('no promoted', () => {
+      context('black', () => {
+        it('returns false', () => {
+          var lance = new Lance({ type: 'L' });
+          lance.isPromoted().should.eql(false);
+        });
+      });
+
+      context('white', () => {
+        it('returns false', () => {
+          var lance = new Lance({ type: 'l' });
+          lance.isPromoted().should.eql(false);
+        });
+      });
+    });
+  });
 });
