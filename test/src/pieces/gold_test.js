@@ -76,4 +76,38 @@ describe('Gold', () => {
       });
     });
   });
+
+  describe('#moveDef', () => {
+    context('black', () => {
+      it('return move definition', () => {
+        var gold = new Gold({ type: 'G' });
+        gold.moveDef().should.eql({
+          just: [
+            [1, -1],
+            [1, 0],
+            [1, 1],
+            [0, -1],
+            [0, 1],
+            [-1, 0]
+          ]
+        });
+      });
+    });
+
+    context('white', () => {
+      it('return move definition', () => {
+        var gold = new Gold({ type: 'g' });
+        gold.moveDef().should.eql({
+          just: [
+            [-1, -1],
+            [-1, 0],
+            [-1, 1],
+            [0, -1],
+            [0, 1],
+            [1, 0]
+          ]
+        });
+      });
+    });
+  });
 });

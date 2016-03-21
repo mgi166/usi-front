@@ -27,4 +27,13 @@ export default class Gold extends Piece {
     // NOTE: gold can't promote, so behaves always promoted.
     return true;
   }
+
+  moveDef() {
+    switch (this.type) {
+    case CONST.USI_GOLD_BLACK_TYPE:
+      return { just: [[1, -1], [1, 0], [1, 1], [0, -1], [0, 1], [-1, 0]] };
+    case CONST.USI_GOLD_WHITE_TYPE:
+      return { just: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, 0]] };
+    }
+  }
 }
