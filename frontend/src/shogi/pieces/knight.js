@@ -24,4 +24,14 @@ export default class Knight extends Piece {
     };
     return this;
   }
+
+  unpromote() {
+    switch (this.type) {
+    case CONST.USI_KNIGHT_BLACK_PROMOTE_TYPE:
+      return this.type = CONST.USI_KNIGHT_BLACK_TYPE;
+    case CONST.USI_KNIGHT_WHITE_PROMOTE_TYPE:
+      return this.type = CONST.USI_KNIGHT_WHITE_TYPE;
+    };
+    return this;
+  }
 }
