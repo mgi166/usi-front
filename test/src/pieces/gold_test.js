@@ -60,4 +60,20 @@ describe('Gold', () => {
       });
     });
   });
+
+  describe('#isPromoted', () => {
+    context('black', () => {
+      it('returns true', () => {
+        var gold = new Gold({ type: 'G' });
+        gold.isPromoted().should.eql(true);
+      });
+    });
+
+    context('white', () => {
+      it('returns true', () => {
+        var gold = new Gold({ type: 'g' });
+        gold.isPromoted().should.eql(true);
+      });
+    });
+  });
 });
