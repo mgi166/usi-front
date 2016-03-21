@@ -24,4 +24,22 @@ describe('Lance', () => {
       });
     });
   });
+
+  describe('#promote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var lance = new Lance({ type: 'L' });
+        lance.promote();
+        lance.should.have.property('type', 'L+');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var lance = new Lance({ type: 'l' });
+        lance.promote();
+        lance.should.have.property('type', 'l+');
+      });
+    });
+  });
 });
