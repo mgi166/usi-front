@@ -45,4 +45,17 @@ export default class Knight extends Piece {
       return false;
     }
   }
+
+  moveDef() {
+    switch (this.type) {
+    case CONST.USI_KNIGHT_BLACK_TYPE:
+      return { just: [[-1, -2], [1, -2]] };
+    case CONST.USI_KNIGHT_WHITE_TYPE:
+      return { just: [[-1, 2], [1, 2]] };
+    case CONST.USI_KNIGHT_BLACK_PROMOTE_TYPE:
+      return { just: [[1, -1], [1, 0], [1, 1], [0, -1], [0, 1], [-1, 0]] };
+    case CONST.USI_KNIGHT_WHITE_PROMOTE_TYPE:
+      return { just: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, 0]] };
+    }
+  }
 }

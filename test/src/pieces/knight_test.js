@@ -94,4 +94,66 @@ describe('Knight', () => {
       });
     });
   });
+
+  describe('#moveDef', () => {
+    context('black', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var knight = new Knight({ type: 'N' });
+          knight.moveDef().should.eql({
+            just: [
+              [-1, -2],
+              [1, -2]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var knight = new Knight({ type: 'N+' });
+          knight.moveDef().should.eql({
+            just: [
+              [1, -1],
+              [1, 0],
+              [1, 1],
+              [0, -1],
+              [0, 1],
+              [-1, 0]
+            ]
+          });
+        });
+      });
+    });
+
+    context('white', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var knight = new Knight({ type: 'n' });
+          knight.moveDef().should.eql({
+            just: [
+              [-1, 2],
+              [1, 2]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var knight = new Knight({ type: 'n+' });
+          knight.moveDef().should.eql({
+            just: [
+              [-1, -1],
+              [-1, 0],
+              [-1, 1],
+              [0, -1],
+              [0, 1],
+              [1, 0]
+            ]
+          });
+        });
+      });
+    });
+  });
 });
