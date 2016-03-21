@@ -94,4 +94,64 @@ describe('Pawn', () => {
       });
     });
   });
+
+  describe('#moveDef', () => {
+    context('black', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var pawn = new Pawn({ type: 'P' });
+          pawn.moveDef().should.eql({
+            just: [
+              [0, -1]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var pawn = new Pawn({ type: 'P+' });
+          pawn.moveDef().should.eql({
+            just: [
+              [1, -1],
+              [1, 0],
+              [1, 1],
+              [0, -1],
+              [0, 1],
+              [-1, 0]
+            ]
+          });
+        });
+      });
+    });
+
+    context('white', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var pawn = new Pawn({ type: 'p' });
+          pawn.moveDef().should.eql({
+            just: [
+              [0, 1]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var pawn = new Pawn({ type: 'p+' });
+          pawn.moveDef().should.eql({
+            just: [
+              [-1, -1],
+              [-1, 0],
+              [-1, 1],
+              [0, -1],
+              [0, 1],
+              [1, 0]
+            ]
+          });
+        });
+      });
+    });
+  });
 });

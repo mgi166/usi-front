@@ -45,4 +45,17 @@ export default class Pawn extends Piece {
       return false;
     }
   }
+
+  moveDef() {
+    switch (this.type) {
+    case CONST.USI_PAWN_BLACK_TYPE:
+      return { just: [[0, -1]] };
+    case CONST.USI_PAWN_WHITE_TYPE:
+      return { just: [[0, 1]] };
+    case CONST.USI_PAWN_BLACK_PROMOTE_TYPE:
+      return { just: [[1, -1], [1, 0], [1, 1], [0, -1], [0, 1], [-1, 0]] };
+    case CONST.USI_PAWN_WHITE_PROMOTE_TYPE:
+      return { just: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, 0]] };
+    }
+  }
 }
