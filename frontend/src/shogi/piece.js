@@ -117,18 +117,18 @@ export default class Piece {
     };
   }
 
-  isBlack(piece) {
+  isBlack(piece = this) {
     return this.isUsiBlack(piece);
   }
 
-  isWhite(piece) {
+  isWhite(piece = this) {
     return this.isUsiWhite(piece);
   }
 
   team() {
-    if (this.isBlack(this)) {
+    if (this.isBlack()) {
       return CONST.USI_BLACK_TEAM;
-    } else if (this.isWhite(this)) {
+    } else if (this.isWhite()) {
       return CONST.USI_WHITE_TEAM;
     } else {
       return undefined;
