@@ -1,5 +1,5 @@
 table.board {
-    background: url('../images/shogi_board/masu_dot_xy.svg'), url('../images/shogi_board/ban_kaya_d.png');
+    background: url('../images/shogiBoard/masu_dot_xy.svg'), url('../images/shogiBoard/ban_kaya_d.png');
     width: 20%;
     height: 420px;
     background-size: contain;
