@@ -13,10 +13,12 @@ export default class Pawn extends Piece {
   }
 
   promote() {
-    if (this.isBlack()) {
-      this.type = CONST.USI_PAWN_BLACK_PROMOTE_TYPE;
-    } else if (this.isWhite()) {
-      this.type = CONST.USI_PAWN_WHITE_PROMOTE_TYPE;
-    }
+    switch (this.type) {
+    case CONST.USI_PAWN_BLACK_TYPE:
+      return this.type = CONST.USI_PAWN_BLACK_PROMOTE_TYPE;
+    case CONST.USI_PAWN_WHITE_TYPE:
+      return this.type = CONST.USI_PAWN_WHITE_PROMOTE_TYPE;
+    };
+    return this;
   }
 }
