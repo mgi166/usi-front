@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import * as CONST from './constants/pieceTypes';
-import path from 'path';
 
 export default class Piece {
   constructor({ type, x, y, movable = false, isPlaced =  false }) {
