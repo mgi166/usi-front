@@ -94,4 +94,64 @@ describe('Lance', () => {
       });
     });
   });
+
+  describe('#moveDef', () => {
+    context('black', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var lance = new Lance({ type: 'L' });
+          lance.moveDef().should.eql({
+            fly: [
+              [0, -1]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var lance = new Lance({ type: 'L+' });
+          lance.moveDef().should.eql({
+            just: [
+              [1, -1],
+              [1, 0],
+              [1, 1],
+              [0, -1],
+              [0, 1],
+              [-1, 0]
+            ]
+          });
+        });
+      });
+    });
+
+    context('white', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var lance = new Lance({ type: 'l' });
+          lance.moveDef().should.eql({
+            fly: [
+              [0, 1]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var lance = new Lance({ type: 'l+' });
+          lance.moveDef().should.eql({
+            just: [
+              [-1, -1],
+              [-1, 0],
+              [-1, 1],
+              [0, -1],
+              [0, 1],
+              [1, 0]
+            ]
+          });
+        });
+      });
+    });
+  });
 });

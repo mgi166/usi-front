@@ -45,4 +45,17 @@ export default class Lance extends Piece {
       return false;
     }
   }
+
+  moveDef() {
+    switch (this.type) {
+    case CONST.USI_LANCE_BLACK_TYPE:
+      return { fly: [[0, -1]] };
+    case CONST.USI_LANCE_WHITE_TYPE:
+      return { fly: [[0, 1]] };
+    case CONST.USI_LANCE_BLACK_PROMOTE_TYPE:
+      return { just: [[1, -1], [1, 0], [1, 1], [0, -1], [0, 1], [-1, 0]] };
+    case CONST.USI_LANCE_WHITE_PROMOTE_TYPE:
+      return { just: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, 0]] };
+    }
+  }
 }
