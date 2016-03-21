@@ -24,4 +24,22 @@ describe('Silver', () => {
       });
     });
   });
+
+  describe('#promote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var silver = new Silver({ type: 'S' });
+        silver.promote();
+        silver.should.have.property('type', 'S+');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var silver = new Silver({ type: 's' });
+        silver.promote();
+        silver.should.have.property('type', 's+');
+      });
+    });
+  });
 });
