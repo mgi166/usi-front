@@ -42,4 +42,22 @@ describe('Lance', () => {
       });
     });
   });
+
+  describe('#unpromote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var lance = new Lance({ type: 'L+' });
+        lance.unpromote();
+        lance.should.have.property('type', 'L');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var lance = new Lance({ type: 'l+' });
+        lance.unpromote();
+        lance.should.have.property('type', 'l');
+      });
+    });
+  });
 });
