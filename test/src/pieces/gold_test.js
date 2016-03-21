@@ -42,4 +42,22 @@ describe('Gold', () => {
       });
     });
   });
+
+  describe('#unpromote', () => {
+    context('black', () => {
+      it('does not update this.type', () => {
+        var gold = new Gold({ type: 'G' });
+        gold.unpromote();
+        gold.should.have.property('type', 'G');
+      });
+    });
+
+    context('white', () => {
+      it('does not update this.type', () => {
+        var gold = new Gold({ type: 'g' });
+        gold.unpromote();
+        gold.should.have.property('type', 'g');
+      });
+    });
+  });
 });
