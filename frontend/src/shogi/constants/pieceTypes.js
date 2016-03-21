@@ -23,3 +23,6 @@ export const USI_SILVER_BLACK_TYPE = 'S';
 export const USI_SILVER_BLACK_PROMOTE_TYPE = 'S+';
 export const USI_SILVER_WHITE_TYPE = 's';
 export const USI_SILVER_WHITE_PROMOTE_TYPE = 's+';
+
+export const USI_GOLD_BLACK_TYPE = 'G';
+export const USI_GOLD_WHITE_TYPE = 'g';
