@@ -60,4 +60,38 @@ describe('Pawn', () => {
       });
     });
   });
+
+  describe('#isPromoted', () => {
+    context('promoted', () => {
+      context('black', () => {
+        it('returns true', () => {
+          var pawn = new Pawn({ type: 'P+' });
+          pawn.isPromoted().should.eql(true);
+        });
+      });
+
+      context('white', () => {
+        it('returns true', () => {
+          var pawn = new Pawn({ type: 'p+' });
+          pawn.isPromoted().should.eql(true);
+        });
+      });
+    });
+
+    context('no promoted', () => {
+      context('black', () => {
+        it('returns false', () => {
+          var pawn = new Pawn({ type: 'P' });
+          pawn.isPromoted().should.eql(false);
+        });
+      });
+
+      context('white', () => {
+        it('returns false', () => {
+          var pawn = new Pawn({ type: 'p' });
+          pawn.isPromoted().should.eql(false);
+        });
+      });
+    });
+  });
 });

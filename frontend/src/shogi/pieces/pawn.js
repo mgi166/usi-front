@@ -34,4 +34,15 @@ export default class Pawn extends Piece {
     };
     return this;
   }
+
+  isPromoted() {
+    switch (this.type) {
+    case CONST.USI_PAWN_BLACK_PROMOTE_TYPE:
+      return true;
+    case CONST.USI_PAWN_WHITE_PROMOTE_TYPE:
+      return true;
+    default:
+      return false;
+    }
+  }
 }
