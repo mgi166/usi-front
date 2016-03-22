@@ -24,4 +24,22 @@ describe('Rook', () => {
       });
     });
   });
+
+  describe('#promote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var rook = new Rook({ type: 'R' });
+        rook.promote();
+        rook.should.have.property('type', 'R+');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var rook = new Rook({ type: 'r' });
+        rook.promote();
+        rook.should.have.property('type', 'r+');
+      });
+    });
+  });
 });
