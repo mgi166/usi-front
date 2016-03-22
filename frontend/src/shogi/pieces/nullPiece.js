@@ -20,4 +20,6 @@ export default class NullPiece extends Piece {
     return true;
   }
 
+  moveDef() {
+  }
 }
