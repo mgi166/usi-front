@@ -42,4 +42,22 @@ describe('Rook', () => {
       });
     });
   });
+
+  describe('#unpromote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var rook = new Rook({ type: 'R+' });
+        rook.unpromote();
+        rook.should.have.property('type', 'R');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var rook = new Rook({ type: 'r+' });
+        rook.unpromote();
+        rook.should.have.property('type', 'r');
+      });
+    });
+  });
 });
