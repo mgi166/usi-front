@@ -24,4 +24,14 @@ export default class Bishop extends Piece {
     };
     return this;
   }
+
+  unpromote() {
+    switch (this.type) {
+    case CONST.USI_BISHOP_BLACK_PROMOTE_TYPE:
+      return this.type = CONST.USI_BISHOP_BLACK_TYPE;
+    case CONST.USI_BISHOP_WHITE_PROMOTE_TYPE:
+      return this.type = CONST.USI_BISHOP_WHITE_TYPE;
+    };
+    return this;
+  }
 }
