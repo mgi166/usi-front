@@ -12,4 +12,9 @@ export default class King extends Piece {
 
     return this;
   }
+
+  promote() {
+    // NOTE: Do nothing. because King can't promote.
+    return this;
+  }
 }
