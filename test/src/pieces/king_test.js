@@ -60,4 +60,20 @@ describe('King', () => {
       });
     });
   });
+
+  describe('#isPromoted', () => {
+    context('black', () => {
+      it('returns true', () => {
+        var king = new King({ type: 'K' });
+        king.isPromoted().should.eql(true);
+      });
+    });
+
+    context('white', () => {
+      it('returns true', () => {
+        var king = new King({ type: 'k' });
+        king.isPromoted().should.eql(true);
+      });
+    });
+  });
 });
