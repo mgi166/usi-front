@@ -4,6 +4,8 @@ export const USI_WHITE_PIECES = ['p', 'l', 'n', 's', 'g', 'k', 'r', 'b'];
 export const USI_BLACK_TEAM = 'black';
 export const USI_WHITE_TEAM = 'white';
 
+export const USI_NULL_TYPE = '*';
+
 export const USI_PAWN_BLACK_TYPE = 'P';
 export const USI_PAWN_BLACK_PROMOTE_TYPE = 'P+';
 export const USI_PAWN_WHITE_TYPE = 'p';
