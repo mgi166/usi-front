@@ -32,5 +32,10 @@ export const USI_ROOK_BLACK_PROMOTE_TYPE = 'R+';
 export const USI_ROOK_WHITE_TYPE = 'r';
 export const USI_ROOK_WHITE_PROMOTE_TYPE = 'r+';
 
+export const USI_BISHOP_BLACK_TYPE = 'B';
+export const USI_BISHOP_BLACK_PROMOTE_TYPE = 'B+';
+export const USI_BISHOP_WHITE_TYPE = 'b';
+export const USI_BISHOP_WHITE_PROMOTE_TYPE = 'b+';
+
 export const USI_KING_BLACK_TYPE = 'K';
 export const USI_KING_WHITE_TYPE = 'k';
