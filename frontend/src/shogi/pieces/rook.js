@@ -34,4 +34,15 @@ export default class Rook extends Piece {
     };
     return this;
   }
+
+  isPromoted() {
+    switch (this.type) {
+    case CONST.USI_ROOK_BLACK_PROMOTE_TYPE:
+      return true;
+    case CONST.USI_ROOK_WHITE_PROMOTE_TYPE:
+      return true;
+    default:
+      return false;
+    }
+  }
 }
