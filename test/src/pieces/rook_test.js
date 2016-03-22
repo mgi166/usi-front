@@ -94,4 +94,78 @@ describe('Rook', () => {
       });
     });
   });
+
+  describe('#moveDef', () => {
+    context('black', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var rook = new Rook({ type: 'R' });
+          rook.moveDef().should.eql({
+            fly: [
+              [0, -1],
+              [0, 1],
+              [1, 0],
+              [-1, 0]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var rook = new Rook({ type: 'R+' });
+          rook.moveDef().should.eql({
+            fly: [
+              [0, -1],
+              [0, 1],
+              [1, 0],
+              [-1, 0]
+            ],
+            just: [
+              [1, -1],
+              [1, 1],
+              [-1, 1],
+              [-1, -1]
+            ]
+          });
+        });
+      });
+    });
+
+    context('white', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var rook = new Rook({ type: 'r' });
+          rook.moveDef().should.eql({
+            fly: [
+              [0, -1],
+              [0, 1],
+              [1, 0],
+              [-1, 0]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var rook = new Rook({ type: 'r+' });
+          rook.moveDef().should.eql({
+            fly: [
+              [0, -1],
+              [0, 1],
+              [1, 0],
+              [-1, 0]
+            ],
+            just: [
+              [1, -1],
+              [1, 1],
+              [-1, 1],
+              [-1, -1]
+            ]
+          });
+        });
+      });
+    });
+  });
 });

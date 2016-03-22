@@ -45,4 +45,33 @@ export default class Rook extends Piece {
       return false;
     }
   }
+
+  moveDef() {
+    switch (this.isPromoted()) {
+    case true:
+      return {
+        fly: [
+          [0, -1],
+          [0, 1],
+          [1, 0],
+          [-1, 0]
+        ],
+        just: [
+          [1, -1],
+          [1, 1],
+          [-1, 1],
+          [-1, -1]
+        ]
+      };
+    default:
+      return {
+        fly: [
+          [0, -1],
+          [0, 1],
+          [1, 0],
+          [-1, 0]
+        ]
+      };
+    }
+  }
 }
