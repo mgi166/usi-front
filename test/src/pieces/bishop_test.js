@@ -24,4 +24,22 @@ describe('Bishop', () => {
       });
     });
   });
+
+  describe('#promote', () => {
+    context('black', () => {
+      it('updates this.type', () => {
+        var bishop = new Bishop({ type: 'B' });
+        bishop.promote();
+        bishop.should.have.property('type', 'B+');
+      });
+    });
+
+    context('white', () => {
+      it('updates this.type', () => {
+        var bishop = new Bishop({ type: 'b' });
+        bishop.promote();
+        bishop.should.have.property('type', 'b+');
+      });
+    });
+  });
 });
