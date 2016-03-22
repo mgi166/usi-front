@@ -94,4 +94,78 @@ describe('Bishop', () => {
       });
     });
   });
+
+  describe('#moveDef', () => {
+    context('black', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var bishop = new Bishop({ type: 'B' });
+          bishop.moveDef().should.eql({
+            fly: [
+              [1, 1],
+              [1, -1],
+              [-1, 1],
+              [-1, -1]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var bishop = new Bishop({ type: 'B+' });
+          bishop.moveDef().should.eql({
+            fly: [
+              [1, 1],
+              [1, -1],
+              [-1, 1],
+              [-1, -1]
+            ],
+            just: [
+              [1, 0],
+              [-1, 0],
+              [0, 1],
+              [0, -1]
+            ]
+          });
+        });
+      });
+    });
+
+    context('white', () => {
+      context('no promoted', () => {
+        it('return move definition', () => {
+          var bishop = new Bishop({ type: 'b' });
+          bishop.moveDef().should.eql({
+            fly: [
+              [1, 1],
+              [1, -1],
+              [-1, 1],
+              [-1, -1]
+            ]
+          });
+        });
+      });
+
+      context('promoted', () => {
+        it('return move definition', () => {
+          var bishop = new Bishop({ type: 'b+' });
+          bishop.moveDef().should.eql({
+            fly: [
+              [1, 1],
+              [1, -1],
+              [-1, 1],
+              [-1, -1]
+            ],
+            just: [
+              [1, 0],
+              [-1, 0],
+              [0, 1],
+              [0, -1]
+            ]
+          });
+        });
+      });
+    });
+  });
 });

@@ -45,4 +45,33 @@ export default class Bishop extends Piece {
       return false;
     }
   }
+
+  moveDef() {
+    switch (this.isPromoted()) {
+    case true:
+      return {
+        fly: [
+          [1, 1],
+          [1, -1],
+          [-1, 1],
+          [-1, -1]
+        ],
+        just: [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1]
+        ]
+      };
+    default:
+      return {
+        fly: [
+          [1, 1],
+          [1, -1],
+          [-1, 1],
+          [-1, -1]
+        ]
+      };
+    }
+  }
 }
