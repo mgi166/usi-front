@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.js",
+    "test": "mocha test/**/*_test.js",
     "clean": "rimraf dist",
     "start": "webpack-dev-server --hot --inline"
   },
