@@ -7,4 +7,13 @@ export default class NullPiece extends Piece {
     this.type = CONST.USI_NULL_TYPE;
     return this;
   }
+
+  promote() {
+    return this;
+  }
+
+  unpromote() {
+    return this;
+  }
+
 }
