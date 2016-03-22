@@ -42,4 +42,22 @@ describe('King', () => {
       });
     });
   });
+
+  describe('#unpromote', () => {
+    context('black', () => {
+      it('does not update this.type', () => {
+        var king = new King({ type: 'K' });
+        king.unpromote();
+        king.should.have.property('type', 'K');
+      });
+    });
+
+    context('white', () => {
+      it('does not update this.type', () => {
+        var king = new King({ type: 'k' });
+        king.unpromote();
+        king.should.have.property('type', 'k');
+      });
+    });
+  });
 });
