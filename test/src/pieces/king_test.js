@@ -76,4 +76,42 @@ describe('King', () => {
       });
     });
   });
+
+  describe('#moveDef', () => {
+    context('black', () => {
+      it('return move definition', () => {
+        var king = new King({ type: 'K' });
+        king.moveDef().should.eql({
+          just: [
+            [1, 1],
+            [1, 0],
+            [1, -1],
+            [0, 1],
+            [0, -1],
+            [-1, -1],
+            [-1, 0],
+            [-1, 1]
+          ]
+        });
+      });
+    });
+
+    context('white', () => {
+      it('return move definition', () => {
+        var king = new King({ type: 'k' });
+        king.moveDef().should.eql({
+          just: [
+            [1, 1],
+            [1, 0],
+            [1, -1],
+            [0, 1],
+            [0, -1],
+            [-1, -1],
+            [-1, 0],
+            [-1, 1]
+          ]
+        });
+      });
+    });
+  });
 });

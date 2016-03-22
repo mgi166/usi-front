@@ -27,4 +27,8 @@ export default class King extends Piece {
     // NOTE: gold can't promote, so behaves always promoted.
     return true;
   }
+
+  moveDef() {
+    return { just: [[1, 1], [1, 0], [1, -1], [0, 1], [0, -1], [-1, -1], [-1, 0], [-1, 1]] };
+  }
 }
