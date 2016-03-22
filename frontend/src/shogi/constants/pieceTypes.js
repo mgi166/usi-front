@@ -27,5 +27,10 @@ export const USI_SILVER_WHITE_PROMOTE_TYPE = 's+';
 export const USI_GOLD_BLACK_TYPE = 'G';
 export const USI_GOLD_WHITE_TYPE = 'g';
 
+export const USI_ROOK_BLACK_TYPE = 'R';
+export const USI_ROOK_BLACK_PROMOTE_TYPE = 'R+';
+export const USI_ROOK_WHITE_TYPE = 'r';
+export const USI_ROOK_WHITE_PROMOTE_TYPE = 'r+';
+
 export const USI_KING_BLACK_TYPE = 'K';
 export const USI_KING_WHITE_TYPE = 'k';
