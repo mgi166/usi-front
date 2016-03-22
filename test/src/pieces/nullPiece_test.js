@@ -9,4 +9,11 @@ describe('NullPiece', () => {
       piece.type.should.eql('*');
     });
   });
+
+  describe('#isPromoted', () => {
+    it('returns true', () => {
+      var piece = new NullPiece({ type: '*' });
+      piece.isPromoted().should.eql(true);
+    });
+  });
 });

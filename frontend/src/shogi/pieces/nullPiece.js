@@ -16,4 +16,8 @@ export default class NullPiece extends Piece {
     return this;
   }
 
+  isPromoted() {
+    return true;
+  }
+
 }
