@@ -60,4 +60,38 @@ describe('Bishop', () => {
       });
     });
   });
+
+  describe('#isPromoted', () => {
+    context('promoted', () => {
+      context('black', () => {
+        it('returns true', () => {
+          var bishop = new Bishop({ type: 'B+' });
+          bishop.isPromoted().should.eql(true);
+        });
+      });
+
+      context('white', () => {
+        it('returns true', () => {
+          var bishop = new Bishop({ type: 'b+' });
+          bishop.isPromoted().should.eql(true);
+        });
+      });
+    });
+
+    context('no promoted', () => {
+      context('black', () => {
+        it('returns false', () => {
+          var bishop = new Bishop({ type: 'B' });
+          bishop.isPromoted().should.eql(false);
+        });
+      });
+
+      context('white', () => {
+        it('returns false', () => {
+          var bishop = new Bishop({ type: 'b' });
+          bishop.isPromoted().should.eql(false);
+        });
+      });
+    });
+  });
 });
