@@ -1,29 +1,14 @@
 import Piece from './piece';
 import _ from 'lodash';
+import * as CONST from './constants/boardTypes';
 
 export default class Board {
   constructor(board = undefined) {
     if (board) {
       this.board = board;
     } else {
-      this.setBoard(this.initialUsiBoard());
+      this.setBoard(CONST.USI_INITIAL_BOARD);
     }
-  }
-
-  initialUsiBoard() {
-    return (
-      [
-        ['l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l'],
-        ['*', 'b', '*', '*', '*', '*', '*', 'r', '*'],
-        ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
-        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
-        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
-        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
-        ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
-        ['*', 'B', '*', '*', '*', '*', '*', 'R', '*'],
-        ['L', 'N', 'S', 'G', 'K', 'G', 'S', 'N', 'L']
-      ]
-    );
   }
 
   setBoard(board) {
