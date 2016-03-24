@@ -21,7 +21,7 @@ export default class Board {
       var rows = row.map((type, x) => {
         var xCor = this.transposeToCorX(x);
         return (
-          new Piece({ type: type, x: xCor, y: yCor })
+          Piece.create({ type: type, x: xCor, y: yCor })
         );
       });
       return(rows);
