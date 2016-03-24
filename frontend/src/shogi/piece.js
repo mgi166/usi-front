@@ -11,6 +11,11 @@ export default class Piece {
     this.y = y;
   }
 
+  static create({ type, x, y, movable = false, isPlaced =  false }) {
+    var klass = getClass(type);
+    return new klass({ type: type, x: x, y: y });
+  }
+
   promote() {
     this.type = this.usiPromoteTypes()[this.type] || this.type;
     return this.type;
