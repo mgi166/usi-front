@@ -24,7 +24,7 @@ describe('#enhanceMovablePoint', () => {
 
     context('normal case', () => {
       it('change property of piece is movable', () => {
-        var piece = new Piece({ type: 'K', x: 8, y: 2 });
+        var piece = Piece.create({ type: 'K', x: 8, y: 2 });
 
         board().enhanceMovablePoint(piece);
 
@@ -36,13 +36,13 @@ describe('#enhanceMovablePoint', () => {
 
         _.flattenDeep(movablePieces).should.eql(
           [
-            new Piece({ type: '*', x: 9, y: 1, movable: true }),
-            new Piece({ type: 'p', x: 8, y: 1, movable: true }),
-            new Piece({ type: '*', x: 7, y: 1, movable: true }),
-            new Piece({ type: '*', x: 9, y: 2, movable: true }),
-            new Piece({ type: '*', x: 7, y: 2, movable: true }),
-            new Piece({ type: '*', x: 8, y: 3, movable: true }),
-            new Piece({ type: '*', x: 7, y: 3, movable: true }),
+            Piece.create({ type: '*', x: 9, y: 1, movable: true }),
+            Piece.create({ type: 'p', x: 8, y: 1, movable: true }),
+            Piece.create({ type: '*', x: 7, y: 1, movable: true }),
+            Piece.create({ type: '*', x: 9, y: 2, movable: true }),
+            Piece.create({ type: '*', x: 7, y: 2, movable: true }),
+            Piece.create({ type: '*', x: 8, y: 3, movable: true }),
+            Piece.create({ type: '*', x: 7, y: 3, movable: true }),
           ]
         );
       });

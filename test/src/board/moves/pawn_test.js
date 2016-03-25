@@ -22,7 +22,7 @@ describe('black', () => {
       });
 
       it('change property of piece that is moved', () => {
-        var piece = new Piece({ type: 'P', x: 8, y: 2 });
+        var piece = Piece.create({ type: 'P', x: 8, y: 2 });
 
         board().enhanceMovablePoint(piece);
 
@@ -33,7 +33,7 @@ describe('black', () => {
         });
 
         _.flattenDeep(movablePieces).should.eql(
-          [new Piece({ type: '*', x: 8, y: 1, movable: true })]
+          [Piece.create({ type: '*', x: 8, y: 1, movable: true })]
         );
       });
     });
@@ -55,7 +55,7 @@ describe('black', () => {
       });
 
       it('does not change property of piece', () => {
-        var piece = new Piece({ type: 'P', x: 9, y: 1 });
+        var piece = Piece.create({ type: 'P', x: 9, y: 1 });
 
         board().enhanceMovablePoint(piece);
 
@@ -87,7 +87,7 @@ describe('black', () => {
     });
 
     it('throw exception', () => {
-      var piece = new Piece({ type: 'P', x: 8, y: 2 });
+      var piece = Piece.create({ type: 'P', x: 8, y: 2 });
 
       (() => { return board().enhanceMovablePoint(piece); }).should.throw();;
     });
@@ -116,7 +116,7 @@ describe('white', () => {
       });
 
       it('change property of piece that is moved', () => {
-        var piece = new Piece({ type: 'p', x: 8, y: 1 });
+        var piece = Piece.create({ type: 'p', x: 8, y: 1 });
 
         board().enhanceMovablePoint(piece);
 
@@ -127,7 +127,7 @@ describe('white', () => {
         });
 
         _.flattenDeep(movablePieces).should.eql(
-          [new Piece({ type: '*', x: 8, y: 2, movable: true })]
+          [Piece.create({ type: '*', x: 8, y: 2, movable: true })]
         );
       });
     });
@@ -149,7 +149,7 @@ describe('white', () => {
       });
 
       it('does not change property of piece', () => {
-        var piece = new Piece({ type: 'p', x: 9, y: 2 });
+        var piece = Piece.create({ type: 'p', x: 9, y: 2 });
 
         board().enhanceMovablePoint(piece);
 
@@ -181,7 +181,7 @@ describe('white', () => {
     });
 
     it('throw exception', () => {
-      var piece = new Piece({ type: 'p', x: 9, y: 1 });
+      var piece = Piece.create({ type: 'p', x: 9, y: 1 });
 
       (() => { return board().enhanceMovablePoint(piece); }).should.throw();;
     });
@@ -215,8 +215,8 @@ describe('#movePiece', () => {
         });
 
         it('moves piece', () => {
-          var fromPiece = new Piece({ type: 'P', x: 8, y: 2 });
-          var toPiece = new Piece({ type: '*', x: 8, y: 1 });
+          var fromPiece = Piece.create({ type: 'P', x: 8, y: 2 });
+          var toPiece = Piece.create({ type: '*', x: 8, y: 1 });
 
           board().movePiece(fromPiece, toPiece);
 
@@ -249,8 +249,8 @@ describe('#movePiece', () => {
       });
 
       it('does not move piece', () => {
-        var fromPiece = new Piece({ type: 'P', x: 8, y: 2 });
-        var toPiece = new Piece({ type: '*', x: 8, y: 3 });
+        var fromPiece = Piece.create({ type: 'P', x: 8, y: 2 });
+        var toPiece = Piece.create({ type: '*', x: 8, y: 3 });
 
         board().movePiece(fromPiece, toPiece);
         board().toArray().should.eql(
@@ -282,8 +282,8 @@ describe('#movePiece', () => {
     });
 
     it('throw exception', () => {
-      var fromPiece = new Piece({ type: 'P', x: 8, y: 3 });
-      var toPiece = new Piece({ type: '*', x: 8, y: 1 });
+      var fromPiece = Piece.create({ type: 'P', x: 8, y: 3 });
+      var toPiece = Piece.create({ type: '*', x: 8, y: 1 });
 
       (() => { board().movePiece(fromPiece, toPiece); }).should.throw();
     });
@@ -310,7 +310,7 @@ describe('#enhancePlaceablePoint', () => {
       });
 
       it('change property of piece that is placeable', () => {
-        var piece = new Piece({ type: 'P', x: 0, y: 0 });
+        var piece = Piece.create({ type: 'P', x: 0, y: 0 });
 
         board().enhancePlaceablePoint(piece);
 
@@ -322,11 +322,11 @@ describe('#enhancePlaceablePoint', () => {
 
         _.flattenDeep(placeablePieces).should.eql(
           [
-            new Piece({ type: '*', x: 8, y: 2, isPlaced: true}),
-            new Piece({ type: '*', x: 7, y: 2, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 7, y: 3, isPlaced: true})
+            Piece.create({ type: '*', x: 8, y: 2, isPlaced: true}),
+            Piece.create({ type: '*', x: 7, y: 2, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 7, y: 3, isPlaced: true})
           ]
         );
       });
@@ -351,7 +351,7 @@ describe('#enhancePlaceablePoint', () => {
       });
 
       it('change property of piece that is placeable', () => {
-        var piece = new Piece({ type: 'P', x: 0, y: 0 });
+        var piece = Piece.create({ type: 'P', x: 0, y: 0 });
 
         board().enhancePlaceablePoint(piece);
 
@@ -363,11 +363,11 @@ describe('#enhancePlaceablePoint', () => {
 
         _.flattenDeep(placeablePieces).should.eql(
           [
-            new Piece({ type: '*', x: 7, y: 2, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 7, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 4, isPlaced: true}),
-            new Piece({ type: '*', x: 7, y: 4, isPlaced: true})
+            Piece.create({ type: '*', x: 7, y: 2, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 7, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 7, y: 4, isPlaced: true})
           ]
         );
       });
@@ -402,7 +402,7 @@ describe('#enhancePlaceablePoint', () => {
       });
 
       it('change property of piece that is placeable', () => {
-        var piece = new Piece({ type: 'p', x: 0, y: 0 });
+        var piece = Piece.create({ type: 'p', x: 0, y: 0 });
 
         board().enhancePlaceablePoint(piece);
 
@@ -414,21 +414,21 @@ describe('#enhancePlaceablePoint', () => {
 
         _.flattenDeep(placeablePieces).should.eql(
           [
-            new Piece({ type: '*', x: 9, y: 1, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 1, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 2, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 2, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 4, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 4, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 5, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 5, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 6, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 6, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 7, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 7, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 8, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 1, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 1, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 2, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 2, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 5, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 5, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 6, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 6, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 7, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 7, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 8, isPlaced: true}),
           ]
         );
       });
@@ -458,7 +458,7 @@ describe('#enhancePlaceablePoint', () => {
       });
 
       it('change property of piece that is placeable', () => {
-        var piece = new Piece({ type: 'p', x: 0, y: 0 });
+        var piece = Piece.create({ type: 'p', x: 0, y: 0 });
 
         board().enhancePlaceablePoint(piece);
 
@@ -470,13 +470,13 @@ describe('#enhancePlaceablePoint', () => {
 
         _.flattenDeep(placeablePieces).should.eql(
           [
-            new Piece({ type: '*', x: 9, y: 1, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 2, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 4, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 5, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 6, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 8, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 1, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 2, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 5, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 6, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 8, isPlaced: true}),
           ]
         );
       });
