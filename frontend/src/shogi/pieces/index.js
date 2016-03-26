@@ -23,3 +23,5 @@ const classes = {
 export function getClass(type) {
   return classes[_.lowerCase(type)] || NullPiece;
 }
+
+export { NullPiece };
