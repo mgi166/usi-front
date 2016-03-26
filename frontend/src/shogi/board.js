@@ -1,4 +1,5 @@
 import Piece from './piece';
+import { NullPiece } from './pieces/index';
 import _ from 'lodash';
 import * as CONST from './constants/boardTypes';
 
@@ -53,8 +54,11 @@ export default class Board {
       return _board;
     }
 
-    _board[toIdxY][toIdxX].type = fromPiece.type;
-    _board[fromIdxY][fromIdxX].type = '*';
+    fromPiece.x = toCorX;
+    fromPiece.y = toCorY;
+
+    _board[toIdxY][toIdxX] = fromPiece;
+    _board[fromIdxY][fromIdxX] = new NullPiece({ x: fromCorX, y: fromCorY});
 
     return _board;
   }
