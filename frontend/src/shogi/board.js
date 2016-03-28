@@ -39,7 +39,7 @@ export default class Board {
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
-    var _board = this.board;
+    var _board = _.cloneDeep(this.board);
 
     this.enhanceMovablePoint(fromPiece);
 
