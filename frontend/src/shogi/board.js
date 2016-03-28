@@ -1,29 +1,15 @@
 import Piece from './piece';
+import { NullPiece } from './pieces/index';
 import _ from 'lodash';
+import * as CONST from './constants/boardTypes';
 
 export default class Board {
   constructor(board = undefined) {
     if (board) {
       this.board = board;
     } else {
-      this.setBoard(this.initialUsiBoard());
+      this.setBoard(CONST.USI_INITIAL_BOARD);
     }
-  }
-
-  initialUsiBoard() {
-    return (
-      [
-        ['l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l'],
-        ['*', 'b', '*', '*', '*', '*', '*', 'r', '*'],
-        ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
-        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
-        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
-        ['*', '*', '*', '*', '*', '*', '*', '*', '*'],
-        ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
-        ['*', 'B', '*', '*', '*', '*', '*', 'R', '*'],
-        ['L', 'N', 'S', 'G', 'K', 'G', 'S', 'N', 'L']
-      ]
-    );
   }
 
   setBoard(board) {
@@ -36,7 +22,7 @@ export default class Board {
       var rows = row.map((type, x) => {
         var xCor = this.transposeToCorX(x);
         return (
-          new Piece({ type: type, x: xCor, y: yCor })
+          Piece.create({ type: type, x: xCor, y: yCor })
         );
       });
       return(rows);
@@ -53,7 +39,7 @@ export default class Board {
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
-    var _board = this.board;
+    var _board = _.cloneDeep(this.board);
 
     this.enhanceMovablePoint(fromPiece);
 
@@ -68,8 +54,11 @@ export default class Board {
       return _board;
     }
 
-    _board[toIdxY][toIdxX].type = fromPiece.type;
-    _board[fromIdxY][fromIdxX].type = '*';
+    fromPiece.x = toCorX;
+    fromPiece.y = toCorY;
+
+    _board[toIdxY][toIdxX] = fromPiece;
+    _board[fromIdxY][fromIdxX] = new NullPiece({ x: fromCorX, y: fromCorY});
 
     return _board;
   }

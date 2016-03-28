@@ -1,7 +1,7 @@
-import Piece from '../piece';
+import Base from './base';
 import * as CONST from '../constants/pieceTypes';
 
-export default class Rook extends Piece {
+export default class Rook extends Base {
   constructor({ type, x, y, movable = false, isPlaced =  false }) {
     super({ type, x, y, movable, isPlaced });
 

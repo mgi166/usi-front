@@ -24,7 +24,7 @@ describe('#enhancePlaceablePoint', () => {
       });
 
       it('change property of piece that is placeable', () => {
-        var piece = new Piece({ type: 'N', x: 0, y: 0 });
+        var piece = Piece.create({ type: 'N', x: 0, y: 0 });
 
         board().enhancePlaceablePoint(piece);
 
@@ -36,11 +36,11 @@ describe('#enhancePlaceablePoint', () => {
 
         _.flattenDeep(placeablePieces).should.eql(
           [
-            new Piece({ type: '*', x: 8, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 7, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 4, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 4, isPlaced: true}),
-            new Piece({ type: '*', x: 7, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 7, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 7, y: 4, isPlaced: true}),
           ]
         );
       });
@@ -75,7 +75,7 @@ describe('#enhancePlaceablePoint', () => {
       });
 
       it('change property of piece that is placeable', () => {
-        var piece = new Piece({ type: 'n', x: 0, y: 0 });
+        var piece = Piece.create({ type: 'n', x: 0, y: 0 });
 
         board().enhancePlaceablePoint(piece);
 
@@ -87,19 +87,19 @@ describe('#enhancePlaceablePoint', () => {
 
         _.flattenDeep(placeablePieces).should.eql(
           [
-            new Piece({ type: '*', x: 9, y: 1, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 1, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 2, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 2, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 3, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 4, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 4, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 5, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 5, isPlaced: true}),
-            new Piece({ type: '*', x: 9, y: 6, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 6, isPlaced: true}),
-            new Piece({ type: '*', x: 8, y: 7, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 1, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 1, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 2, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 2, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 5, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 5, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 6, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 6, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 7, isPlaced: true}),
           ]
         );
       });
