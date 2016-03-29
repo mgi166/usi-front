@@ -20,9 +20,11 @@ const mapDispatchToProps = (dispatch) => {
 
 export default class ShogiPiece extends React.Component {
   render() {
-    var className = _.kebabCase(this.props.piece.constructor.name);
+    var pieceName = _.kebabCase(this.props.piece.constructor.name);
+    var destination = this.props.piece.isBlack() ? 'up' : 'down';
+
     return(
-      <div className={className} onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
+      <div className={`${pieceName} ${destination}`} onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
         <span>{this.props.piece.type}</span>
       </div>
     );
