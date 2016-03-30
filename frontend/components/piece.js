@@ -24,9 +24,9 @@ export default class ShogiPiece extends React.Component {
     var destination = this.props.piece.isBlack() ? 'up' : 'down';
 
     return(
-      <div className={`${pieceName} ${destination}`} onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
-        <span>{this.props.piece.type}</span>
-      </div>
+      <span className={`${pieceName} ${destination}`} onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
+        {this.props.piece.type}
+      </span>
     );
   }
 }
