@@ -114,4 +114,20 @@ describe('King', () => {
       });
     });
   });
+
+  describe('#imageFileName', () => {
+    context('black', () => {
+      it('return `Sou.png`', () => {
+        var king = new King({ type: 'K' });
+        king.imageFileName().should.eql('Sou.png');
+      });
+    });
+
+    context('white', () => {
+      it('return `Gou.png`', () => {
+        var king = new King({ type: 'k' });
+        king.imageFileName().should.eql('Gou.png');
+      });
+    });
+  });
 });
