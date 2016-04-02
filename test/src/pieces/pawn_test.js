@@ -154,4 +154,38 @@ describe('Pawn', () => {
       });
     });
   });
+
+  describe('#imageFileName', () => {
+    context('black', () => {
+      context('promoted', () => {
+        it('return `Sto.png`', () => {
+          var pawn = new Pawn({ type: 'P+' });
+          pawn.imageFileName().should.eql('Sto.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Sfu.png`', () => {
+          var pawn = new Pawn({ type: 'P' });
+          pawn.imageFileName().should.eql('Sfu.png');
+        });
+      });
+    });
+
+    context('white', () => {
+      context('promoted', () => {
+        it('return `Gto.png`', () => {
+          var pawn = new Pawn({ type: 'p+' });
+          pawn.imageFileName().should.eql('Gto.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Gfu.png`', () => {
+          var pawn = new Pawn({ type: 'p' });
+          pawn.imageFileName().should.eql('Gfu.png');
+        });
+      });
+    });
+  });
 });
