@@ -74,4 +74,13 @@ export default class Bishop extends Base {
       };
     }
   }
+
+  imageFileName() {
+    switch (this.isBlack()) {
+    case true:
+      return `${CONST.IMAGE_UPSIDE_PREFIX}${CONST.PIECE_TYPE_TO_IMAGE_FILE_MAP[this.type]}.png`;
+    case false:
+      return `${CONST.IMAGE_DOWNSIDE_PREFIX}${CONST.PIECE_TYPE_TO_IMAGE_FILE_MAP[this.type]}.png`;
+    }
+  }
 }

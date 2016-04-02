@@ -168,4 +168,38 @@ describe('Bishop', () => {
       });
     });
   });
+
+  describe('#imageFileName', () => {
+    context('black', () => {
+      context('promoted', () => {
+        it('return `Suma.png`', () => {
+          var bishop = new Bishop({ type: 'B+' });
+          bishop.imageFileName().should.eql('Suma.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Skaku.png`', () => {
+          var bishop = new Bishop({ type: 'B' });
+          bishop.imageFileName().should.eql('Skaku.png');
+        });
+      });
+    });
+
+    context('white', () => {
+      context('promoted', () => {
+        it('return `Guma.png`', () => {
+          var bishop = new Bishop({ type: 'b+' });
+          bishop.imageFileName().should.eql('Guma.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Gkaku.png`', () => {
+          var bishop = new Bishop({ type: 'b' });
+          bishop.imageFileName().should.eql('Gkaku.png');
+        });
+      });
+    });
+  });
 });
