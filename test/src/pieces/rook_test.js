@@ -168,4 +168,38 @@ describe('Rook', () => {
       });
     });
   });
+
+  describe('#imageFileName', () => {
+    context('black', () => {
+      context('promoted', () => {
+        it('return `Sryu.png`', () => {
+          var rook = new Rook({ type: 'R+' });
+          rook.imageFileName().should.eql('Sryu.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Shi.png`', () => {
+          var rook = new Rook({ type: 'R' });
+          rook.imageFileName().should.eql('Shi.png');
+        });
+      });
+    });
+
+    context('white', () => {
+      context('promoted', () => {
+        it('return `Gryu.png`', () => {
+          var rook = new Rook({ type: 'r+' });
+          rook.imageFileName().should.eql('Gryu.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Ghi.png`', () => {
+          var rook = new Rook({ type: 'r' });
+          rook.imageFileName().should.eql('Ghi.png');
+        });
+      });
+    });
+  });
 });
