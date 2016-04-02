@@ -1,5 +1,36 @@
-export const USI_BLACK_PIECES = ['P', 'L', 'N', 'S', 'G', 'K', 'R', 'B'];
-export const USI_WHITE_PIECES = ['p', 'l', 'n', 's', 'g', 'k', 'r', 'b'];
+export const USI_BLACK_PIECES = [
+  'P',
+  'P+',
+  'L',
+  'L+',
+  'N',
+  'N+',
+  'S',
+  'S+',
+  'G',
+  'K',
+  'R',
+  'R+',
+  'B',
+  'B+'
+];
+
+export const USI_WHITE_PIECES = [
+  'p',
+  'p+',
+  'l',
+  'l+',
+  'n',
+  'n+',
+  's',
+  's+',
+  'g',
+  'k',
+  'r',
+  'r+',
+  'b',
+  'b+'
+];
 
 export const USI_BLACK_TEAM = 'black';
 export const USI_WHITE_TEAM = 'white';
