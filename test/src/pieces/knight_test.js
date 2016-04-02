@@ -156,4 +156,38 @@ describe('Knight', () => {
       });
     });
   });
+
+  describe('#imageFileName', () => {
+    context('black', () => {
+      context('promoted', () => {
+        it('return `Snkei.png`', () => {
+          var knight = new Knight({ type: 'N+' });
+          knight.imageFileName().should.eql('Snkei.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Skei.png`', () => {
+          var knight = new Knight({ type: 'N' });
+          knight.imageFileName().should.eql('Skei.png');
+        });
+      });
+    });
+
+    context('white', () => {
+      context('promoted', () => {
+        it('return `Gnkei.png`', () => {
+          var knight = new Knight({ type: 'n+' });
+          knight.imageFileName().should.eql('Gnkei.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Gkei.png`', () => {
+          var knight = new Knight({ type: 'n' });
+          knight.imageFileName().should.eql('Gkei.png');
+        });
+      });
+    });
+  });
 });
