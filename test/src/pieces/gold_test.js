@@ -110,4 +110,20 @@ describe('Gold', () => {
       });
     });
   });
+
+  describe('#imageFileName', () => {
+    context('black', () => {
+      it('return `Skin.png`', () => {
+        var gold = new Gold({ type: 'G' });
+        gold.imageFileName().should.eql('Skin.png');
+      });
+    });
+
+    context('white', () => {
+      it('return `Gkin.png`', () => {
+        var gold = new Gold({ type: 'g' });
+        gold.imageFileName().should.eql('Gkin.png');
+      });
+    });
+  });
 });
