@@ -162,4 +162,38 @@ describe('Silver', () => {
       });
     });
   });
+
+  describe('#imageFileName', () => {
+    context('black', () => {
+      context('promoted', () => {
+        it('return `Sngin.png`', () => {
+          var silver = new Silver({ type: 'S+' });
+          silver.imageFileName().should.eql('Sngin.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Sgin.png`', () => {
+          var silver = new Silver({ type: 'S' });
+          silver.imageFileName().should.eql('Sgin.png');
+        });
+      });
+    });
+
+    context('white', () => {
+      context('promoted', () => {
+        it('return `Gngin.png`', () => {
+          var silver = new Silver({ type: 's+' });
+          silver.imageFileName().should.eql('Gngin.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Ggin.png`', () => {
+          var silver = new Silver({ type: 's' });
+          silver.imageFileName().should.eql('Ggin.png');
+        });
+      });
+    });
+  });
 });
