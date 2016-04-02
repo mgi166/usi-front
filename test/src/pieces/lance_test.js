@@ -154,4 +154,38 @@ describe('Lance', () => {
       });
     });
   });
+
+  describe('#imageFileName', () => {
+    context('black', () => {
+      context('promoted', () => {
+        it('return `Snkyo.png`', () => {
+          var lance = new Lance({ type: 'L+' });
+          lance.imageFileName().should.eql('Snkyo.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Skyo.png`', () => {
+          var lance = new Lance({ type: 'L' });
+          lance.imageFileName().should.eql('Skyo.png');
+        });
+      });
+    });
+
+    context('white', () => {
+      context('promoted', () => {
+        it('return `Gnkyo.png`', () => {
+          var lance = new Lance({ type: 'l+' });
+          lance.imageFileName().should.eql('Gnkyo.png');
+        });
+      });
+
+      context('no promote', () => {
+        it('return `Gkyo.png`', () => {
+          var lance = new Lance({ type: 'l' });
+          lance.imageFileName().should.eql('Gkyo.png');
+        });
+      });
+    });
+  });
 });
