@@ -41,3 +41,36 @@ export const USI_BISHOP_WHITE_PROMOTE_TYPE = 'b+';
 
 export const USI_KING_BLACK_TYPE = 'K';
 export const USI_KING_WHITE_TYPE = 'k';
+
+export const IMAGE_UPSIDE_PREFIX = 'S';
+export const IMAGE_DOWNSIDE_PREFIX = 'G';
+export const PIECE_TYPE_TO_IMAGE_FILE_MAP = {
+  'p': 'fu',
+  'P': 'fu',
+  'p+': 'to',
+  'P+': 'to',
+  'l': 'kyo',
+  'L': 'kyo',
+  'l+': 'nkyo',
+  'L+': 'nkyo',
+  'n': 'kei',
+  'N': 'kei',
+  'n+': 'nkei',
+  'N+': 'nkei',
+  's': 'gin',
+  'S': 'gin',
+  's+': 'ngin',
+  'S+': 'ngin',
+  'g': 'kin',
+  'G': 'kin',
+  'r': 'hi',
+  'R': 'hi',
+  'r+': 'ryu',
+  'R+': 'ryu',
+  'b': 'kaku',
+  'B': 'kaku',
+  'b+': 'uma',
+  'B+': 'uma',
+  'k': 'ou',
+  'K': 'ou'
+}
