@@ -22,8 +22,9 @@ const mapDispatchToProps = (dispatch) => {
 export default class ShogiPiece extends React.Component {
   render() {
     return(
-      <img src={getPieceImage(this.props.piece)} onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
-      </img>
+      <div className="piece" onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
+        <img src={getPieceImage(this.props.piece)}></img>
+      </div>
     );
   }
 }
