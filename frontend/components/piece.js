@@ -2,6 +2,7 @@ import React from 'react';
 import { movePiece } from '../actions';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { getPieceImage } from '../images/shogiPieces/index';
 
 const mapStateToProps = (state) => {
   return {
@@ -21,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 export default class ShogiPiece extends React.Component {
   render() {
     return(
-      <img onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
+      <img src={getPieceImage(this.props.piece)} onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
       </img>
     );
   }
