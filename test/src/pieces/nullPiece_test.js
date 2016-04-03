@@ -16,4 +16,11 @@ describe('NullPiece', () => {
       piece.isPromoted().should.eql(true);
     });
   });
+
+  describe('imageFileName', () => {
+    it('returns undefined', () => {
+      var piece = new NullPiece({ type: '*' });
+      (typeof piece.imageFileName()).should.be.eql('undefined');
+    });
+  });
 });

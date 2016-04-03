@@ -56,6 +56,9 @@ export default class Base {
   }
 
   imageFileName() {
+    var fileName = CONST.PIECE_TYPE_TO_IMAGE_FILE_MAP[this.type];
+    if (!fileName) { return undefined; };
+
     switch (this.isBlack()) {
     case true:
       return `${CONST.IMAGE_UPSIDE_PREFIX}${CONST.PIECE_TYPE_TO_IMAGE_FILE_MAP[this.type]}.png`;
