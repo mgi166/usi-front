@@ -19,19 +19,17 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default class ShogiPiece extends React.Component {
-  render() {
-    return(
-      <div className="piece" onClick={() => this.props.onPieceClick(this.props.board, this.props.piece)}>
-        <img src={getPieceImage(this.props.piece)}></img>
-      </div>
-    );
-  }
-}
+const shogiPiece = ({ piece, board, onPieceClick }) => {
+  return (
+    <div className="piece" onClick={() => onPieceClick(board, piece)}>
+      <img src={getPieceImage(piece)}></img>
+    </div>
+  );
+};
 
 const Piece = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ShogiPiece);
+)(shogiPiece);
 
 export default Piece;
