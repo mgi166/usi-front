@@ -218,9 +218,8 @@ describe('#movePiece', () => {
           var fromPiece = Piece.create({ type: 'P', x: 8, y: 2 });
           var toPiece = Piece.create({ type: '*', x: 8, y: 1 });
 
-          board().movePiece(fromPiece, toPiece);
-
-          board().toArray().should.eql(
+          var movedBoard = board().movePiece(fromPiece, toPiece);
+          new Board(movedBoard).toArray().should.eql(
             [
               ['*', 'P', '*'],
               ['*', '*', '*'],
