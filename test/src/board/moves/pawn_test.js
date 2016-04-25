@@ -7,12 +7,6 @@ describe('#enhanceMovablePoint', () => {
   describe('black', () => {
     context('match the piece to coordinate', () => {
       context('exists movable coordinates', () => {
-        var board = memo().is(() => {
-          var _board = new Board;
-          _board.setBoard(position());
-          return(_board);
-        });
-
         var position = memo().is(() => {
           return (
             [
@@ -23,11 +17,12 @@ describe('#enhanceMovablePoint', () => {
         });
 
         it('change property of piece that is moved', () => {
-          var piece = Piece.create({ type: 'P', x: 8, y: 2 });
+          const board = new Board(position());
+          const piece = Piece.create({ type: 'P', x: 8, y: 2 });
 
-          board().enhanceMovablePoint(piece);
+          board.enhanceMovablePoint(piece);
 
-          var movablePieces = board().board.map((row) => {
+          var movablePieces = board.board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -40,12 +35,6 @@ describe('#enhanceMovablePoint', () => {
       });
 
       context('does not exist movable coordinates', () => {
-        var board = memo().is(() => {
-          var _board = new Board;
-          _board.setBoard(position());
-          return(_board);
-        });
-
         var position = memo().is(() => {
           return (
             [
@@ -56,11 +45,12 @@ describe('#enhanceMovablePoint', () => {
         });
 
         it('does not change property of piece', () => {
-          var piece = Piece.create({ type: 'P', x: 9, y: 1 });
+          const board = new Board(position());
+          const piece = Piece.create({ type: 'P', x: 9, y: 1 });
 
-          board().enhanceMovablePoint(piece);
+          board.enhanceMovablePoint(piece);
 
-          var movablePieces = board().board.map((row) => {
+          var movablePieces = board.board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -72,12 +62,6 @@ describe('#enhanceMovablePoint', () => {
     });
 
     context('mismatch the piece to coordinate', () => {
-      var board = memo().is(() => {
-        var _board = new Board;
-        _board.setBoard(position());
-        return(_board);
-      });
-
       var position = memo().is(() => {
         return (
           [
@@ -88,9 +72,10 @@ describe('#enhanceMovablePoint', () => {
       });
 
       it('throw exception', () => {
+        const board = new Board(position());
         var piece = Piece.create({ type: 'P', x: 8, y: 2 });
 
-        (() => { return board().enhanceMovablePoint(piece); }).should.throw();;
+        (() => { return board.enhanceMovablePoint(piece); }).should.throw();;
       });
     });
 
@@ -101,12 +86,6 @@ describe('#enhanceMovablePoint', () => {
   describe('white', () => {
     context('match the piece to coordinate', () => {
       context('exists movable coordinates', () => {
-        var board = memo().is(() => {
-          var _board = new Board;
-          _board.setBoard(position());
-          return(_board);
-        });
-
         var position = memo().is(() => {
           return (
             [
@@ -117,11 +96,12 @@ describe('#enhanceMovablePoint', () => {
         });
 
         it('change property of piece that is moved', () => {
-          var piece = Piece.create({ type: 'p', x: 8, y: 1 });
+          const board = new Board(position());
+          const piece = Piece.create({ type: 'p', x: 8, y: 1 });
 
-          board().enhanceMovablePoint(piece);
+          board.enhanceMovablePoint(piece);
 
-          var movablePieces = board().board.map((row) => {
+          var movablePieces = board.board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -134,12 +114,6 @@ describe('#enhanceMovablePoint', () => {
       });
 
       context('does not exist movable coordinates', () => {
-        var board = memo().is(() => {
-          var _board = new Board;
-          _board.setBoard(position());
-          return(_board);
-        });
-
         var position = memo().is(() => {
           return (
             [
@@ -150,11 +124,12 @@ describe('#enhanceMovablePoint', () => {
         });
 
         it('does not change property of piece', () => {
-          var piece = Piece.create({ type: 'p', x: 9, y: 2 });
+          const board = new Board(position());
+          const piece = Piece.create({ type: 'p', x: 9, y: 2 });
 
-          board().enhanceMovablePoint(piece);
+          board.enhanceMovablePoint(piece);
 
-          var movablePieces = board().board.map((row) => {
+          var movablePieces = board.board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -166,12 +141,6 @@ describe('#enhanceMovablePoint', () => {
     });
 
     context('mismatch the piece to coordinate', () => {
-      var board = memo().is(() => {
-        var _board = new Board;
-        _board.setBoard(position());
-        return(_board);
-      });
-
       var position = memo().is(() => {
         return (
           [
@@ -182,9 +151,10 @@ describe('#enhanceMovablePoint', () => {
       });
 
       it('throw exception', () => {
-        var piece = Piece.create({ type: 'p', x: 9, y: 1 });
+        const board = new Board(position());
+        const piece = Piece.create({ type: 'p', x: 9, y: 1 });
 
-        (() => { return board().enhanceMovablePoint(piece); }).should.throw();;
+        (() => { return board.enhanceMovablePoint(piece); }).should.throw();;
       });
     });
 
