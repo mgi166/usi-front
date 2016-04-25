@@ -52,7 +52,7 @@ export default class Board {
     var destPiece = this.board[toIdxY][toIdxX];
 
     if (typeof destPiece === 'undefined' || ! destPiece.movable) {
-      return _board;
+      return this;
     }
 
     fromPiece.x = toCorX;
