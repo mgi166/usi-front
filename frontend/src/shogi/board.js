@@ -61,7 +61,9 @@ export default class Board {
     _board[toIdxY][toIdxX] = fromPiece;
     _board[fromIdxY][fromIdxX] = new NullPiece({ x: fromCorX, y: fromCorY});
 
-    return _board;
+    const newBoard = new Board;
+    newBoard.board = _board;
+    return newBoard;
   }
 
   enhancePlaceablePoint(placePiece) {

@@ -84,15 +84,8 @@ describe('#movePiece', () => {
       var fromPiece = Piece.create({ type: 'P', x: 2, y: 7 });
       var toPiece = Piece.create({ type: '*', x: 2, y: 6 });
 
-      var _board = board().movePiece(fromPiece, toPiece);
-
-      var newBoard = _board.map((row) => {
-        return row.map((piece) => {
-          return piece.type;
-        });
-      });
-
-      newBoard.should.eql(
+      var newBoard = board().movePiece(fromPiece, toPiece);
+      newBoard.toArray().should.eql(
         [
           [ 'l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l' ],
           [ '*', 'b', '*', '*', '*', '*', '*', 'r', '*' ],
