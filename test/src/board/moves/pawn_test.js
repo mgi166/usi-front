@@ -170,12 +170,6 @@ describe('#movePiece', () => {
       });
 
       context('no promote', () => {
-        var board = memo().is(() => {
-          var _board = new Board;
-          _board.setBoard(position());
-          return(_board);
-        });
-
         var position = memo().is(() => {
           return (
             [
@@ -187,11 +181,11 @@ describe('#movePiece', () => {
         });
 
         it('moves piece', () => {
-          var fromPiece = Piece.create({ type: 'P', x: 8, y: 2 });
-          var toPiece = Piece.create({ type: '*', x: 8, y: 1 });
+          const board = new Board(position());
+          const fromPiece = Piece.create({ type: 'P', x: 8, y: 2 });
+          const toPiece = Piece.create({ type: '*', x: 8, y: 1 });
 
-          var movedBoard = board().movePiece(fromPiece, toPiece);
-          new Board(movedBoard).toArray().should.eql(
+          board.movePiece(fromPiece, toPiece).toArray().should.eql(
             [
               ['*', 'P', '*'],
               ['*', '*', '*'],
@@ -203,12 +197,6 @@ describe('#movePiece', () => {
     });
 
     context('destination does not have movable property', () => {
-      var board = memo().is(() => {
-        var _board = new Board;
-        _board.setBoard(position());
-        return(_board);
-      });
-
       var position = memo().is(() => {
         return (
           [
@@ -220,11 +208,11 @@ describe('#movePiece', () => {
       });
 
       it('does not move piece', () => {
-        var fromPiece = Piece.create({ type: 'P', x: 8, y: 2 });
-        var toPiece = Piece.create({ type: '*', x: 8, y: 3 });
+        const board = new Board(position());
+        const fromPiece = Piece.create({ type: 'P', x: 8, y: 2 });
+        const toPiece = Piece.create({ type: '*', x: 8, y: 3 });
 
-        board().movePiece(fromPiece, toPiece);
-        board().toArray().should.eql(
+        board.movePiece(fromPiece, toPiece).toArray().should.eql(
           [
             ['*', '*', '*'],
             ['*', 'P', '*'],
@@ -236,12 +224,6 @@ describe('#movePiece', () => {
   });
 
   context('mismatch piece of first argument and piece in the board', () => {
-    var board = memo().is(() => {
-      var _board = new Board;
-      _board.setBoard(position());
-      return(_board);
-    });
-
     var position = memo().is(() => {
       return (
         [
@@ -253,10 +235,11 @@ describe('#movePiece', () => {
     });
 
     it('throw exception', () => {
-      var fromPiece = Piece.create({ type: 'P', x: 8, y: 3 });
-      var toPiece = Piece.create({ type: '*', x: 8, y: 1 });
+      const board = new Board(position());
+      const fromPiece = Piece.create({ type: 'P', x: 8, y: 3 });
+      const toPiece = Piece.create({ type: '*', x: 8, y: 1 });
 
-      (() => { board().movePiece(fromPiece, toPiece); }).should.throw();
+      (() => { board.movePiece(fromPiece, toPiece); }).should.throw();
     });
   });
 });
