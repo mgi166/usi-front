@@ -145,7 +145,7 @@ export default class Board {
   matchPiece(piece) {
     var isUndefined = typeof this.findPiece(piece) === 'undefined';
     var isEqualPiece = this.findPiece(piece).equals(
-      new Piece({
+      Piece.create({
         x: piece.x,
         y: piece.y,
         type: piece.type,
