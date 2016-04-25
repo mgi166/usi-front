@@ -82,10 +82,17 @@ describe('#movePiece', () => {
   context('once', () => {
     it('moved piece', () => {
       var fromPiece = Piece.create({ type: 'P', x: 2, y: 7 });
-      var toPiece = Piece.create({ type: 'P', x: 2, y: 6 });
+      var toPiece = Piece.create({ type: '*', x: 2, y: 6 });
 
       var _board = board().movePiece(fromPiece, toPiece);
-      new Board(_board).toArray().should.eql(
+
+      var newBoard = _board.map((row) => {
+        return row.map((piece) => {
+          return piece.type;
+        });
+      });
+
+      newBoard.should.eql(
         [
           [ 'l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l' ],
           [ '*', 'b', '*', '*', '*', '*', '*', 'r', '*' ],
@@ -104,7 +111,7 @@ describe('#movePiece', () => {
     //       Therefore, this.board does not change after #movePiece.
     it('does not change this.board', () => {
       var fromPiece = Piece.create({ type: 'P', x: 2, y: 7 });
-      var toPiece = Piece.create({ type: 'P', x: 2, y: 6 });
+      var toPiece = Piece.create({ type: '*', x: 2, y: 6 });
 
       board().movePiece(fromPiece, toPiece);
 

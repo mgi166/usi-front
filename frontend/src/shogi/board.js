@@ -5,11 +5,7 @@ import * as CONST from './constants/boardTypes';
 
 export default class Board {
   constructor(board = undefined) {
-    if (board) {
-      this.board = board;
-    } else {
-      this.setBoard(CONST.USI_INITIAL_BOARD);
-    }
+    board ? this.setBoard(board) : this.setBoard(CONST.USI_INITIAL_BOARD);
   }
 
   setBoard(board) {
