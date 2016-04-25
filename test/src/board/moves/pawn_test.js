@@ -7,7 +7,7 @@ describe('#enhanceMovablePoint', () => {
   describe('black', () => {
     context('match the piece to coordinate', () => {
       context('exists movable coordinates', () => {
-        var position = memo().is(() => {
+        const position = memo().is(() => {
           return (
             [
               ['*', '*', '*'],
@@ -22,7 +22,7 @@ describe('#enhanceMovablePoint', () => {
 
           board.enhanceMovablePoint(piece);
 
-          var movablePieces = board.board.map((row) => {
+          const movablePieces = board.board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -35,7 +35,7 @@ describe('#enhanceMovablePoint', () => {
       });
 
       context('does not exist movable coordinates', () => {
-        var position = memo().is(() => {
+        const position = memo().is(() => {
           return (
             [
               ['P', '*', '*'],
@@ -50,7 +50,7 @@ describe('#enhanceMovablePoint', () => {
 
           board.enhanceMovablePoint(piece);
 
-          var movablePieces = board.board.map((row) => {
+          const movablePieces = board.board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -62,7 +62,7 @@ describe('#enhanceMovablePoint', () => {
     });
 
     context('mismatch the piece to coordinate', () => {
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*', '*'],
@@ -73,7 +73,7 @@ describe('#enhanceMovablePoint', () => {
 
       it('throw exception', () => {
         const board = new Board(position());
-        var piece = Piece.create({ type: 'P', x: 8, y: 2 });
+        const piece = Piece.create({ type: 'P', x: 8, y: 2 });
 
         (() => { return board.enhanceMovablePoint(piece); }).should.throw();;
       });
@@ -86,7 +86,7 @@ describe('#enhanceMovablePoint', () => {
   describe('white', () => {
     context('match the piece to coordinate', () => {
       context('exists movable coordinates', () => {
-        var position = memo().is(() => {
+        const position = memo().is(() => {
           return (
             [
               ['*', 'p', '*'],
@@ -101,7 +101,7 @@ describe('#enhanceMovablePoint', () => {
 
           board.enhanceMovablePoint(piece);
 
-          var movablePieces = board.board.map((row) => {
+          const movablePieces = board.board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -114,7 +114,7 @@ describe('#enhanceMovablePoint', () => {
       });
 
       context('does not exist movable coordinates', () => {
-        var position = memo().is(() => {
+        const position = memo().is(() => {
           return (
             [
               ['*', '*', '*'],
@@ -129,7 +129,7 @@ describe('#enhanceMovablePoint', () => {
 
           board.enhanceMovablePoint(piece);
 
-          var movablePieces = board.board.map((row) => {
+          const movablePieces = board.board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -141,7 +141,7 @@ describe('#enhanceMovablePoint', () => {
     });
 
     context('mismatch the piece to coordinate', () => {
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*', 'p'],
@@ -170,7 +170,7 @@ describe('#movePiece', () => {
       });
 
       context('no promote', () => {
-        var position = memo().is(() => {
+        const position = memo().is(() => {
           return (
             [
               ['*', '*', '*'],
@@ -197,7 +197,7 @@ describe('#movePiece', () => {
     });
 
     context('destination does not have movable property', () => {
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*', '*'],
@@ -224,7 +224,7 @@ describe('#movePiece', () => {
   });
 
   context('mismatch piece of first argument and piece in the board', () => {
-    var position = memo().is(() => {
+    const position = memo().is(() => {
       return (
         [
           ['*', '*', '*'],
@@ -247,7 +247,7 @@ describe('#movePiece', () => {
 describe('#enhancePlaceablePoint', () => {
   describe('black', () => {
     context('the normal pattern', () => {
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*', '*'],
@@ -282,7 +282,7 @@ describe('#enhancePlaceablePoint', () => {
     });
 
     context('`NIFU`', () => {
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*', '*'],
@@ -323,7 +323,7 @@ describe('#enhancePlaceablePoint', () => {
 
   describe('white', () => {
     context('the normal pattern', () => {
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*'],
@@ -374,7 +374,7 @@ describe('#enhancePlaceablePoint', () => {
     });
 
     context('`NIFU`', () => {
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*'],
