@@ -398,13 +398,7 @@ describe('#enhancePlaceablePoint', () => {
 describe('#movePiece', () => {
   describe('black', () => {
     context('mismatch piece of first argument and piece in the board', () => {
-      var board = memo().is(() => {
-        var _board = new Board;
-        _board.setBoard(position());
-        return(_board);
-      });
-
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*', '*'],
@@ -418,20 +412,15 @@ describe('#movePiece', () => {
       });
 
       it('throw exception', () => {
-        var fromPiece = Piece.create({type: 'L', x: 9, y: 2});
-        var toPiece = Piece.create({type: 'L', x: 8, y: 1});
-        (() => board().movePiece(fromPiece, toPiece)).should.throw();
+        const board = new Board(position());
+        const fromPiece = Piece.create({type: 'L', x: 9, y: 2});
+        const toPiece = Piece.create({type: 'L', x: 8, y: 1});
+        (() => board.movePiece(fromPiece, toPiece)).should.throw();
       });
     });
 
     context('mismatch piece of second argument and piece in the board', () => {
-      var board = memo().is(() => {
-        var _board = new Board;
-        _board.setBoard(position());
-        return(_board);
-      });
-
-      var position = memo().is(() => {
+      const position = memo().is(() => {
         return (
           [
             ['*', '*', '*'],
@@ -445,21 +434,17 @@ describe('#movePiece', () => {
       });
 
       it('throw exception', () => {
-        var fromPiece = Piece.create({type: 'L', x: 8, y: 5});
-        var toPiece = Piece.create({type: 'P', x: 7, y: 1});
-        (() => board().movePiece(fromPiece, toPiece)).should.throw();
+        const board = new Board(position());
+        const fromPiece = Piece.create({type: 'L', x: 8, y: 5});
+        const toPiece = Piece.create({type: 'L', x: 7, y: 1});
+
+        (() => board.movePiece(fromPiece, toPiece)).should.throw();
       });
     });
 
     context('match piece of first argument and piece in the board', () => {
       context('toPiece is movable', () => {
-        var board = memo().is(() => {
-          var _board = new Board;
-          _board.setBoard(position());
-          return(_board);
-        });
-
-        var position = memo().is(() => {
+        const position = memo().is(() => {
           return (
             [
               ['*', '*', '*'],
@@ -473,12 +458,11 @@ describe('#movePiece', () => {
         });
 
         it('moves board', () => {
-          var fromPiece = Piece.create({type: 'L', x: 8, y: 5});
-          var toPiece = Piece.create({type: '*', x: 8, y: 1});
+          const board = new Board(position());
+          const fromPiece = Piece.create({type: 'L', x: 8, y: 5});
+          const toPiece = Piece.create({type: '*', x: 8, y: 1});
 
-          var newBoard = board().movePiece(fromPiece, toPiece);
-
-          new Board(newBoard).toArray().should.eql(
+          board.movePiece(fromPiece, toPiece).toArray().should.eql(
             [
               ['*', 'L', '*'],
               ['*', '*', '*'],
@@ -492,13 +476,7 @@ describe('#movePiece', () => {
       });
 
       context('toPiece is not movable', () => {
-        var board = memo().is(() => {
-          var _board = new Board;
-          _board.setBoard(position());
-          return(_board);
-        });
-
-        var position = memo().is(() => {
+        const position = memo().is(() => {
           return (
             [
               ['*', '*', '*'],
@@ -512,12 +490,11 @@ describe('#movePiece', () => {
         });
 
         it('does not move board', () => {
-          var fromPiece = Piece.create({type: 'L', x: 8, y: 5});
-          var toPiece = Piece.create({type: '*', x: 7, y: 4});
+          const board = new Board(position());
+          const fromPiece = Piece.create({type: 'L', x: 8, y: 5});
+          const toPiece = Piece.create({type: '*', x: 7, y: 4});
 
-          var newBoard = board().movePiece(fromPiece, toPiece);
-
-          new Board(newBoard).toArray().should.eql(
+          board.movePiece(fromPiece, toPiece).toArray().should.eql(
             [
               ['*', '*', '*'],
               ['*', '*', '*'],
