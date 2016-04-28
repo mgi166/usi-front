@@ -510,5 +510,68 @@ describe('#movePiece', () => {
   });
 
   describe('white', () => {
+    context('toPiece is movable', () => {
+      const position = memo().is(() => {
+        return (
+          [
+            ['*', '*', '*'],
+            ['*', 'l', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*']
+          ]
+        );
+      });
+
+      it('moves board', () => {
+        const board = new Board(position());
+        const fromPiece = Piece.create({type: 'l', x: 8, y: 2});
+        const toPiece = Piece.create({type: '*', x: 8, y: 5});
+
+        board.movePiece(fromPiece, toPiece).toArray().should.eql(
+          [
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', 'l', '*'],
+            ['*', '*', '*']
+          ]
+        );
+      });
+    });
+
+    context('toPiece is not movable', () => {
+      const position = memo().is(() => {
+        return (
+          [
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', 'l', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*']
+          ]
+        );
+      });
+
+      it('does not move board', () => {
+        const board = new Board(position());
+        const fromPiece = Piece.create({type: 'l', x: 8, y: 3});
+        const toPiece = Piece.create({type: '*', x: 7, y: 5});
+
+        board.movePiece(fromPiece, toPiece).toArray().should.eql(
+          [
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', 'l', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*']
+          ]
+        );
+      });
+    });
   });
 });
