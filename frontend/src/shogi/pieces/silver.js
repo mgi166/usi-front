@@ -49,9 +49,9 @@ export default class Silver extends Base {
   moveDef() {
     switch (this.type) {
     case CONST.USI_SILVER_BLACK_TYPE:
-      return { just: [[1, -1], [1, 0], [1, 1], [-1, -1], [-1, 1]] };
+      return { just: [[1, -1], [0, -1], [-1, -1], [1, -1], [1, 1]] };
     case CONST.USI_SILVER_WHITE_TYPE:
-      return { just: [[-1, -1], [-1, 0], [-1, 1], [1, -1], [1, 1]] };
+      return { just: [[1, 1], [0, 1], [-1, 1], [1, -1], [-1, -1]] };
     case CONST.USI_SILVER_BLACK_PROMOTE_TYPE:
       return { just: [[1, -1], [1, 0], [1, 1], [0, -1], [0, 1], [-1, 0]] };
     case CONST.USI_SILVER_WHITE_PROMOTE_TYPE:
