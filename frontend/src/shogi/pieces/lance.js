@@ -53,9 +53,9 @@ export default class Lance extends Base {
     case CONST.USI_LANCE_WHITE_TYPE:
       return { fly: [[0, 1]] };
     case CONST.USI_LANCE_BLACK_PROMOTE_TYPE:
-      return { just: [[1, -1], [1, 0], [1, 1], [0, -1], [0, 1], [-1, 0]] };
+      return { just: CONST.USI_GOLD_BLACK_MOVE_DEF };
     case CONST.USI_LANCE_WHITE_PROMOTE_TYPE:
-      return { just: [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, 0]] };
+      return { just: CONST.USI_GOLD_WHITE_MOVE_DEF };
     }
   }
 }

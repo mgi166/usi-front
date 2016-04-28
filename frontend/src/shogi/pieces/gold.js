@@ -31,9 +31,9 @@ export default class Gold extends Base {
   moveDef() {
     switch (this.type) {
     case CONST.USI_GOLD_BLACK_TYPE:
-      return { just: [[1, -1], [0, -1], [-1, -1], [1, 0], [-1, 0], [0, 1]] };
+      return { just: CONST.USI_GOLD_BLACK_MOVE_DEF };
     case CONST.USI_GOLD_WHITE_TYPE:
-      return { just: [[-1, 1], [0, 1], [1, 1], [1, 0], [-1, 0], [0, -1]] };
+      return { just: CONST.USI_GOLD_WHITE_MOVE_DEF };
     }
   }
 }

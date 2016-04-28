@@ -115,11 +115,11 @@ describe('Knight', () => {
           knight.moveDef().should.eql({
             just: [
               [1, -1],
-              [1, 0],
-              [1, 1],
               [0, -1],
+              [-1, -1],
+              [1, 0],
+              [-1, 0],
               [0, 1],
-              [-1, 0]
             ]
           });
         });
@@ -144,12 +144,12 @@ describe('Knight', () => {
           var knight = new Knight({ type: 'n+' });
           knight.moveDef().should.eql({
             just: [
-              [-1, -1],
-              [-1, 0],
               [-1, 1],
-              [0, -1],
               [0, 1],
-              [1, 0]
+              [1, 1],
+              [1, 0],
+              [-1, 0],
+              [0, -1]
             ]
           });
         });

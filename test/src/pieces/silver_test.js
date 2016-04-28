@@ -103,10 +103,10 @@ describe('Silver', () => {
           silver.moveDef().should.eql({
             just: [
               [1, -1],
-              [1, 0],
-              [1, 1],
+              [0, -1],
               [-1, -1],
-              [-1, 1]
+              [1, -1],
+              [1, 1]
             ]
           });
         });
@@ -118,11 +118,11 @@ describe('Silver', () => {
           silver.moveDef().should.eql({
             just: [
               [1, -1],
-              [1, 0],
-              [1, 1],
               [0, -1],
+              [-1, -1],
+              [1, 0],
+              [-1, 0],
               [0, 1],
-              [-1, 0]
             ]
           });
         });
@@ -135,11 +135,11 @@ describe('Silver', () => {
           var silver = new Silver({ type: 's' });
           silver.moveDef().should.eql({
             just: [
-              [-1, -1],
-              [-1, 0],
+              [1, 1],
+              [0, 1],
               [-1, 1],
               [1, -1],
-              [1, 1]
+              [-1, -1]
             ]
           });
         });
@@ -150,12 +150,12 @@ describe('Silver', () => {
           var silver = new Silver({ type: 's+' });
           silver.moveDef().should.eql({
             just: [
-              [-1, -1],
-              [-1, 0],
               [-1, 1],
-              [0, -1],
               [0, 1],
-              [1, 0]
+              [1, 1],
+              [1, 0],
+              [-1, 0],
+              [0, -1],
             ]
           });
         });
