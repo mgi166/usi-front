@@ -105,3 +105,6 @@ export const PIECE_TYPE_TO_IMAGE_FILE_MAP = {
   'k': 'ou',
   'K': 'ou'
 };
+
+export const USI_GOLD_BLACK_MOVE_DEF = [[1, -1], [0, -1], [-1, -1], [1, 0], [-1, 0], [0, 1]];
+export const USI_GOLD_WHITE_MOVE_DEF = [[-1, 1], [0, 1], [1, 1], [1, 0], [-1, 0], [0, -1]];
