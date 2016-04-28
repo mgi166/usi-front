@@ -104,4 +104,4 @@ export const PIECE_TYPE_TO_IMAGE_FILE_MAP = {
   'B+': 'uma',
   'k': 'ou',
   'K': 'ou'
-}
+};
