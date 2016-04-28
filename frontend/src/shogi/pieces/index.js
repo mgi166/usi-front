@@ -24,4 +24,5 @@ export function getClass(type) {
   return classes[_.lowerCase(type)] || NullPiece;
 }
 
+// NOTE: To use Board#movePiece, so export only NullPiece.
 export { NullPiece };
