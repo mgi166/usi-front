@@ -1,3 +1,4 @@
 --require power-assert
 --require should
 --compilers js:babel-core/register
+--recursive
