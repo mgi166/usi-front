@@ -121,8 +121,6 @@ export default class Board {
   }
 
   enhanceMovablePoint(piece) {
-    var moveDef = piece.moveDef();
-
     // if piece of argument is not match piece in the board, throw exception
     //
     if (! this.matchPiece(piece)) {
@@ -130,17 +128,22 @@ export default class Board {
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
+    var moveDef = piece.moveDef();
+    var newBoard = this.cloneBoard();
+
     // if moveDef has just property, piece moves just coordinates on board.
     //
     if (moveDef.just) {
-      this.movablePointsByJust(piece);
+      newBoard.movablePointsByJust(piece);
     }
 
     // if moveDef has fly property, piece moves recursion on board.
     //
     if (moveDef.fly) {
-      this.movablePointsByFly(piece);
+      newBoard.movablePointsByFly(piece);
     }
+
+    return newBoard;
   }
 
   // if piece of argument is match in the board, return true, else return false
@@ -206,6 +209,13 @@ export default class Board {
         fetchPiece = this.fetchPiece(dx, dy);
       }
     });
+  }
+
+  cloneBoard() {
+    const dupBoard = _.cloneDeep(this.board);
+    const newBoard = new Board;
+    newBoard.board = dupBoard;
+    return newBoard;
   }
 
   transposeToCorX(xIndex) {

@@ -20,9 +20,7 @@ describe('#enhanceMovablePoint', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'P', x: 8, y: 2 });
 
-          board.enhanceMovablePoint(piece);
-
-          const movablePieces = board.board.map((row) => {
+          const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -48,9 +46,7 @@ describe('#enhanceMovablePoint', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'P', x: 9, y: 1 });
 
-          board.enhanceMovablePoint(piece);
-
-          const movablePieces = board.board.map((row) => {
+          const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -99,9 +95,7 @@ describe('#enhanceMovablePoint', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'p', x: 8, y: 1 });
 
-          board.enhanceMovablePoint(piece);
-
-          const movablePieces = board.board.map((row) => {
+          const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -127,9 +121,7 @@ describe('#enhanceMovablePoint', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'p', x: 9, y: 2 });
 
-          board.enhanceMovablePoint(piece);
-
-          const movablePieces = board.board.map((row) => {
+          const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );

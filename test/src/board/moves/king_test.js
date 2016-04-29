@@ -5,12 +5,6 @@ import _ from 'lodash';
 
 describe('#enhanceMovablePoint', () => {
   describe('black', () => {
-    var board = memo().is(() => {
-      var _board = new Board;
-      _board.setBoard(position());
-      return(_board);
-    });
-
     var position = memo().is(() => {
       return (
         [
@@ -24,11 +18,10 @@ describe('#enhanceMovablePoint', () => {
 
     context('normal case', () => {
       it('change property of piece is movable', () => {
-        var piece = Piece.create({ type: 'K', x: 8, y: 2 });
+        const board = new Board(position());
+        const piece = Piece.create({ type: 'K', x: 8, y: 2 });
 
-        board().enhanceMovablePoint(piece);
-
-        var movablePieces = board().board.map((row) => {
+        const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
           return (
             row.filter((cell) => { return(cell.movable); })
           );
