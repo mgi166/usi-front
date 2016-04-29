@@ -28,17 +28,8 @@ export default class Board {
   }
 
   movePiece(fromPiece, toPiece) {
-    // if piece of argument is not match piece in the board, throw exception
-    //
-    if (! this.matchPiece(fromPiece)) {
-      var pos = `type = ${fromPiece.type}, xCor = ${fromPiece.x}, yCor = ${fromPiece.y}`;
-      throw new Error(`Does not match coordinates in board. ${pos}`);
-    }
-
-    if (! this.matchPiece(toPiece)) {
-      var pos = `type = ${toPiece.type}, xCor = ${toPiece.x}, yCor = ${toPiece.y}`;
-      throw new Error(`Does not match coordinates in board. ${pos}`);
-    }
+    this.checkPieceExisted(fromPiece);
+    this.checkPieceExisted(toPiece);
 
     if (! this.enhanceMovablePoint(fromPiece).findPiece(toPiece).movable) {
       return this;
@@ -120,12 +111,7 @@ export default class Board {
   }
 
   enhanceMovablePoint(piece) {
-    // if piece of argument is not match piece in the board, throw exception
-    //
-    if (! this.matchPiece(piece)) {
-      var pos = `type = ${piece.type}, xCor = ${piece.x}, yCor = ${piece.y}`;
-      throw new Error(`Does not match coordinates in board. ${pos}`);
-    }
+    this.checkPieceExisted(piece);
 
     var moveDef = piece.moveDef();
     var newBoard = this.cloneBoard();
