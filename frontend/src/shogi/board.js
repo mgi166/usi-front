@@ -40,29 +40,28 @@ export default class Board {
       throw new Error(`Does not match coordinates in board. ${pos}`);
     }
 
-    var _board = _.cloneDeep(this.board);
-
-    this.enhanceMovablePoint(fromPiece);
-
-    var [toCorX, toCorY] = [toPiece.x, toPiece.y];
-    var [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
-    var [fromCorX, fromCorY] = [fromPiece.x, fromPiece.y];
-    var [fromIdxX, fromIdxY] = this.invertCor(fromCorX, fromCorY);
-
-    var destPiece = this.board[toIdxY][toIdxX];
-
-    if (typeof destPiece === 'undefined' || ! destPiece.movable) {
+    if (! this.enhanceMovablePoint(fromPiece).findPiece(toPiece).movable) {
       return this;
     }
+
+    const newBoard = this.movePosition(fromPiece, toPiece);
+    return newBoard;
+  }
+
+  movePosition(fromPiece, toPiece) {
+    const newBoard = this.cloneBoard();
+
+    const [toCorX, toCorY] = [toPiece.x, toPiece.y];
+    const [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
+    const [fromCorX, fromCorY] = [fromPiece.x, fromPiece.y];
+    const [fromIdxX, fromIdxY] = this.invertCor(fromCorX, fromCorY);
 
     fromPiece.x = toCorX;
     fromPiece.y = toCorY;
 
-    _board[toIdxY][toIdxX] = fromPiece;
-    _board[fromIdxY][fromIdxX] = new NullPiece({ x: fromCorX, y: fromCorY});
+    newBoard.board[toIdxY][toIdxX] = fromPiece;
+    newBoard.board[fromIdxY][fromIdxX] = new NullPiece({ x: fromCorX, y: fromCorY });
 
-    const newBoard = new Board;
-    newBoard.board = _board;
     return newBoard;
   }
 
