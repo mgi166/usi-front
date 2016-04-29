@@ -1,4 +1,5 @@
 import Shogi from '../src/shogi';
+import * as CONST from '../constants/actionTypes';
 
 const InitialState = {
   board: Shogi.Board,
@@ -7,7 +8,7 @@ const InitialState = {
 
 const ShogiReducer = (state = InitialState, action) => {
   switch (action.type) {
-  case 'MOVE_PIECE':
+  case CONST.MOVE_PIECE:
     // if empty piece click when no holding piece, do nothing.
     if (action.piece.type === '*' && typeof state.isHoldingPiece === 'undefined' ) {
       return state;

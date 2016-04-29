@@ -1,11 +1,13 @@
+import * as CONST from '../constants/actionTypes';
+
 export function changeTurn(turn) {
-  return { type: 'CHANGE_TURN', turn };
+  return { type: CONST.CHANGE_TURN, turn };
 }
 
 export function holdPiece(piece) {
-  return { type: 'HOLD_PIECE', piece };
+  return { type: CONST.HOLD_PIECE, piece };
 }
 
 export function movePiece(board, piece) {
-  return { type: 'MOVE_PIECE', board, piece };
+  return { type: CONST.MOVE_PIECE, board, piece };
 }
