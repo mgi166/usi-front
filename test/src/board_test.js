@@ -124,3 +124,37 @@ describe('#movePiece', () => {
     });
   });
 });
+
+describe('#checkPieceExisted', () => {
+  context('the piece exists in the board', () => {
+    const position = memo().is(() => {
+      return [
+        [ '*', 'k' ],
+        [ 'P', 'p' ]
+      ];
+    });
+
+    it('return true', () => {
+      const board = new Board(position());
+      const piece = Piece.create({ type: 'P', x: 9, y: 2 });
+      board.checkPieceExisted(piece).should.be.true();
+    });
+  });
+
+  context('the piece does not exist in the board', () => {
+    const position = memo().is(() => {
+      return [
+        [ '*', 'k' ],
+        [ 'P', 'p' ]
+      ];
+    });
+
+    it('throw exception true', () => {
+      const board = new Board(position());
+      const piece = Piece.create({ type: 'k', x: 9, y: 1 });
+      (() => { board.checkPieceExisted(piece); })
+        .should
+        .throw('Does not match coordinates in board. type = k, xCor = 9, yCor = 1');
+    });
+  });
+});

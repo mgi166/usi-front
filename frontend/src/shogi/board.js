@@ -161,6 +161,15 @@ export default class Board {
     return (isUndefined || isEqualPiece);
   }
 
+  checkPieceExisted(piece) {
+    if (this.matchPiece(piece)) {
+      return true;
+    } else {
+      const message = `type = ${piece.type}, xCor = ${piece.x}, yCor = ${piece.y}`;
+      throw new Error(`Does not match coordinates in board. ${message}`);
+    }
+  }
+
   // if moveDef has just property, piece moves just coordinates on board.
   //
   movablePointsByJust(piece) {
