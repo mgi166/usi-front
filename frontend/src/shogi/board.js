@@ -116,6 +116,10 @@ export default class Board {
     var moveDef = piece.moveDef();
     var newBoard = this.cloneBoard();
 
+    if (typeof moveDef === 'undefined') {
+      return this;
+    }
+
     // if moveDef has just property, piece moves just coordinates on board.
     //
     if (moveDef.just) {
