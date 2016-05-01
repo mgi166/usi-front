@@ -1,12 +1,16 @@
 table.board {
-    background: url('../images/shogiBoard/masu_dot_xy.svg'), url('../images/shogiBoard/ban_kaya_d.png');
     width: 20%;
     height: 420px;
+    boarder-collapse: separate;
     background-size: contain;
     background-repeat: no-repeat;
     text-align: center;
     vertical-align: middle;
     table-layout: fixed;
+}
+
+table, th, td {
+   border: 1px solid black;
 }
 
 td {
