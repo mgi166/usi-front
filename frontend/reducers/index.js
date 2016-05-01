@@ -12,11 +12,6 @@ const ShogiReducer = (state = InitialState, action) => {
     let newBoard = state.board.enhanceMovablePoint(action.piece);
     return Object.assign({}, { board: newBoard, isHoldingPiece: action.piece });
   case CONST.MOVE_PIECE:
-    // if empty piece click when no holding piece, do nothing.
-    if (action.piece.type === '*' && typeof state.isHoldingPiece === 'undefined' ) {
-      return state;
-    }
-
     // if same piece click, release piece.
     if (state.isHoldingPiece) {
       if (state.isHoldingPiece.equals(action.piece)) {
