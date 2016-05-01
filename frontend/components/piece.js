@@ -1,8 +1,9 @@
 import React from 'react';
-import { movePiece } from '../actions';
+import { movePiece, holdPiece } from '../actions';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { getPieceImage } from '../images/shogiPieces/index';
+import store from '../stores/index';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,7 +15,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onPieceClick: (board, piece) => {
-      dispatch(movePiece(board, piece));
+      const state = store.getState();
+      const actionCreator = state.isHoldingPiece ? movePiece : holdPiece;
+      dispatch(actionCreator(board, piece));
     }
   };
 };
