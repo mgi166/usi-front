@@ -4,8 +4,8 @@ export function changeTurn(turn) {
   return { type: CONST.CHANGE_TURN, turn };
 }
 
-export function holdPiece(piece) {
-  return { type: CONST.HOLD_PIECE, piece };
+export function holdPiece(board, piece) {
+  return { type: CONST.HOLD_PIECE, board, piece };
 }
 
 export function movePiece(board, piece) {
