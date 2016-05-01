@@ -112,13 +112,13 @@ export default class Board {
 
   enhanceMovablePoint(piece) {
     this.checkPieceExisted(piece);
-
     var moveDef = piece.moveDef();
-    var newBoard = this.cloneBoard();
 
     if (typeof moveDef === 'undefined') {
       return this;
     }
+
+    var newBoard = this.cloneBoard();
 
     // if moveDef has just property, piece moves just coordinates on board.
     //
