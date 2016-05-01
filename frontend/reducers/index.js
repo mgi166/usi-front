@@ -8,6 +8,9 @@ const InitialState = {
 
 const ShogiReducer = (state = InitialState, action) => {
   switch (action.type) {
+  case CONST.HOLD_PIECE:
+    let newBoard = state.board.enhanceMovablePoint(action.piece);
+    return Object.assign({}, { board: newBoard, isHoldingPiece: action.piece });
   case CONST.MOVE_PIECE:
     // if empty piece click when no holding piece, do nothing.
     if (action.piece.type === '*' && typeof state.isHoldingPiece === 'undefined' ) {
