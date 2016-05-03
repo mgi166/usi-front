@@ -32,10 +32,12 @@ export default class Board {
     this.checkPieceExisted(toPiece);
 
     if (! this.enhanceMovablePoint(fromPiece).findPiece(toPiece).movable) {
+      this.clearAttrs();
       return this;
     }
 
     const newBoard = this.movePosition(fromPiece, toPiece);
+    newBoard.clearAttrs();
     return newBoard;
   }
 
@@ -133,6 +135,17 @@ export default class Board {
     }
 
     return newBoard;
+  }
+
+  clearAttrs() {
+    this.board.map((row) => {
+      return row.map((piece) => {
+        piece.movable = false;
+        piece.isPlaced = false;
+      });
+    });
+
+    return this;
   }
 
   // if piece of argument is match in the board, return true, else return false
