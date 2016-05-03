@@ -9,8 +9,12 @@ const InitialState = {
 const ShogiReducer = (state = InitialState, action) => {
   switch (action.type) {
   case CONST.HOLD_PIECE:
-    let newBoard = state.board.enhanceMovablePoint(action.piece);
-    return Object.assign({}, { board: newBoard, isHoldingPiece: action.piece });
+    if (action.piece.type == '*') {
+      return state;
+    } else {
+      let newBoard = state.board.enhanceMovablePoint(action.piece);
+      return Object.assign({}, { board: newBoard, isHoldingPiece: action.piece });
+    }
   case CONST.MOVE_PIECE:
     // if same piece click, release piece.
     if (state.isHoldingPiece) {
