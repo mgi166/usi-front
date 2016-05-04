@@ -177,16 +177,16 @@ export default class Board {
   // if moveDef has just property, piece moves just coordinates on board.
   //
   movablePointsByJust(piece) {
-    var [xCor, yCor] = [piece.x, piece.y];
-    var moveDef = piece.moveDef();
-    var [x, y] = this.invertCor(xCor, yCor);
+    const [xCor, yCor] = [piece.x, piece.y];
+    const moveDef = piece.moveDef();
+    const [x, y] = this.invertCor(xCor, yCor);
 
     moveDef.just.forEach((def) => {
-      var [defX, defY] = def;
-      var fetchPiece = this.fetchPiece(x + defX, y + defY);
+      const [defX, defY] = def;
+      const fetchedPiece = this.fetchPiece(x + defX, y + defY);
 
-      if (fetchPiece && !piece.isOwnTeam(fetchPiece)) {
-        fetchPiece.movable = true;
+      if (fetchedPiece && !piece.isOwnTeam(fetchedPiece)) {
+        fetchedPiece.movable = true;
       }
     });
   }
