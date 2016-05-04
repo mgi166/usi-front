@@ -192,33 +192,31 @@ export default class Board {
   }
 
   movablePointsByFly(piece) {
-    var [xCor, yCor] = [piece.x, piece.y];
-    var moveDef = piece.moveDef();
-    var [x, y] = this.invertCor(xCor, yCor);
+    const [xCor, yCor] = [piece.x, piece.y];
+    const moveDef = piece.moveDef();
+    const [x, y] = this.invertCor(xCor, yCor);
 
     moveDef.fly.forEach((def) => {
-      var [defX, defY] = def;
-      var dx, dy;
+      const [defX, defY] = def;
 
-      dx = x + defX;
-      dy = y + defY;
+      let dx = x + defX;
+      let dy = y + defY;
+      let fetchedPiece = this.fetchPiece(dx, dy);
 
-      var fetchPiece = this.fetchPiece(dx, dy);
-
-      while (fetchPiece) {
-        if (fetchPiece.type === '*') {
-          fetchPiece.movable = true;
-        } else if (piece.isOwnTeam(fetchPiece)) {
+      while (fetchedPiece) {
+        if (fetchedPiece.type === '*') {
+          fetchedPiece.movable = true;
+        } else if (piece.isOwnTeam(fetchedPiece)) {
           break;
         } else {
-          fetchPiece.movable = true;
+          fetchedPiece.movable = true;
           break;
         }
 
         dx = dx + defX;
         dy = dy + defY;
 
-        fetchPiece = this.fetchPiece(dx, dy);
+        fetchedPiece = this.fetchPiece(dx, dy);
       }
     });
   }
