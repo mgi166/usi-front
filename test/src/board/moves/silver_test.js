@@ -3,6 +3,85 @@ import Piece from '../../../../frontend/src/shogi/piece';
 import memo from 'memo-is';
 import _ from 'lodash';
 
+describe('#enhanceMovablePoint', () => {
+  context('black', () => {
+    const position = memo().is(() => {
+      return (
+        [
+          ['*', '*', '*'],
+          ['*', 'S', '*'],
+          ['*', '*', '*']
+        ]
+      );
+    });
+
+    it('movable property has true', () => {
+      const board = new Board(position());
+      const piece = Piece.create({type: 'S', x: 8, y: 2});
+
+      board.enhanceMovablePoint(piece).board.should.eql(
+        [
+          [
+            Piece.create({ movable: true, type: '*', x: 9, y: 1 }),
+            Piece.create({ movable: true, type: '*', x: 8, y: 1 }),
+            Piece.create({ movable: true, type: '*', x: 7, y: 1 }),
+          ],
+          [
+            Piece.create({ movable: false, type: '*', x: 9, y: 2 }),
+            Piece.create({ movable: false, type: 'S', x: 8, y: 2 }),
+            Piece.create({ movable: false, type: '*', x: 7, y: 2 }),
+          ],
+          [
+            Piece.create({ movable: true, type: '*', x: 9, y: 3 }),
+            Piece.create({ movable: false, type: '*', x: 8, y: 3 }),
+            Piece.create({ movable: true, type: '*', x: 7, y: 3 }),
+          ],
+        ]
+      );
+    });
+  });
+
+  context('white', () => {
+    const position = memo().is(() => {
+      return (
+        [
+          ['*', '*', '*'],
+          ['*', 's', '*'],
+          ['*', '*', '*']
+        ]
+      );
+    });
+
+    it('movable property has true', () => {
+      const board = new Board(position());
+      const piece = Piece.create({type: 's', x: 8, y: 2});
+
+      board.enhanceMovablePoint(piece).board.should.eql(
+        [
+          [
+            Piece.create({ movable: true, type: '*', x: 9, y: 1 }),
+            Piece.create({ movable: false, type: '*', x: 8, y: 1 }),
+            Piece.create({ movable: true, type: '*', x: 7, y: 1 }),
+          ],
+          [
+            Piece.create({ movable: false, type: '*', x: 9, y: 2 }),
+            Piece.create({ movable: false, type: 's', x: 8, y: 2 }),
+            Piece.create({ movable: false, type: '*', x: 7, y: 2 }),
+          ],
+          [
+            Piece.create({ movable: true, type: '*', x: 9, y: 3 }),
+            Piece.create({ movable: true, type: '*', x: 8, y: 3 }),
+            Piece.create({ movable: true, type: '*', x: 7, y: 3 }),
+          ],
+        ]
+      );
+    });
+  });
+
+  context.skip('mismatch piece of first argument and piece in the board', () => {
+  });
+});
+
 describe('#movePiece', () => {
   context('mismatch piece of first argument and piece in the board', () => {
     const position = memo().is(() => {

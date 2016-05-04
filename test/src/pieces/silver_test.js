@@ -102,7 +102,7 @@ describe('Silver', () => {
           var silver = new Silver({ type: 'S' });
           silver.moveDef().should.eql({
             just: [
-              [1, -1],
+              [-1, 1],
               [0, -1],
               [-1, -1],
               [1, -1],
