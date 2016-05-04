@@ -23,12 +23,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const shogiPiece = ({ piece, board, onPieceClick }) => {
-  const style = {
-    backgroundColor: piece.movable ? "red" : "white"
-  };
-
   return (
-    <div className="piece" style={style} onClick={() => onPieceClick(board, piece)}>
+    <div className="piece" onClick={() => onPieceClick(board, piece)}>
       <img src={getPieceImage(piece)}></img>
     </div>
   );
