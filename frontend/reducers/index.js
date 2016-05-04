@@ -18,7 +18,7 @@ const ShogiReducer = (state = InitialState, action) => {
   case CONST.MOVE_PIECE:
     // if same piece click, release piece.
     if (state.isHoldingPiece) {
-      var newBoard = state.board.movePiece(state.isHoldingPiece, action.piece);
+      let newBoard = state.board.movePiece(state.isHoldingPiece, action.piece);
 
       return Object.assign({}, { board: newBoard }, { isHoldingPiece: undefined });
     } else {
