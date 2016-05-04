@@ -11,14 +11,8 @@ class ShogiBoard extends React.Component {
   render() {
     var tbody = this.props.board.map((row, y) => {
       var rows = row.map((piece, x) => {
-        const style = {
-          backgroundColor: piece.movable ? "red" : "white"
-        };
-
-        return(
-          <td key={x} style={style} >
-            <Piece piece={piece} />
-          </td>
+        return (
+          <Piece key={x} piece={piece} />
         );
       });
       return(<tr key={y}>{rows}</tr>);
