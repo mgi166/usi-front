@@ -31,6 +31,10 @@ export default class Board {
     this.checkPieceExisted(fromPiece);
     this.checkPieceExisted(toPiece);
 
+    if (fromPiece.equals(toPiece)) {
+      return this.cloneBoard().clearAttrs();
+    }
+
     if (! this.enhanceMovablePoint(fromPiece).findPiece(toPiece).movable) {
       this.clearAttrs();
       return this;
