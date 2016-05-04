@@ -36,13 +36,10 @@ export default class Board {
     }
 
     if (! this.enhanceMovablePoint(fromPiece).findPiece(toPiece).movable) {
-      this.clearAttrs();
-      return this;
+      return this.cloneBoard().clearAttrs();
     }
 
-    const newBoard = this.movePosition(fromPiece, toPiece);
-    newBoard.clearAttrs();
-    return newBoard;
+    return this.movePosition(fromPiece, toPiece).clearAttrs();
   }
 
   movePosition(fromPiece, toPiece) {
