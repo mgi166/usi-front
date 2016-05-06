@@ -6,15 +6,20 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import store from '../stores/index';
 
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
+
 export default class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
-          <DevTools />
-          <h1>hello</h1>
-          <Game />
-        </div>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <div>
+            <DevTools />
+            <h1>hello</h1>
+            <Game />
+          </div>
+        </MuiThemeProvider>
       </Provider>
     );
   }
