@@ -8,6 +8,7 @@ import store from '../stores/index';
 
 import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
+import AppBar from './appBar';
 
 export default class Root extends React.Component {
   render() {
@@ -15,6 +16,7 @@ export default class Root extends React.Component {
       <Provider store={store}>
         <MuiThemeProvider muiTheme={getMuiTheme()}>
           <div>
+            <AppBar />
             <DevTools />
             <h1>hello</h1>
             <Game />
