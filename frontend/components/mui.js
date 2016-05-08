@@ -1,12 +1,12 @@
 import React from 'react';
 import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
-import App from './app';
+import Container from './container';
 
 const Mui = () => {
   return (
     <MuiThemeProvider muiTheme={getMuiTheme()}>
-      <App />
+      <Container />
     </MuiThemeProvider>
   );
 };
