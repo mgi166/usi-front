@@ -35,6 +35,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "apeman-react-footer": "^2.0.4",
     "express": "^4.13.4",
     "lodash": "^4.5.0",
     "material-ui": "^0.14.4",
