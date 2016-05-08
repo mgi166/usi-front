@@ -1,10 +1,9 @@
 import React from 'react';
-import Game from './game';
 import DevTools from './devTools';
 import { connect } from 'redux';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import store from '../stores/index';
+import Mui from './mui';
 
 export default class Root extends React.Component {
   render() {
@@ -12,8 +11,7 @@ export default class Root extends React.Component {
       <Provider store={store}>
         <div>
           <DevTools />
-          <h1>hello</h1>
-          <Game />
+          <Mui />
         </div>
       </Provider>
     );
