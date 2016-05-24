@@ -1,19 +1,19 @@
-table.board {
-    width: 20%;
-    height: 420px;
-    boarder-collapse: separate;
-    background-size: contain;
-    background-repeat: no-repeat;
-    text-align: center;
-    vertical-align: middle;
-    table-layout: fixed;
-}
+/* table.board { */
+/*     width: 20%; */
+/*     height: 420px; */
+/*     boarder-collapse: separate; */
+/*     background-size: contain; */
+/*     background-repeat: no-repeat; */
+/*     text-align: center; */
+/*     vertical-align: middle; */
+/*     table-layout: fixed; */
+/* } */
 
-table, th, td {
-   border: 1px solid black;
-}
+/* table, th, td { */
+/*    border: 1px solid black; */
+/* } */
 
-td {
-    width: 55px;
-    height: 55px;
-}
+/* td { */
+/*     width: 55px; */
+/*     height: 55px; */
+/* } */
