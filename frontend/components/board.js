@@ -20,10 +20,14 @@ class ShogiBoard extends React.Component {
     });
 
     return(
-      <Grid fluid>
-        <table className="board">
-          <tbody>{tbody}</tbody>
-        </table>
+      <Grid>
+        <Row>
+          <Col xs={12} md={4}>
+            <table className="board">
+              <tbody>{tbody}</tbody>
+            </table>
+          </Col>
+        </Row>
       </Grid>
     );
   }
