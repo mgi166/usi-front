@@ -2,6 +2,7 @@ import React from 'react';
 import Piece from './piece';
 import { connect } from 'react-redux';
 import Styles from '../styles/board.css';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 const mapStateToProps = (state) => {
   return { board: state.board.board };
@@ -19,11 +20,15 @@ class ShogiBoard extends React.Component {
     });
 
     return(
-      <div>
-        <table className="board">
-          <tbody>{tbody}</tbody>
-        </table>
-      </div>
+      <Grid>
+        <Row>
+          <Col xs={12} md={4}>
+            <table className="board">
+              <tbody>{tbody}</tbody>
+            </table>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 };
