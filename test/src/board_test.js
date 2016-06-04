@@ -119,6 +119,26 @@ describe('#movePiece', () => {
       );
     });
   });
+
+  context('take the opponent piece', () => {
+    const position = memo().is(() => {
+      return (
+        [
+          [ '*', '*', '*' ],
+          [ '*', 'p', '*' ],
+          [ '*', 'P', '*' ],
+        ]
+      );
+    });
+
+    it('has the property `takedPiece`', () => {
+      const board = new Board(position());
+      const fromPiece = new Piece.create({ type: 'P', x: 8, y: 3 });
+      const toPiece = new Piece.create({ type: 'p', x: 8, y: 2 });
+
+      board.movePiece(fromPiece, toPiece).takedPiece.should.eql(toPiece);
+    });
+  });
 });
 
 describe('#checkPieceExisted', () => {
