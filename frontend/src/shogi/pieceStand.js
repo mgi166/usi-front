@@ -15,4 +15,9 @@ export default class PieceStand {
     this.pieces.add(piece);
     return piece;
   }
+
+  clear() {
+    this.pieceTypes = {};
+    this.pieces = new Set;
+  }
 }

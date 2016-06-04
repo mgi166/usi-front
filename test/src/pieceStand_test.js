@@ -36,4 +36,17 @@ describe('PieceStand', () => {
       });
     });
   });
+
+  describe('#clear', () => {
+    it('clear save objects', () => {
+      const pieceStand = new PieceStand;
+      const piece1 = Piece.create({ type: 'p' });
+      const piece2 = Piece.create({ type: 'p' });
+      const piece3 = Piece.create({ type: 'b' });
+
+      pieceStand.clear();
+      pieceStand.pieces.size.should.eql(0);
+      pieceStand.pieceTypes.should.eql({});
+    });
+  });
 });
