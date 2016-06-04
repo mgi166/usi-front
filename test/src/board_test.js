@@ -154,3 +154,59 @@ describe('#checkPieceExisted', () => {
     });
   });
 });
+
+describe('isTakingPiece', () => {
+  context('when destination piece is opponent\'s piece', () => {
+    const position = memo().is(() => {
+      return [
+        ['*', '*', '*'],
+        ['*', 'p', '*'],
+        ['*', 'P', '*'],
+      ];
+    });
+
+    it('return true', () => {
+      const board = new Board(position());
+      const fromPiece = Piece.create({ type: 'P', x: 8, y: 3 });
+      const toPiece = Piece.create({ type: 'p', x: 8, y: 2 });
+
+      board.isTakingPiece(fromPiece, toPiece).should.be.true();
+    });
+  });
+
+  context('when destination piece is supporter\'s piece', () => {
+    const position = memo().is(() => {
+      return [
+        ['*', '*', '*'],
+        ['*', 'l', '*'],
+        ['*', 'l', '*'],
+      ];
+    });
+
+    it('return false', () => {
+      const board = new Board(position());
+      const fromPiece = Piece.create({ type: 'l', x: 8, y: 2 });
+      const toPiece = Piece.create({ type: 'l', x: 8, y: 3 });
+
+      board.isTakingPiece(fromPiece, toPiece).should.be.false();
+    });
+  });
+
+  context('when destination piece is empty', () => {
+    const position = memo().is(() => {
+      return [
+        ['*', '*', '*'],
+        ['*', '*', '*'],
+        ['*', 'P', '*'],
+      ];
+    });
+
+    it('return false', () => {
+      const board = new Board(position());
+      const fromPiece = Piece.create({ type: 'P', x: 8, y: 3 });
+      const toPiece = Piece.create({ type: '*', x: 8, y: 2 });
+
+      board.isTakingPiece(fromPiece, toPiece).should.be.false();
+    });
+  });
+});

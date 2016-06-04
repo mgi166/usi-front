@@ -149,6 +149,14 @@ export default class Board {
     return this;
   }
 
+  // NOTE: No check the piece existance. because this method is used private method.
+  isTakingPiece(fromPiece, toPiece) {
+    if (typeof fromPiece.team() === 'undefined') { return false; }
+    if (typeof toPiece.team() === 'undefined') { return false; }
+
+    return fromPiece.team() !== toPiece.team();
+  }
+
   // if piece of argument is match in the board, return true, else return false
   //
   matchPiece(piece) {
