@@ -71,20 +71,15 @@ describe('#invertCor', () => {
 });
 
 describe('#movePiece', () => {
-  var board = memo().is(() => {
-    var _board = new Board();
-    _board.setBoard(position());
-    return(_board);
-  });
-
-  var position = memo().is(() => { return CONST.USI_INITIAL_BOARD; });
+  const position = memo().is(() => { return CONST.USI_INITIAL_BOARD; });
 
   context('once', () => {
     it('moved piece', () => {
-      var fromPiece = Piece.create({ type: 'P', x: 2, y: 7 });
-      var toPiece = Piece.create({ type: '*', x: 2, y: 6 });
+      const board = new Board(position());
+      const fromPiece = Piece.create({ type: 'P', x: 2, y: 7 });
+      const toPiece = Piece.create({ type: '*', x: 2, y: 6 });
 
-      var newBoard = board().movePiece(fromPiece, toPiece);
+      const newBoard = board.movePiece(fromPiece, toPiece);
       newBoard.toArray().should.eql(
         [
           [ 'l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l' ],
@@ -103,12 +98,13 @@ describe('#movePiece', () => {
     // NOTE: if this.board is changed, reducer does not recognize state changing.
     //       Therefore, this.board does not change after #movePiece.
     it('does not change this.board', () => {
-      var fromPiece = Piece.create({ type: 'P', x: 2, y: 7 });
-      var toPiece = Piece.create({ type: '*', x: 2, y: 6 });
+      const board = new Board(position());
+      const fromPiece = Piece.create({ type: 'P', x: 2, y: 7 });
+      const toPiece = Piece.create({ type: '*', x: 2, y: 6 });
 
-      board().movePiece(fromPiece, toPiece);
+      board.movePiece(fromPiece, toPiece);
 
-      board().toArray().should.eql(
+      board.toArray().should.eql(
         [
           [ 'l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l' ],
           [ '*', 'r', '*', '*', '*', '*', '*', 'b', '*' ],
