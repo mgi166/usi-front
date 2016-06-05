@@ -1,5 +1,5 @@
 import React from 'react';
-import Piece from './piece';
+import Piece from '../containers/piece';
 import { connect } from 'react-redux';
 import Styles from '../styles/board.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
