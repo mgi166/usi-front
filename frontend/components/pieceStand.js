@@ -2,9 +2,9 @@ import React from 'react';
 import { getPieceImage } from '../images/shogiPieces/index';
 
 const PieceStand = ({ pieceStand }) => {
-  const tr = pieceStand.map((piece) => {
+  const tr = pieceStand.map((piece, i) => {
     return (
-      <tr>
+      <tr key={i}>
         <td>
           <img src={getPieceImage(piece)}></img>
         </td>
