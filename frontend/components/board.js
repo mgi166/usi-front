@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Styles from '../styles/board.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import BlackPieceStand from './blackPieceStand';
-import WhitePieceStand from './whitePieceStand';
+import WhitePieceStand from '../containers/whitePieceStand';
 
 const mapStateToProps = (state) => {
   return { board: state.board.board };
