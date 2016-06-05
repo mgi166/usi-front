@@ -24,7 +24,7 @@ const ShogiBoard = ({ board }) => {
     <Grid>
       <Row center="xs">
         <Col xs={1}>
-          <whitePieceStand />
+          <WhitePieceStand />
         </Col>
         <Col xs={6}>
           <table className="board">
