@@ -33,24 +33,22 @@ const ShogiReducer = (state = InitialState, action) => {
       if (newBoard.takedPiece) {
         // TODO: Use constants. Refactor.
         switch (newBoard.takedPiece.team()) {
-        case 'black':
-          state.blackPieceStand.push(newBoard.takedPiece);
+        case 'white':
           return Object.assign(
             {},
             { board: newBoard, whitePieceStand: state.whitePieceStand },
             {
               isHoldingPiece: undefined,
-              blackPieceStand: state.blackPieceStand
+              blackPieceStand: state.blackPieceStand.concat([newBoard.takedPiece])
             }
           );
-        case 'white':
-          state.whitePieceStand.push(newBoard.takedPiece);
+        case 'black':
           return Object.assign(
             {},
             { board: newBoard, blackPieceStand: state.blackPieceStand },
             {
               isHoldingPiece: undefined,
-              whitePieceStand: state.whitePieceStand
+              whitePieceStand: state.whitePieceStand.concat([newBoard.takedPiece])
             }
           );
         }
