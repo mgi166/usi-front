@@ -3,7 +3,8 @@ import Piece from './piece';
 import { connect } from 'react-redux';
 import Styles from '../styles/board.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import PieceStand from './pieceStand';
+import BlackPieceStand from './blackPieceStand';
+import WhitePieceStand from './whitePieceStand';
 
 const mapStateToProps = (state) => {
   return { board: state.board.board };
@@ -23,7 +24,7 @@ const ShogiBoard = ({ board }) => {
     <Grid>
       <Row center="xs">
         <Col xs={1}>
-          <PieceStand />
+          <whitePieceStand />
         </Col>
         <Col xs={6}>
           <table className="board">
@@ -31,7 +32,7 @@ const ShogiBoard = ({ board }) => {
           </table>
         </Col>
         <Col xs={1}>
-          <PieceStand />
+          <BlackPieceStand />
         </Col>
       </Row>
     </Grid>
