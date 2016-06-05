@@ -2,10 +2,10 @@ import { createStore, compose } from 'redux';
 import DevTools from '../components/devTools';
 import Shogi from '../reducers';
 
-let enhancer = compose(
+const enhancer = compose(
   DevTools.instrument()
 );
 
-let store = createStore(Shogi, undefined, enhancer);
+const store = createStore(Shogi, undefined, enhancer);
 
 export default store;
