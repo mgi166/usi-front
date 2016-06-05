@@ -1,5 +1,5 @@
 import React from 'react';
-import Board from './board';
+import Board from '../containers/board';
 
 const App = () => {
   return (

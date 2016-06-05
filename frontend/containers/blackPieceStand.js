@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PieceStand from './pieceStand';
+import PieceStand from '../components/pieceStand';
 
 const mapStateToProps = (state) => {
   return { pieceStand: state.blackPieceStand };
