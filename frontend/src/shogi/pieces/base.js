@@ -10,6 +10,22 @@ export default class Base {
     this.y = y;
   }
 
+  promote() {
+    throw new Error('Implement this method in subclass');
+  }
+
+  unpromote() {
+    throw new Error('Implement this method in subclass');
+  }
+
+  isPromoted() {
+    throw new Error('Implement this method in subclass');
+  }
+
+  moveDef() {
+    throw new Error('Implement this method in subclass');
+  }
+
   equals(piece) {
     return (
       this.type === piece.type &&
