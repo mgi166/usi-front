@@ -26,6 +26,10 @@ export default class Base {
     throw new Error('Implement this method in subclass');
   }
 
+  toOpponentPiece() {
+    throw new Error('Implement this method in subclass');
+  }
+
   equals(piece) {
     return (
       this.type === piece.type &&
