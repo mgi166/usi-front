@@ -41,6 +41,28 @@ export default class Base {
     );
   }
 
+  isBlackPromotePlace() {
+    switch (this.y) {
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+    }
+  }
+
+  isWhitePromotePlace() {
+    switch (this.y) {
+    case 7:
+    case 8:
+    case 9:
+      return true;
+    default:
+      return false;
+    }
+  }
+
   isBlack(piece = this) {
     return this.isUsiBlack(piece);
   }
