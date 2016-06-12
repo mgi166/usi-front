@@ -28,6 +28,10 @@ export default class King extends Base {
     return true;
   }
 
+  toOpponentPiece() {
+    throw new Error.new('If King is captured, Gameover!');
+  }
+
   moveDef() {
     return { just: [[1, 1], [1, 0], [1, -1], [0, 1], [0, -1], [-1, -1], [-1, 0], [-1, 1]] };
   }

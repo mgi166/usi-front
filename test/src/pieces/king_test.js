@@ -130,4 +130,20 @@ describe('King', () => {
       });
     });
   });
+
+  describe('#toOpponentPiece', () => {
+    context('black', () => {
+      it('throw error', () => {
+        const king = new King({ type: 'K' });
+        (() => { return king.toOpponentPiece(); }).should.throw();
+      });
+    });
+
+    context('white', () => {
+      it('throw error', () => {
+        const king = new King({ type: 'k' });
+        (() => { return king.toOpponentPiece(); }).should.throw();
+      });
+    });
+  });
 });
