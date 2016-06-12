@@ -47,6 +47,7 @@ export default class Silver extends Base {
   }
 
   toOpponentPiece() {
+    this.clearAttrs();
     switch (this.type) {
     case CONST.USI_SILVER_BLACK_TYPE:
     case CONST.USI_SILVER_BLACK_PROMOTE_TYPE:

@@ -47,6 +47,7 @@ export default class Lance extends Base {
   }
 
   toOpponentPiece() {
+    this.clearAttrs();
     switch (this.type) {
     case CONST.USI_LANCE_BLACK_TYPE:
     case CONST.USI_LANCE_BLACK_PROMOTE_TYPE:

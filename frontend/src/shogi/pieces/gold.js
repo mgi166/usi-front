@@ -29,6 +29,7 @@ export default class Gold extends Base {
   }
 
   toOpponentPiece() {
+    this.clearAttrs();
     switch (this.type) {
     case CONST.USI_GOLD_BLACK_TYPE:
       this.type = CONST.USI_GOLD_WHITE_TYPE;
