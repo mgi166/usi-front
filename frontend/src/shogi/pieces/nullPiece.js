@@ -20,6 +20,9 @@ export default class NullPiece extends Base {
     return true;
   }
 
+  toOpponentPiece() {
+  }
+
   moveDef() {
   }
 }
