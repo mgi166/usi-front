@@ -75,6 +75,14 @@ export default class Base {
     return _.includes(CONST.USI_WHITE_PIECES, piece.type);
   }
 
+  clearAttrs() {
+    this.type = undefined;
+    this.movable = undefined;
+    this.isPlaced = undefined;
+    this.x = undefined;
+    this.y = undefined;
+  }
+
   imageFileName() {
     var fileName = CONST.PIECE_TYPE_TO_IMAGE_FILE_MAP[this.type];
     if (!fileName) { return undefined; };
