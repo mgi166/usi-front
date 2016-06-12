@@ -188,4 +188,38 @@ describe('Pawn', () => {
       });
     });
   });
+
+  describe('#toOpponentPiece', () => {
+    context('no promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const pawn = new Pawn({ type: 'P' });
+          pawn.toOpponentPiece().type.should.eql('p');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const pawn = new Pawn({ type: 'p' });
+          pawn.toOpponentPiece().type.should.eql('P');
+        });
+      });
+    });
+
+    context('promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const pawn = new Pawn({ type: 'P+' });
+          pawn.toOpponentPiece().type.should.eql('p');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const pawn = new Pawn({ type: 'p+' });
+          pawn.toOpponentPiece().type.should.eql('P');
+        });
+      });
+    });
+  });
 });
