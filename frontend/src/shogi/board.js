@@ -65,7 +65,7 @@ export default class Board {
 
   enhancePlaceablePoint(placePiece) {
     if (placePiece.type === 'P' || placePiece.type === 'p') {
-      const pawnXcors = this.IndexXOfPiece(placePiece);
+      const pawnXcors = this.indexXOfPiece(placePiece);
     }
 
     this.board.forEach((rows, y) => {
@@ -107,7 +107,7 @@ export default class Board {
     });
   }
 
-  IndexXOfPiece(searchPiece) {
+  indexXOfPiece(searchPiece) {
     const pieces = this.board.map((rows) => {
       return rows.map((piece, x) => {
         return piece.type === searchPiece.type ? x : undefined;
