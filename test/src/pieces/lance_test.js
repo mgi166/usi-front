@@ -188,4 +188,38 @@ describe('Lance', () => {
       });
     });
   });
+
+  describe('#toOpponentPiece', () => {
+    context('no promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const lance = new Lance({ type: 'L' });
+          lance.toOpponentPiece().type.should.eql('l');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const lance = new Lance({ type: 'l' });
+          lance.toOpponentPiece().type.should.eql('L');
+        });
+      });
+    });
+
+    context('promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const lance = new Lance({ type: 'L+' });
+          lance.toOpponentPiece().type.should.eql('l');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const lance = new Lance({ type: 'l+' });
+          lance.toOpponentPiece().type.should.eql('L');
+        });
+      });
+    });
+  });
 });
