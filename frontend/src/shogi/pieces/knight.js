@@ -47,7 +47,7 @@ export default class Knight extends Base {
   }
 
   toOpponentPiece() {
-    this.clearAttrs();
+    this.clearPositonalAttrs();
     switch (this.type) {
     case CONST.USI_KNIGHT_BLACK_TYPE:
     case CONST.USI_KNIGHT_BLACK_PROMOTE_TYPE:

@@ -47,7 +47,7 @@ export default class Rook extends Base {
   }
 
   toOpponentPiece() {
-    this.clearAttrs();
+    this.clearPositonalAttrs();
     switch (this.type) {
     case CONST.USI_ROOK_BLACK_TYPE:
     case CONST.USI_ROOK_BLACK_PROMOTE_TYPE:

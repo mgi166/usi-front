@@ -75,8 +75,7 @@ export default class Base {
     return _.includes(CONST.USI_WHITE_PIECES, piece.type);
   }
 
-  clearAttrs() {
-    this.type = undefined;
+  clearPositonalAttrs() {
     this.movable = undefined;
     this.isPlaced = undefined;
     this.x = undefined;

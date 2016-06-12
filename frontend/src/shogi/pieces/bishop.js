@@ -47,7 +47,7 @@ export default class Bishop extends Base {
   }
 
   toOpponentPiece() {
-    this.clearAttrs();
+    this.clearPositonalAttrs();
     switch (this.type) {
     case CONST.USI_BISHOP_BLACK_TYPE:
     case CONST.USI_BISHOP_BLACK_PROMOTE_TYPE:
