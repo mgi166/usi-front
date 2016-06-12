@@ -202,4 +202,38 @@ describe('Bishop', () => {
       });
     });
   });
+
+  describe('#toOpponentPiece', () => {
+    context('no promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const bishop = new Bishop({ type: 'B' });
+          bishop.toOpponentPiece().type.should.eql('b');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const bishop = new Bishop({ type: 'b' });
+          bishop.toOpponentPiece().type.should.eql('B');
+        });
+      });
+    });
+
+    context('promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const bishop = new Bishop({ type: 'B+' });
+          bishop.toOpponentPiece().type.should.eql('b');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const bishop = new Bishop({ type: 'b+' });
+          bishop.toOpponentPiece().type.should.eql('B');
+        });
+      });
+    });
+  });
 });

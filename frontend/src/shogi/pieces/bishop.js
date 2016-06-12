@@ -46,6 +46,20 @@ export default class Bishop extends Base {
     }
   }
 
+  toOpponentPiece() {
+    switch (this.type) {
+    case CONST.USI_BISHOP_BLACK_TYPE:
+    case CONST.USI_BISHOP_BLACK_PROMOTE_TYPE:
+      this.type = CONST.USI_BISHOP_WHITE_TYPE;
+      break;
+    case CONST.USI_BISHOP_WHITE_TYPE:
+    case CONST.USI_BISHOP_WHITE_PROMOTE_TYPE:
+      this.type = CONST.USI_BISHOP_BLACK_TYPE;
+      break;
+    }
+    return this;
+  }
+
   moveDef() {
     switch (this.isPromoted()) {
     case true:
