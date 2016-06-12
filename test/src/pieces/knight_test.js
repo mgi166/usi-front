@@ -190,4 +190,38 @@ describe('Knight', () => {
       });
     });
   });
+
+  describe('#toOpponentPiece', () => {
+    context('no promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const knight = new Knight({ type: 'N' });
+          knight.toOpponentPiece().type.should.eql('n');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const knight = new Knight({ type: 'n' });
+          knight.toOpponentPiece().type.should.eql('N');
+        });
+      });
+    });
+
+    context('promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const knight = new Knight({ type: 'N+' });
+          knight.toOpponentPiece().type.should.eql('n');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const knight = new Knight({ type: 'n+' });
+          knight.toOpponentPiece().type.should.eql('N');
+        });
+      });
+    });
+  });
 });
