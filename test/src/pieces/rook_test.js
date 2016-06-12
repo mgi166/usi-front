@@ -202,4 +202,38 @@ describe('Rook', () => {
       });
     });
   });
+
+  describe('#toOpponentPiece', () => {
+    context('no promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const rook = new Rook({ type: 'R' });
+          rook.toOpponentPiece().type.should.eql('r');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const rook = new Rook({ type: 'r' });
+          rook.toOpponentPiece().type.should.eql('R');
+        });
+      });
+    });
+
+    context('promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const rook = new Rook({ type: 'R+' });
+          rook.toOpponentPiece().type.should.eql('r');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const rook = new Rook({ type: 'r+' });
+          rook.toOpponentPiece().type.should.eql('R');
+        });
+      });
+    });
+  });
 });
