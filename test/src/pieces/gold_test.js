@@ -126,4 +126,21 @@ describe('Gold', () => {
       });
     });
   });
+
+
+  describe('#toOpponentPiece', () => {
+    context('black', () => {
+      it('return opponent piece', () => {
+        const gold = new Gold({ type: 'G' });
+        gold.toOpponentPiece().type.should.eql('g');
+      });
+    });
+
+    context('white', () => {
+      it('return opponent piece', () => {
+        const gold = new Gold({ type: 'g' });
+        gold.toOpponentPiece().type.should.eql('G');
+      });
+    });
+  });
 });
