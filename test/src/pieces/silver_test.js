@@ -196,4 +196,38 @@ describe('Silver', () => {
       });
     });
   });
+
+  describe('#toOpponentPiece', () => {
+    context('no promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const silver = new Silver({ type: 'S' });
+          silver.toOpponentPiece().type.should.eql('s');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const silver = new Silver({ type: 's' });
+          silver.toOpponentPiece().type.should.eql('S');
+        });
+      });
+    });
+
+    context('promoted', () => {
+      context('black', () => {
+        it('return opponent piece', () => {
+          const silver = new Silver({ type: 'S+' });
+          silver.toOpponentPiece().type.should.eql('s');
+        });
+      });
+
+      context('white', () => {
+        it('return opponent piece', () => {
+          const silver = new Silver({ type: 's+' });
+          silver.toOpponentPiece().type.should.eql('S');
+        });
+      });
+    });
+  });
 });
