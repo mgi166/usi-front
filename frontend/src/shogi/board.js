@@ -13,10 +13,10 @@ export default class Board {
   }
 
   createBoard(board) {
-    var _board = board.map((row, y) => {
-      var yCor = this.transposeToCorY(y);
-      var rows = row.map((type, x) => {
-        var xCor = this.transposeToCorX(x);
+    const _board = board.map((row, y) => {
+      const yCor = this.transposeToCorY(y);
+      const rows = row.map((type, x) => {
+        const xCor = this.transposeToCorX(x);
         return (
           Piece.create({ type: type, x: xCor, y: yCor })
         );
@@ -65,12 +65,12 @@ export default class Board {
 
   enhancePlaceablePoint(placePiece) {
     if (placePiece.type === 'P' || placePiece.type === 'p') {
-      var pawnXcors = this.IndexXOfPiece(placePiece);
+      const pawnXcors = this.IndexXOfPiece(placePiece);
     }
 
     this.board.forEach((rows, y) => {
       rows.forEach((piece, x) => {
-        var moveDef = placePiece.moveDef();
+        const moveDef = placePiece.moveDef();
 
         if (placePiece.type === 'P') {
           // NOTE: Does not move, if placed a piece in this point.
@@ -108,7 +108,7 @@ export default class Board {
   }
 
   IndexXOfPiece(searchPiece) {
-    var pieces = this.board.map((rows) => {
+    const pieces = this.board.map((rows) => {
       return rows.map((piece, x) => {
         return piece.type === searchPiece.type ? x : undefined;
       });
@@ -119,13 +119,13 @@ export default class Board {
 
   enhanceMovablePoint(piece) {
     this.checkPieceExisted(piece);
-    var moveDef = piece.moveDef();
+    const moveDef = piece.moveDef();
 
     if (typeof moveDef === 'undefined') {
       return this;
     }
 
-    var newBoard = this.cloneBoard();
+    const newBoard = this.cloneBoard();
 
     // if moveDef has just property, piece moves just coordinates on board.
     //
@@ -164,8 +164,8 @@ export default class Board {
   // if piece of argument is match in the board, return true, else return false
   //
   matchPiece(piece) {
-    var isUndefined = typeof this.findPiece(piece) === 'undefined';
-    var isEqualPiece = this.findPiece(piece).equals(
+    const isUndefined = typeof this.findPiece(piece) === 'undefined';
+    const isEqualPiece = this.findPiece(piece).equals(
       Piece.create({
         x: piece.x,
         y: piece.y,
@@ -261,13 +261,13 @@ export default class Board {
   }
 
   fetchPiece(xIndex, yIndex) {
-    var row = this.board[yIndex];
+    const row = this.board[yIndex];
     return row ? row[xIndex] : undefined;
   }
 
   findPiece(piece) {
-    var [toCorX, toCorY] = [piece.x, piece.y];
-    var [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
+    const [toCorX, toCorY] = [piece.x, piece.y];
+    const [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
     return this.fetchPiece(toIdxX, toIdxY);
   }
 
