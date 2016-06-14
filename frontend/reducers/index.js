@@ -17,6 +17,7 @@ const ShogiReducer = (state = InitialState, action) => {
       let newBoard = state.board.enhanceMovablePoint(action.piece);
       return Object.assign(
         {},
+        state,
         {
           board: newBoard,
           blackPieceStand: state.blackPieceStand,
@@ -37,18 +38,22 @@ const ShogiReducer = (state = InitialState, action) => {
         case 'white':
           return Object.assign(
             {},
-            { board: newBoard, whitePieceStand: state.whitePieceStand },
+            state,
             {
+              board: newBoard,
               isHoldingPiece: undefined,
-              blackPieceStand: state.blackPieceStand.concat([takedPiece.toOpponentPiece()])
+              blackPieceStand: state.blackPieceStand.concat([takedPiece.toOpponentPiece()]),
+              whitePieceStand: state.whitePieceStand
             }
           );
         case 'black':
           return Object.assign(
             {},
-            { board: newBoard, blackPieceStand: state.blackPieceStand },
+            state,
             {
+              board: newBoard,
               isHoldingPiece: undefined,
+              blackPieceStand: state.blackPieceStand,
               whitePieceStand: state.whitePieceStand.concat([takedPiece.toOpponentPiece()])
             }
           );
@@ -56,12 +61,13 @@ const ShogiReducer = (state = InitialState, action) => {
       } else {
         return Object.assign(
           {},
+          state,
           {
             board: newBoard,
+            isHoldingPiece: undefined,
             blackPieceStand: state.blackPieceStand,
             whitePieceStand: state.whitePieceStand
-          },
-          { isHoldingPiece: undefined }
+          }
         );
       }
     } else {
