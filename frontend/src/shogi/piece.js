@@ -11,7 +11,7 @@ export default class Piece {
     this.y = y;
   }
 
-  static create({ type, x, y, movable = false, isPlaced =  false }) {
+  static create({ type, x, y, movable, isPlaced }) {
     var klass = getClass(type);
     return new klass({ type: type, x: x, y: y, movable: movable, isPlaced: isPlaced });
   }
