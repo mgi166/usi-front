@@ -15,3 +15,7 @@ export function movePiece(board, piece) {
 export function showPromoteModal() {
   return { type: CONST.SHOW_PROMOTE_MODAL };
 }
+
+export function hidePromoteModal() {
+  return { type: CONST.HIDE_PROMOTE_MODAL };
+}
