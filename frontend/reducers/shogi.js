@@ -19,13 +19,13 @@ export default function shogi(state = initialState, action) {
       state,
       {
         board: newBoard,
-        isHoldingPiece: action.piece
+        holdingPiece: action.piece
       }
     );
   case CONST.MOVE_PIECE:
     // if same piece click, release piece.
-    if (state.isHoldingPiece) {
-      let newBoard = state.board.movePiece(state.isHoldingPiece, action.piece);
+    if (state.holdingPiece) {
+      let newBoard = state.board.movePiece(state.holdingPiece, action.piece);
 
       if (newBoard.takedPiece) {
         const takedPiece = newBoard.takedPiece;
@@ -37,7 +37,7 @@ export default function shogi(state = initialState, action) {
             state,
             {
               board: newBoard,
-              isHoldingPiece: undefined,
+              holdingPiece: undefined,
               blackPieceStand: state.blackPieceStand.concat([takedPiece.toOpponentPiece()])
             }
           );
@@ -47,7 +47,7 @@ export default function shogi(state = initialState, action) {
             state,
             {
               board: newBoard,
-              isHoldingPiece: undefined,
+              holdingPiece: undefined,
               whitePieceStand: state.whitePieceStand.concat([takedPiece.toOpponentPiece()])
             }
           );
@@ -58,12 +58,12 @@ export default function shogi(state = initialState, action) {
           state,
           {
             board: newBoard,
-            isHoldingPiece: undefined
+            holdingPiece: undefined
           }
         );
       }
     } else {
-      return Object.assign({}, state, { isHoldingPiece: action.piece });
+      return Object.assign({}, state, { holdingPiece: action.piece });
     }
   default:
     return state;

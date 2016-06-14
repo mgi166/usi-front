@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
       }
 
       const state = store.getState();
-      const actionCreator = state.isHoldingPiece ? movePiece : holdPiece;
+      const actionCreator = state.holdingPiece ? movePiece : holdPiece;
       dispatch(actionCreator(board, piece));
     }
   };
