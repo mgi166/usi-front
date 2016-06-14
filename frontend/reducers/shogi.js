@@ -35,47 +35,42 @@ export default function shogi(state = initialState, action) {
       { board: state.board.enhanceMovablePoint(action.piece) }
     );
   case CONST.MOVE_PIECE:
-    // if same piece click, release piece.
-    if (state.holdingPiece) {
-      let newBoard = state.board.movePiece(state.holdingPiece, action.piece);
+    let newBoard = state.board.movePiece(state.holdingPiece, action.piece);
 
-      if (newBoard.takedPiece) {
-        const takedPiece = newBoard.takedPiece;
-        // TODO: Use constants. Refactor.
-        switch (newBoard.takedPiece.team()) {
-        case 'white':
-          return Object.assign(
-            {},
-            state,
-            {
-              board: newBoard,
-              holdingPiece: undefined,
-              blackPieceStand: state.blackPieceStand.concat([takedPiece.toOpponentPiece()])
-            }
-          );
-        case 'black':
-          return Object.assign(
-            {},
-            state,
-            {
-              board: newBoard,
-              holdingPiece: undefined,
-              whitePieceStand: state.whitePieceStand.concat([takedPiece.toOpponentPiece()])
-            }
-          );
-        }
-      } else {
+    if (newBoard.takedPiece) {
+      const takedPiece = newBoard.takedPiece;
+      // TODO: Use constants. Refactor.
+      switch (newBoard.takedPiece.team()) {
+      case 'white':
         return Object.assign(
           {},
           state,
           {
             board: newBoard,
-            holdingPiece: undefined
+            holdingPiece: undefined,
+            blackPieceStand: state.blackPieceStand.concat([takedPiece.toOpponentPiece()])
+          }
+        );
+      case 'black':
+        return Object.assign(
+          {},
+          state,
+          {
+            board: newBoard,
+            holdingPiece: undefined,
+            whitePieceStand: state.whitePieceStand.concat([takedPiece.toOpponentPiece()])
           }
         );
       }
     } else {
-      return Object.assign({}, state, { holdingPiece: action.piece });
+      return Object.assign(
+        {},
+        state,
+        {
+          board: newBoard,
+          holdingPiece: undefined
+        }
+      );
     }
   default:
     return state;
