@@ -8,6 +8,10 @@ export function holdPiece(board, piece) {
   return { type: CONST.HOLD_PIECE, board, piece };
 }
 
+export function enhanceMovablePoint(board, piece) {
+  return { type: CONST.ENHANCE_MOVABLE_POINT, board, piece };
+}
+
 export function movePiece(board, piece) {
   return { type: CONST.MOVE_PIECE, board, piece };
 }
