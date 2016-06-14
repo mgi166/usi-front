@@ -1,5 +1,5 @@
 import React from 'react';
-import { movePiece, holdPiece } from '../actions';
+import { movePiece, holdPiece, showPromoteModal } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
@@ -14,6 +14,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onPieceClick: (board, piece) => {
+      if (piece.isBlackPromotePlace() || piece.isWhitePromotePlace()) {
+        dispatch(showPromoteModal(piece));
+      }
+
       const state = store.getState();
       const actionCreator = state.isHoldingPiece ? movePiece : holdPiece;
       dispatch(actionCreator(board, piece));
