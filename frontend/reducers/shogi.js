@@ -18,6 +18,14 @@ export default function shogi(state = initialState, action) {
       state,
       { holdingPiece: action.piece }
     );
+  case CONST.RELEASE_PIECE:
+    if (action.piece.isEmpty()) return state;
+
+    return Object.assign(
+      {},
+      state,
+      { board: state.board.cloneBoard().clearAttrs(), holdingPiece: undefined }
+    );
   case CONST.ENHANCE_MOVABLE_POINT:
     if (action.piece.isEmpty()) return state;
 
