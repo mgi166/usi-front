@@ -25,6 +25,10 @@ describe('NullPiece', () => {
     });
   });
 
+  describe('#isEmpty', () => {
+    it('returns true', () => {
+      const piece = new NullPiece({ type: '*'});
+      piece.isEmpty().should.be.true();
     });
   });
 });

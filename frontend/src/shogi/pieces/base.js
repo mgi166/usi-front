@@ -71,6 +71,10 @@ export default class Base {
     return this.isUsiWhite(piece);
   }
 
+  isEmpty() {
+    return false;
+  }
+
   team() {
     if (this.isBlack()) {
       return CONST.USI_BLACK_TEAM;
