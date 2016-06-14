@@ -73,6 +73,8 @@ const ShogiReducer = (state = InitialState, action) => {
     } else {
       return Object.assign({}, state, { isHoldingPiece: action.piece });
     }
+  case CONST.SHOW_PROMOTE_MODAL:
+    return Object.assign({}, state, { promoteModal: true });
   default:
     return state;
   }
