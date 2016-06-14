@@ -1,11 +1,12 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Styles from '../styles/board.css';
+import PromoteModal from '../components/modals/promoteModal';
 import Piece from '../containers/piece';
 import BlackPieceStand from '../containers/blackPieceStand';
 import WhitePieceStand from '../containers/whitePieceStand';
 
-const Board = ({ board }) => {
+const Board = ({ board, promoteModal }) => {
   const tbody = board.map((row, y) => {
     const rows = row.map((piece, x) => {
       return (
@@ -17,6 +18,7 @@ const Board = ({ board }) => {
 
   return (
     <Grid>
+      <PromoteModal open={promoteModal} />
       <Row center="xs">
         <Col xs={1}>
           <WhitePieceStand />
