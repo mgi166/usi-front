@@ -1,5 +1,6 @@
 import NullPiece from '../../../frontend/src/shogi/pieces/nullPiece';
 import memo from 'memo-is';
+import should from 'should';
 import _ from 'lodash';
 
 describe('NullPiece', () => {
@@ -19,9 +20,11 @@ describe('NullPiece', () => {
 
   describe('imageFileName', () => {
     it('returns undefined', () => {
-      var piece = new NullPiece({ type: '*' });
-      (typeof piece.imageFileName()).should.be.eql('undefined');
       const piece = new NullPiece({ type: '*' });
+      should(piece.imageFileName()).be.undefined();
+    });
+  });
+
     });
   });
 });
