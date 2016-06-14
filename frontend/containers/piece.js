@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
       if (state.shogi.holdingPiece) {
         dispatch(movePiece(board, piece));
       } else {
-        dispatch(holdPiece(board, piece));
+        dispatch(holdPiece(piece));
         dispatch(enhanceMovablePoint(board, piece));
       }
     }
