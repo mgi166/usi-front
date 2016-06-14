@@ -5,7 +5,8 @@ const InitialState = {
   board: Shogi.Board,
   isHoldingPiece: undefined,
   blackPieceStand: [],
-  whitePieceStand: []
+  whitePieceStand: [],
+  promoteModal: false
 };
 
 const ShogiReducer = (state = InitialState, action) => {
@@ -75,6 +76,8 @@ const ShogiReducer = (state = InitialState, action) => {
     }
   case CONST.SHOW_PROMOTE_MODAL:
     return Object.assign({}, state, { promoteModal: true });
+  case CONST.HIDE_PROMOTE_MODAL:
+    return Object.assign({}, state, { promoteModal: false });
   default:
     return state;
   }
