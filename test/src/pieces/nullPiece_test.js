@@ -5,14 +5,14 @@ import _ from 'lodash';
 describe('NullPiece', () => {
   describe('#constructor', () => {
     it('this.type is `*`', () => {
-      var piece = new NullPiece({ type: '*' });
+      const piece = new NullPiece({ type: '*' });
       piece.type.should.eql('*');
     });
   });
 
   describe('#isPromoted', () => {
     it('returns true', () => {
-      var piece = new NullPiece({ type: '*' });
+      const piece = new NullPiece({ type: '*' });
       piece.isPromoted().should.eql(true);
     });
   });
@@ -21,6 +21,7 @@ describe('NullPiece', () => {
     it('returns undefined', () => {
       var piece = new NullPiece({ type: '*' });
       (typeof piece.imageFileName()).should.be.eql('undefined');
+      const piece = new NullPiece({ type: '*' });
     });
   });
 });
