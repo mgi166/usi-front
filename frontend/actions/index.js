@@ -24,6 +24,10 @@ export function captureBlackPiece(piece) {
   return { type: CONST.CAPTURE_BLACK_PIECE, piece };
 }
 
+export function captureWhitePiece(piece) {
+  return { type: CONST.CAPTURE_WHITE_PIECE, piece };
+}
+
 export function showPromoteModal() {
   return { type: CONST.SHOW_PROMOTE_MODAL };
 }
