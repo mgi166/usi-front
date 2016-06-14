@@ -11,3 +11,7 @@ export function holdPiece(board, piece) {
 export function movePiece(board, piece) {
   return { type: CONST.MOVE_PIECE, board, piece };
 }
+
+export function showPromoteModal() {
+  return { type: CONST.SHOW_PROMOTE_MODAL };
+}
