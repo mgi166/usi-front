@@ -18,7 +18,8 @@ export default class PromoteModal extends Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.props.onHidePromoteModal();
+    this.setState({ open: this.props.open });
   }
 
   render() {
@@ -29,8 +30,7 @@ export default class PromoteModal extends Component {
 
     return (
       <div>
-        <RaisedButton label="Modal" onTouchTap={this.handleOpen.bind(this)} />
-        <Dialog title="" actions={actions} modal={true} open={this.state.open} />
+        <Dialog title="" actions={actions} modal={true} open={this.props.open} />
       </div>
     );
   }
