@@ -12,15 +12,19 @@ export default function shogi(state = initialState, action) {
   switch (action.type) {
   case CONST.HOLD_PIECE:
     if (action.piece.isEmpty()) return state;
-    let newBoard = state.board.enhanceMovablePoint(action.piece);
 
     return Object.assign(
       {},
       state,
-      {
-        board: newBoard,
-        holdingPiece: action.piece
-      }
+      { holdingPiece: action.piece }
+    );
+  case CONST.ENHANCE_MOVABLE_POINT:
+    if (action.piece.isEmpty()) return state;
+
+    return Object.assign(
+      {},
+      state,
+      { board: state.board.enhanceMovablePoint(action.piece) }
     );
   case CONST.MOVE_PIECE:
     // if same piece click, release piece.

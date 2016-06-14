@@ -1,5 +1,5 @@
 import React from 'react';
-import { movePiece, holdPiece, showPromoteModal } from '../actions';
+import { movePiece, holdPiece, showPromoteModal, enhanceMovablePoint } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
@@ -19,8 +19,13 @@ const mapDispatchToProps = (dispatch) => {
       }
 
       const state = store.getState();
-      const actionCreator = state.shogi.holdingPiece ? movePiece : holdPiece;
-      dispatch(actionCreator(board, piece));
+
+      if (state.shogi.holdingPiece) {
+        dispatch(movePiece(board, piece));
+      } else {
+        dispatch(holdPiece(board, piece));
+        dispatch(enhanceMovablePoint(board, piece));
+      }
     }
   };
 };
