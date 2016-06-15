@@ -45,7 +45,7 @@ export default function shogi(state = initialState, action) {
         holdingPiece: undefined
       }
     );
-  case CONST.CAPTURE_BLACK_PIECE:
+  case CONST.ADD_BLACK_PIECE_STAND:
     return Object.assign(
       {},
       state,

@@ -20,8 +20,8 @@ export function movePiece(board, piece) {
   return { type: CONST.MOVE_PIECE, board, piece };
 }
 
-export function captureBlackPiece(piece) {
-  return { type: CONST.CAPTURE_BLACK_PIECE, piece };
+export function addBlackPieceStand(piece) {
+  return { type: CONST.ADD_BLACK_PIECE_STAND, piece };
 }
 
 export function captureWhitePiece(piece) {

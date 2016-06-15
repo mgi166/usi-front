@@ -1,5 +1,5 @@
 import React from 'react';
-import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, captureBlackPiece, captureWhitePiece } from '../actions';
+import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
@@ -36,7 +36,8 @@ const mapDispatchToProps = (dispatch) => {
             case 'black':
               dispatch(captureWhitePiece(capturedPiece));
             case 'white':
-              dispatch(captureBlackPiece(capturedPiece));
+              dispatch(addBlackPieceStand(capturedPiece));
+              break;
             default:
               break;
             }
