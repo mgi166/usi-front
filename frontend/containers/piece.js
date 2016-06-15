@@ -1,5 +1,5 @@
 import React from 'react';
-import { movePiece, holdPiece, showPromoteModal } from '../actions';
+import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
   };
 };
 
+// TODO: Refactor.
 const mapDispatchToProps = (dispatch) => {
   return {
     onPieceClick: (board, piece) => {
@@ -19,8 +20,35 @@ const mapDispatchToProps = (dispatch) => {
       }
 
       const state = store.getState();
-      const actionCreator = state.isHoldingPiece ? movePiece : holdPiece;
-      dispatch(actionCreator(board, piece));
+
+      if (state.shogi.holdingPiece) {
+        if (piece.equals(state.shogi.holdingPiece)) {
+          dispatch(releasePiece(piece));
+        } else {
+          dispatch(movePiece(board, piece));
+
+          const capturedPiece = store.getState().shogi.board.takedPiece;
+
+          switch (capturedPiece) {
+          case undefined:
+            break;
+          default:
+            switch (capturedPiece.team()) {
+            case 'black':
+              dispatch(addWhitePieceStand(capturedPiece));
+              break;
+            case 'white':
+              dispatch(addBlackPieceStand(capturedPiece));
+              break;
+            default:
+              break;
+            }
+          }
+        }
+      } else {
+        dispatch(holdPiece(piece));
+        dispatch(enhanceMovablePoint(board, piece));
+      }
     }
   };
 };

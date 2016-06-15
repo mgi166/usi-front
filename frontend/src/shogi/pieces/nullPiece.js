@@ -20,6 +20,10 @@ export default class NullPiece extends Base {
     return true;
   }
 
+  isEmpty() {
+    return true;
+  }
+
   toOpponentPiece() {
   }
 

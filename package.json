@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "apeman-react-footer": "^2.0.4",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "classnames": "^2.2.5",
     "express": "^4.13.4",
     "flexboxgrid": "^6.3.0",

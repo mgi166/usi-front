@@ -4,7 +4,7 @@ import board from '../components/board';
 import { hidePromoteModal } from '../actions';
 
 const mapStateToProps = (state) => {
-  return { board: state.board.board, promoteModal: state.promoteModal };
+  return { board: state.shogi.board.board, open: state.promoteModal.open };
 };
 
 const mapDispatchToProps = (dispatch) => {

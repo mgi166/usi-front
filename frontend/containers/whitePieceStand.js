@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import pieceStand from '../components/pieceStand';
 
 const mapStateToProps = (state) => {
-  return { pieceStand: state.whitePieceStand };
+  return { pieceStand: state.shogi.whitePieceStand };
 };
 
 const WhitePieceStand = connect(

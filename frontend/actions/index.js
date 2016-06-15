@@ -4,12 +4,28 @@ export function changeTurn(turn) {
   return { type: CONST.CHANGE_TURN, turn };
 }
 
-export function holdPiece(board, piece) {
-  return { type: CONST.HOLD_PIECE, board, piece };
+export function holdPiece(piece) {
+  return { type: CONST.HOLD_PIECE, piece };
+}
+
+export function releasePiece(piece) {
+  return { type: CONST.RELEASE_PIECE, piece };
+}
+
+export function enhanceMovablePoint(board, piece) {
+  return { type: CONST.ENHANCE_MOVABLE_POINT, board, piece };
 }
 
 export function movePiece(board, piece) {
   return { type: CONST.MOVE_PIECE, board, piece };
+}
+
+export function addBlackPieceStand(piece) {
+  return { type: CONST.ADD_BLACK_PIECE_STAND, piece };
+}
+
+export function addWhitePieceStand(piece) {
+  return { type: CONST.ADD_WHITE_PIECE_STAND, piece };
 }
 
 export function showPromoteModal() {
