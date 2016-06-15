@@ -1,5 +1,5 @@
 import React from 'react';
-import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint } from '../actions';
+import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, captureBlackPiece, captureWhitePiece } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
@@ -25,6 +25,22 @@ const mapDispatchToProps = (dispatch) => {
           dispatch(releasePiece(piece));
         } else {
           dispatch(movePiece(board, piece));
+
+          const capturedPiece = store.getState().shogi.board.takedPiece;
+
+          switch (capturedPiece) {
+          case undefined:
+            break;
+          default:
+            switch (capturedPiece.team()) {
+            case 'black':
+              dispatch(captureBlackPiece(capturedPiece));
+            case 'white':
+              dispatch(captureWhitePiece(capturedPiece));
+            default:
+              break;
+            }
+          }
         }
       } else {
         dispatch(holdPiece(piece));
