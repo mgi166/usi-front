@@ -24,8 +24,8 @@ export function addBlackPieceStand(piece) {
   return { type: CONST.ADD_BLACK_PIECE_STAND, piece };
 }
 
-export function captureWhitePiece(piece) {
-  return { type: CONST.CAPTURE_WHITE_PIECE, piece };
+export function addWhitePieceStand(piece) {
+  return { type: CONST.ADD_WHITE_PIECE_STAND, piece };
 }
 
 export function showPromoteModal() {

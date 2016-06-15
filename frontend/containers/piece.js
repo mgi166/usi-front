@@ -34,7 +34,8 @@ const mapDispatchToProps = (dispatch) => {
           default:
             switch (capturedPiece.team()) {
             case 'black':
-              dispatch(captureWhitePiece(capturedPiece));
+              dispatch(addWhitePieceStand(capturedPiece));
+              break;
             case 'white':
               dispatch(addBlackPieceStand(capturedPiece));
               break;
