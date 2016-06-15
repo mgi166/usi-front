@@ -35,43 +35,32 @@ export default function shogi(state = initialState, action) {
       { board: state.board.enhanceMovablePoint(action.piece) }
     );
   case CONST.MOVE_PIECE:
-    let newBoard = state.board.movePiece(state.holdingPiece, action.piece);
+    const newBoard = state.board.movePiece(state.holdingPiece, action.piece);
 
-    if (newBoard.takedPiece) {
-      const takedPiece = newBoard.takedPiece;
-      // TODO: Use constants. Refactor.
-      switch (newBoard.takedPiece.team()) {
-      case 'white':
-        return Object.assign(
-          {},
-          state,
-          {
-            board: newBoard,
-            holdingPiece: undefined,
-            blackPieceStand: state.blackPieceStand.concat([takedPiece.toOpponentPiece()])
-          }
-        );
-      case 'black':
-        return Object.assign(
-          {},
-          state,
-          {
-            board: newBoard,
-            holdingPiece: undefined,
-            whitePieceStand: state.whitePieceStand.concat([takedPiece.toOpponentPiece()])
-          }
-        );
+    return Object.assign(
+      {},
+      state,
+      {
+        board: newBoard,
+        holdingPiece: undefined
       }
-    } else {
-      return Object.assign(
-        {},
-        state,
-        {
-          board: newBoard,
-          holdingPiece: undefined
-        }
-      );
-    }
+    );
+  case CONST.CAPTURE_BLACK_PIECE:
+    return Object.assign(
+      {},
+      state,
+      {
+        blackPieceStand: state.blackPieceStand.concat([action.piece.toOpponentPiece()])
+      }
+    );
+  case CONST.CAPTURE_WHITE_PIECE:
+    return Object.assign(
+      {},
+      state,
+      {
+        whitePieceStand: state.whitePieceStand.concat([action.piece.toOpponentPiece()])
+      }
+    );
   default:
     return state;
   }
