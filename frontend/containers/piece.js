@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
   };
 };
 
+// TODO: Refactor.
 const mapDispatchToProps = (dispatch) => {
   return {
     onPieceClick: (board, piece) => {
