@@ -49,17 +49,13 @@ export default function shogi(state = initialState, action) {
     return Object.assign(
       {},
       state,
-      {
-        blackPieceStand: state.blackPieceStand.concat([action.piece.toOpponentPiece()])
-      }
+      { blackPieceStand: state.blackPieceStand.concat([action.piece.toOpponentPiece()]) }
     );
   case CONST.CAPTURE_WHITE_PIECE:
     return Object.assign(
       {},
       state,
-      {
-        whitePieceStand: state.whitePieceStand.concat([action.piece.toOpponentPiece()])
-      }
+      { whitePieceStand: state.whitePieceStand.concat([action.piece.toOpponentPiece()]) }
     );
   default:
     return state;
