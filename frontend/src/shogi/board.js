@@ -55,7 +55,7 @@ export default class Board {
     newBoard.board[fromIdxY][fromIdxX] = new NullPiece({ x: fromCorX, y: fromCorY });
 
     if (this.isTakingPiece(fromPiece, toPiece)) {
-      newBoard.takedPiece = toPiece;
+      newBoard.capturedPiece = toPiece;
     }
 
     return newBoard;

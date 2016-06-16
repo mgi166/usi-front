@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(showPromoteModal(piece));
       }
 
-      const capturedPiece = store.getState().shogi.board.takedPiece;
+      const capturedPiece = store.getState().shogi.board.capturedPiece;
 
       switch (capturedPiece) {
       case undefined:
