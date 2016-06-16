@@ -2,14 +2,12 @@ import _ from 'lodash';
 import * as CONST from '../constants/pieceTypes';
 
 export default class Base {
-  constructor({ type, x, y, movable = false, isPlaced =  false, blackPromotePlace = false, whitePromotePlace = false }) {
+  constructor({ type, x, y, movable = false, isPlaced =  false }) {
     this.type = type;
     this.movable = movable;
     this.isPlaced = isPlaced;
     this.x = x;
     this.y = y;
-    this.blackPromotePlace = blackPromotePlace;
-    this.whitePromotePlace = whitePromotePlace;
   }
 
   promote() {
