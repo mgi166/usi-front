@@ -35,3 +35,7 @@ export function showPromoteModal() {
 export function hidePromoteModal() {
   return { type: CONST.HIDE_PROMOTE_MODAL };
 }
+
+export function promotePiece(piece) {
+  return { type: CONST.PROMOTE_PIECE, piece };
+}
