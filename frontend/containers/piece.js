@@ -15,39 +15,41 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onPieceClick: (board, piece) => {
+      const state = store.getState();
+
+      if (!state.shogi.holdingPiece) {
+        dispatch(holdPiece(piece));
+        dispatch(enhanceMovablePoint(board, piece));
+        return;
+      }
+
+      if (piece.equals(state.shogi.holdingPiece)) {
+        dispatch(releasePiece(piece));
+        return;
+      }
+
       if (piece.isBlackPromotePlace() || piece.isWhitePromotePlace()) {
         dispatch(showPromoteModal(piece));
       }
 
-      const state = store.getState();
+      dispatch(movePiece(board, piece));
 
-      if (state.shogi.holdingPiece) {
-        if (piece.equals(state.shogi.holdingPiece)) {
-          dispatch(releasePiece(piece));
-        } else {
-          dispatch(movePiece(board, piece));
+      const capturedPiece = store.getState().shogi.board.takedPiece;
 
-          const capturedPiece = store.getState().shogi.board.takedPiece;
-
-          switch (capturedPiece) {
-          case undefined:
-            break;
-          default:
-            switch (capturedPiece.team()) {
-            case 'black':
-              dispatch(addWhitePieceStand(capturedPiece));
-              break;
-            case 'white':
-              dispatch(addBlackPieceStand(capturedPiece));
-              break;
-            default:
-              break;
-            }
-          }
+      switch (capturedPiece) {
+      case undefined:
+        break;
+      default:
+        switch (capturedPiece.team()) {
+        case 'black':
+          dispatch(addWhitePieceStand(capturedPiece));
+          break;
+        case 'white':
+          dispatch(addBlackPieceStand(capturedPiece));
+          break;
+        default:
+          break;
         }
-      } else {
-        dispatch(holdPiece(piece));
-        dispatch(enhanceMovablePoint(board, piece));
       }
     }
   };
