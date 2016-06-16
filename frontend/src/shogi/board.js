@@ -62,8 +62,10 @@ export default class Board {
   }
 
   enhancePlaceablePoint(placePiece) {
+    let pawnXcors;
+
     if (placePiece.type === 'P' || placePiece.type === 'p') {
-      const pawnXcors = this.indexXOfPiece(placePiece);
+      pawnXcors = this.indexXOfPiece(placePiece);
     }
 
     this.board.forEach((rows, y) => {
