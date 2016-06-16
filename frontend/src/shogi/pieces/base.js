@@ -40,6 +40,8 @@ export default class Base {
   }
 
   isBlackPromotePlace() {
+    if (this.isWhite()) return false;
+
     switch (this.y) {
     case 1:
     case 2:
@@ -51,6 +53,8 @@ export default class Base {
   }
 
   isWhitePromotePlace() {
+    if (this.isBlack()) return false;
+
     switch (this.y) {
     case 7:
     case 8:
