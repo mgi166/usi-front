@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch) => {
 
       // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
       if (state.shogi.holdingPiece.isBlackPromotePlace() || state.shogi.holdingPiece.isWhitePromotePlace()) {
-        dispatch(showPromoteModal(piece));
+        dispatch(showPromoteModal(state.shogi.holdingPiece));
       }
 
       const capturedPiece = store.getState().shogi.board.capturedPiece;
