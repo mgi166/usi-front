@@ -7,13 +7,13 @@ import _ from 'lodash';
 
 describe('isTakenKing', () => {
   context.skip("if take the piece, king is taken", () => {
-    var board = memo().is(() => {
-      var _board = new Board;
+    const board = memo().is(() => {
+      const _board = new Board;
       _board.setBoard(position());
       return(_board);
     });
 
-    var position = memo().is(() => {
+    const position = memo().is(() => {
       return (
         [
           ['*', 'p+', '*'],
@@ -33,13 +33,13 @@ describe('isTakenKing', () => {
 });
 
 describe('#invertCor', () => {
-  var board = memo().is(() => {
-    var _board = new Board;
+  const board = memo().is(() => {
+    const _board = new Board;
     _board.setBoard(position());
     return(_board);
   });
 
-  var position = memo().is(() => {
+  const position = memo().is(() => {
     return (
       [
         ['l', 'n', 's', 'g', 'k', 'g', 's', 'n', 'l'],
@@ -56,14 +56,14 @@ describe('#invertCor', () => {
   });
 
   it('pawn with 2, 7', () => {
-    var [x, y] = board().invertCor(2, 7);
+    const [x, y] = board().invertCor(2, 7);
     board().board[y][x].type.should.eql('P');
     board().board[y][x].x.should.eql(2);
     board().board[y][x].y.should.eql(7);
   });
 
   it('* with 3, 6', () => {
-    var [x, y] = board().invertCor(3, 6);
+    const [x, y] = board().invertCor(3, 6);
     board().board[y][x].type.should.eql('*');
     board().board[y][x].x.should.eql(3);
     board().board[y][x].y.should.eql(6);
