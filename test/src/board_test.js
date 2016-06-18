@@ -141,7 +141,7 @@ describe('#movePiece', () => {
   });
 });
 
-describe('#checkPieceExisted', () => {
+describe('#checkPieceExistence', () => {
   context('the piece exists in the board', () => {
     const position = memo().is(() => {
       return [
@@ -153,7 +153,7 @@ describe('#checkPieceExisted', () => {
     it('return true', () => {
       const board = new Board(position());
       const piece = Piece.create({ type: 'P', x: 9, y: 2 });
-      board.checkPieceExisted(piece).should.be.true();
+      board.checkPieceExistence(piece).should.be.true();
     });
   });
 
@@ -168,7 +168,7 @@ describe('#checkPieceExisted', () => {
     it('throw exception true', () => {
       const board = new Board(position());
       const piece = Piece.create({ type: 'k', x: 9, y: 1 });
-      (() => { board.checkPieceExisted(piece); })
+      (() => { board.checkPieceExistence(piece); })
         .should
         .throw('Does not match coordinates in board. type = k, xCor = 9, yCor = 1');
     });

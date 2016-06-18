@@ -26,8 +26,8 @@ export default class Board {
   }
 
   movePiece(fromPiece, toPiece) {
-    this.checkPieceExisted(fromPiece);
-    this.checkPieceExisted(toPiece);
+    this.checkPieceExistence(fromPiece);
+    this.checkPieceExistence(toPiece);
 
     if (fromPiece.equals(toPiece)) {
       return this.cloneBoard().clearAttrs();
@@ -118,7 +118,7 @@ export default class Board {
   }
 
   enhanceMovablePoint(piece) {
-    this.checkPieceExisted(piece);
+    this.checkPieceExistence(piece);
     const moveDef = piece.moveDef();
 
     if (typeof moveDef === 'undefined') {
@@ -143,7 +143,7 @@ export default class Board {
   }
 
   promotePiece(piece) {
-    this.checkPieceExisted(piece);
+    this.checkPieceExistence(piece);
     const newBoard = this.cloneBoard();
 
     newBoard.findPiece(piece).promote();
@@ -186,7 +186,7 @@ export default class Board {
     return (isUndefined || isEqualPiece);
   }
 
-  checkPieceExisted(piece) {
+  checkPieceExistence(piece) {
     if (this.matchPiece(piece)) {
       return true;
     } else {
