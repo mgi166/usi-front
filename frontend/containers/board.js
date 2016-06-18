@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import board from '../components/board';
-import { hidePromoteModal } from '../actions';
+import { hidePromoteModal, promotePiece } from '../actions';
 
 const mapStateToProps = (state) => {
   return { board: state.shogi.board.board, open: state.promoteModal.open };
@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onHidePromoteModal: () => { dispatch(hidePromoteModal()); }
+    onHidePromoteModal: () => { dispatch(hidePromoteModal()); },
+    promotePiece: (piece) => { dispatch(promotePiece(piece)); }
   };
 };
 
