@@ -6,7 +6,7 @@ import Piece from '../containers/piece';
 import BlackPieceStand from '../containers/blackPieceStand';
 import WhitePieceStand from '../containers/whitePieceStand';
 
-const Board = ({ board, open, onHidePromoteModal }) => {
+const Board = ({ board, open, onHidePromoteModal, promotePiece }) => {
   const tbody = board.map((row, y) => {
     const rows = row.map((piece, x) => {
       return (
@@ -18,7 +18,7 @@ const Board = ({ board, open, onHidePromoteModal }) => {
 
   return (
     <Grid>
-      <PromoteModal open={open} onHidePromoteModal={onHidePromoteModal}/>
+      <PromoteModal open={open} onHidePromoteModal={onHidePromoteModal} promotePiece={promotePiece}/>
       <Row center="xs">
         <Col xs={1}>
           <WhitePieceStand />
