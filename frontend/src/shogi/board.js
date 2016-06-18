@@ -17,12 +17,7 @@ export default class Board {
       const yCor = this.transposeToCorY(y);
       const rows = row.map((type, x) => {
         const xCor = this.transposeToCorX(x);
-        let attrs = { type: type, x: xCor, y: yCor };
-        if (yCor == 1 || yCor == 2 || yCor == 3) attrs = Object.assign(attrs, { blackPromotePlace: true});
-        if (yCor === 7 || yCor === 8 || yCor === 9) attrs = Object.assign(attrs, { blackPromotePlace: true});
-        return (
-          Piece.create(attrs)
-        );
+        return Piece.create({ type: type, x: xCor, y: yCor });
       });
       return(rows);
     });
@@ -60,15 +55,17 @@ export default class Board {
     newBoard.board[fromIdxY][fromIdxX] = new NullPiece({ x: fromCorX, y: fromCorY });
 
     if (this.isTakingPiece(fromPiece, toPiece)) {
-      newBoard.takedPiece = toPiece;
+      newBoard.capturedPiece = toPiece;
     }
 
     return newBoard;
   }
 
   enhancePlaceablePoint(placePiece) {
+    let pawnXcors;
+
     if (placePiece.type === 'P' || placePiece.type === 'p') {
-      const pawnXcors = this.indexXOfPiece(placePiece);
+      pawnXcors = this.indexXOfPiece(placePiece);
     }
 
     this.board.forEach((rows, y) => {
@@ -141,6 +138,15 @@ export default class Board {
     if (moveDef.fly) {
       newBoard.movablePointsByFly(piece);
     }
+
+    return newBoard;
+  }
+
+  promotePiece(piece) {
+    this.checkPieceExisted(piece);
+    const newBoard = this.cloneBoard();
+
+    newBoard.findPiece(piece).promote();
 
     return newBoard;
   }

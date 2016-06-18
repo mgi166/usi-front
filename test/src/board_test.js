@@ -131,12 +131,12 @@ describe('#movePiece', () => {
       );
     });
 
-    it('has the property `takedPiece`', () => {
+    it('has the property `capturedPiece`', () => {
       const board = new Board(position());
       const fromPiece = new Piece.create({ type: 'P', x: 8, y: 3 });
       const toPiece = new Piece.create({ type: 'p', x: 8, y: 2 });
 
-      board.movePiece(fromPiece, toPiece).takedPiece.should.eql(toPiece);
+      board.movePiece(fromPiece, toPiece).capturedPiece.should.eql(toPiece);
     });
   });
 });
@@ -227,6 +227,107 @@ describe('isTakingPiece', () => {
       const toPiece = Piece.create({ type: '*', x: 8, y: 2 });
 
       board.isTakingPiece(fromPiece, toPiece).should.be.false();
+    });
+  });
+});
+
+describe('#promotePiece', () => {
+  context('specified piece exists', () => {
+    context('black', () => {
+      const position = memo().is(() => {
+        return [
+          ['*', '*', '*'],
+          ['*', 'P', '*'],
+          ['*', '*', '*'],
+        ];
+      });
+
+      it('promote piece', () => {
+        const board = new Board(position());
+        const piece = Piece.create({ type: 'P', x: 8, y: 2 });
+
+        board.promotePiece(piece).toArray().should.eql(
+          [
+            ['*', '*', '*'],
+            ['*', 'P+', '*'],
+            ['*', '*', '*'],
+          ]
+        );
+      });
+    });
+
+    context('white', () => {
+      const position = memo().is(() => {
+        return [
+          ['*', '*', '*'],
+          ['*', '*', '*'],
+          ['*', '*', '*'],
+          ['*', '*', '*'],
+          ['*', '*', '*'],
+          ['*', '*', '*'],
+          ['*', '*', '*'],
+          ['*', 'p', '*'],
+          ['*', '*', '*'],
+        ];
+      });
+
+      it('promote piece', () => {
+        const board = new Board(position());
+        const piece = Piece.create({ type: 'p', x: 8, y: 8});
+
+        board.promotePiece(piece).toArray().should.eql(
+          [
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', '*', '*'],
+            ['*', 'p+', '*'],
+            ['*', '*', '*'],
+          ]
+        );
+      });
+    });
+
+    context('piece is already promoted', () => {
+      const position = memo().is(() => {
+        return [
+          ['*', '*', '*'],
+          ['*', 'G', '*'],
+          ['*', '*', '*'],
+        ];
+      });
+
+      it('does not promote piece', () => {
+        const board = new Board(position());
+        const piece = Piece.create({ type: 'G', x: 8, y: 2 });
+
+        board.promotePiece(piece).toArray().should.eql(
+          [
+            ['*', '*', '*'],
+            ['*', 'G', '*'],
+            ['*', '*', '*'],
+          ]
+        );
+      });
+    });
+  });
+
+  context('specified piece does not exist', () => {
+    const position = memo().is(() => {
+      return [
+        ['*', '*', '*'],
+        ['*', '*', '*'],
+        ['*', 'P', '*'],
+      ];
+    });
+
+    it('throw error', () => {
+      const board = new Board(position());
+      const piece = Piece.create({ type: 'B', x: 9, y: 2 });
+      (() => { board.promotePiece(piece); }).should.throw();
     });
   });
 });

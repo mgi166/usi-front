@@ -24,12 +24,13 @@ export default function shogi(state = initialState, action) {
     return { ...state, board: state.board.enhanceMovablePoint(action.piece) };
   case CONST.MOVE_PIECE:
     const newBoard = state.board.movePiece(state.holdingPiece, action.piece);
-
     return { ...state, board: newBoard, holdingPiece: undefined };
   case CONST.ADD_BLACK_PIECE_STAND:
     return { ...state, blackPieceStand: state.blackPieceStand.concat([action.piece.toOpponentPiece()]) };
   case CONST.ADD_WHITE_PIECE_STAND:
     return { ...state, whitePieceStand: state.whitePieceStand.concat([action.piece.toOpponentPiece()]) };
+  case CONST.PROMOTE_PIECE:
+    return { ...state, board: state.board.promotePiece(action.piece) };
   default:
     return state;
   }

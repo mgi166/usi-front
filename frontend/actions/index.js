@@ -28,10 +28,14 @@ export function addWhitePieceStand(piece) {
   return { type: CONST.ADD_WHITE_PIECE_STAND, piece };
 }
 
-export function showPromoteModal() {
-  return { type: CONST.SHOW_PROMOTE_MODAL };
+export function showPromoteModal(piece) {
+  return { type: CONST.SHOW_PROMOTE_MODAL, piece };
 }
 
 export function hidePromoteModal() {
   return { type: CONST.HIDE_PROMOTE_MODAL };
+}
+
+export function promotePiece(piece) {
+  return { type: CONST.PROMOTE_PIECE, piece };
 }

@@ -15,39 +15,42 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onPieceClick: (board, piece) => {
-      if (piece.isBlackPromotePlace() || piece.isWhitePromotePlace()) {
-        dispatch(showPromoteModal(piece));
-      }
-
       const state = store.getState();
 
-      if (state.shogi.holdingPiece) {
-        if (piece.equals(state.shogi.holdingPiece)) {
-          dispatch(releasePiece(piece));
-        } else {
-          dispatch(movePiece(board, piece));
-
-          const capturedPiece = store.getState().shogi.board.takedPiece;
-
-          switch (capturedPiece) {
-          case undefined:
-            break;
-          default:
-            switch (capturedPiece.team()) {
-            case 'black':
-              dispatch(addWhitePieceStand(capturedPiece));
-              break;
-            case 'white':
-              dispatch(addBlackPieceStand(capturedPiece));
-              break;
-            default:
-              break;
-            }
-          }
-        }
-      } else {
+      if (!state.shogi.holdingPiece) {
         dispatch(holdPiece(piece));
         dispatch(enhanceMovablePoint(board, piece));
+        return;
+      }
+
+      if (piece.equals(state.shogi.holdingPiece)) {
+        dispatch(releasePiece(piece));
+        return;
+      }
+
+      dispatch(movePiece(board, piece));
+
+      // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
+      if (state.shogi.holdingPiece.isPromotePlace()) {
+        dispatch(showPromoteModal(state.shogi.holdingPiece));
+      }
+
+      const capturedPiece = store.getState().shogi.board.capturedPiece;
+
+      switch (capturedPiece) {
+      case undefined:
+        break;
+      default:
+        switch (capturedPiece.team()) {
+        case 'black':
+          dispatch(addWhitePieceStand(capturedPiece));
+          break;
+        case 'white':
+          dispatch(addBlackPieceStand(capturedPiece));
+          break;
+        default:
+          break;
+        }
       }
     }
   };
