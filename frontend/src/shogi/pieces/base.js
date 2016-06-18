@@ -39,6 +39,10 @@ export default class Base {
     );
   }
 
+  isPromotePlace() {
+    return this.isBlackPromotePlace() || this.isWhitePromotePlace();
+  }
+
   isBlackPromotePlace() {
     if (this.isWhite()) return false;
     if (this.isPromoted()) return false;
