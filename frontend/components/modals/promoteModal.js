@@ -13,10 +13,6 @@ export default class PromoteModal extends Component {
     this.state = { open: false };
   }
 
-  handleOpen() {
-    this.setState({ open: true });
-  }
-
   handleClose() {
     this.props.onHidePromoteModal();
     this.setState({ open: this.props.open });
