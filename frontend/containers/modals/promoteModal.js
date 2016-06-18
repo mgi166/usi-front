@@ -2,14 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import promoteModalComponent from '../../components/modals/promoteModal';
 import { hidePromoteModal, promotePiece } from '../../actions';
+import store from '../../stores/index';
 
 const mapStateToProps = (state) => {
-  return { open: state.promoteModal.open };
+  return { open: state.promoteModal.open, piece: state.promoteModal.piece };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    promotePiece: (piece) => {
+    promotePiece: () => {
+      const piece = store.getState().promoteModal.piece;
       dispatch(promotePiece(piece));
     },
     hidePromoteModal: () => {
