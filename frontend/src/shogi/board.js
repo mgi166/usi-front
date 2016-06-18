@@ -61,6 +61,31 @@ export default class Board {
     return newBoard;
   }
 
+  enhanceMovablePoint(piece) {
+    this.checkPieceExistence(piece);
+    const moveDef = piece.moveDef();
+
+    if (typeof moveDef === 'undefined') {
+      return this;
+    }
+
+    const newBoard = this.cloneBoard();
+
+    // if moveDef has just property, piece moves just coordinates on board.
+    //
+    if (moveDef.just) {
+      newBoard.movablePointsByJust(piece);
+    }
+
+    // if moveDef has fly property, piece moves recursion on board.
+    //
+    if (moveDef.fly) {
+      newBoard.movablePointsByFly(piece);
+    }
+
+    return newBoard;
+  }
+
   enhancePlaceablePoint(placePiece) {
     let pawnXcors;
 
@@ -115,31 +140,6 @@ export default class Board {
     });
 
     return _.chain(pieces).flattenDeep().compact().uniq().value();
-  }
-
-  enhanceMovablePoint(piece) {
-    this.checkPieceExistence(piece);
-    const moveDef = piece.moveDef();
-
-    if (typeof moveDef === 'undefined') {
-      return this;
-    }
-
-    const newBoard = this.cloneBoard();
-
-    // if moveDef has just property, piece moves just coordinates on board.
-    //
-    if (moveDef.just) {
-      newBoard.movablePointsByJust(piece);
-    }
-
-    // if moveDef has fly property, piece moves recursion on board.
-    //
-    if (moveDef.fly) {
-      newBoard.movablePointsByFly(piece);
-    }
-
-    return newBoard;
   }
 
   promotePiece(piece) {
