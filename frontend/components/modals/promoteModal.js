@@ -17,10 +17,19 @@ export default class PromoteModal extends Component {
     this.props.onHidePromoteModal();
   }
 
+  promotePiece() {
+    this.props.promotePiece();
+    this.closeModal();
+  }
+
+  notPromotePiece() {
+    this.closeModal();
+  }
+
   render() {
     const actions = [
-      <FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose.bind(this)} />,
-      <FlatButton label="Submit" primary={true} onTouchTap={this.handleClose.bind(this)} />
+      <FlatButton label="No" primary={true} onTouchTap={this.notPromotePiece.bind(this)} />,
+      <FlatButton label="Yes" primary={true} onTouchTap={this.promotePiece.bind(this)} />
     ];
 
     return (
