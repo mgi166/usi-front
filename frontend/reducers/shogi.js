@@ -29,6 +29,8 @@ export default function shogi(state = initialState, action) {
     return { ...state, blackPieceStand: state.blackPieceStand.concat([action.piece.toOpponentPiece()]) };
   case CONST.ADD_WHITE_PIECE_STAND:
     return { ...state, whitePieceStand: state.whitePieceStand.concat([action.piece.toOpponentPiece()]) };
+  case CONST.PROMOTE_PIECE:
+    return { ...state, board: state.board.promotePiece(action.piece) };
   default:
     return state;
   }
