@@ -7,12 +7,6 @@ import _ from 'lodash';
 
 describe('isTakenKing', () => {
   context.skip("if take the piece, king is taken", () => {
-    const board = memo().is(() => {
-      const _board = new Board;
-      _board.setBoard(position());
-      return(_board);
-    });
-
     const position = memo().is(() => {
       return (
         [
@@ -24,6 +18,7 @@ describe('isTakenKing', () => {
     });
 
     it('returns true', () => {
+      const board = new Board(position());
       board.isTakenKing(new Turn).should.eql(true);
     });
   });
@@ -33,12 +28,6 @@ describe('isTakenKing', () => {
 });
 
 describe('#invertCor', () => {
-  const board = memo().is(() => {
-    const _board = new Board;
-    _board.setBoard(position());
-    return(_board);
-  });
-
   const position = memo().is(() => {
     return (
       [
@@ -56,6 +45,7 @@ describe('#invertCor', () => {
   });
 
   it('pawn with 2, 7', () => {
+    const board = new Board(position());
     const [x, y] = board().invertCor(2, 7);
     board().board[y][x].type.should.eql('P');
     board().board[y][x].x.should.eql(2);
@@ -63,6 +53,7 @@ describe('#invertCor', () => {
   });
 
   it('* with 3, 6', () => {
+    const board = new Board(position());
     const [x, y] = board().invertCor(3, 6);
     board().board[y][x].type.should.eql('*');
     board().board[y][x].x.should.eql(3);
