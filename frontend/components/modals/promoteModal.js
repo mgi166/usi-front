@@ -15,7 +15,6 @@ export default class PromoteModal extends Component {
 
   closeModal() {
     this.props.onHidePromoteModal();
-    this.setState({ open: this.props.open });
   }
 
   render() {
