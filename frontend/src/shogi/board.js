@@ -142,6 +142,15 @@ export default class Board {
     return newBoard;
   }
 
+  promotePiece(piece) {
+    this.checkPieceExisted(piece);
+    const newBoard = this.cloneBoard();
+
+    newBoard.findPiece(piece).promote();
+
+    return newBoard;
+  }
+
   clearAttrs() {
     this.board.map((row) => {
       return row.map((piece) => {
