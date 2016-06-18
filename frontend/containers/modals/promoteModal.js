@@ -1,22 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import promoteModalComponent from '../../components/modals/promoteModal';
+import { hidePromoteModal, promotePiece } from '../../actions';
 
 const mapStateToProps = (state) => {
-  return { open: state.open };
+  return { open: state.promoteModal.open };
 };
 
-// TODO: emit promote actions
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     // handlePromote: undefined,
-//     // handleNoPromote: undefined
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    promotePiece: (piece) => {
+      dispatch(promotePiece(piece));
+    },
+    hidePromoteModal: () => {
+      dispatch(hidePromoteModal());
+    }
+  };
+};
 
 const PromoteModal = connect(
-  mapStateToProps
-//  mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(promoteModalComponent);
 
 export default PromoteModal;
