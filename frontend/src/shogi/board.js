@@ -98,19 +98,19 @@ export default class Board {
         const moveDef = placePiece.moveDef();
 
         if (placePiece.type === 'P') {
-          // NOTE: Does not move, if placed a piece in this point.
-          if (y + moveDef.just[0][1] < 0) { return; }
-
           // NOTE: NIFU
           if (_.includes(pawnXcors, this.invertToIndexX(x))) { return; }
+
+          // NOTE: Does not move, if placed a piece in this point.
+          if (y + moveDef.just[0][1] < 0) { return; }
         }
 
         if (placePiece.type === 'p') {
-          // NOTE: Does not move, if placed a piece in this point.
-          if (y + moveDef.just[0][1] > 8) { return; }
-
           // NOTE: NIFU
           if (_.includes(pawnXcors, this.invertToIndexX(x))) { return; }
+
+          // NOTE: Does not move, if placed a piece in this point.
+          if (y + moveDef.just[0][1] > 8) { return; }
         }
 
         if (placePiece.type === 'L') {
