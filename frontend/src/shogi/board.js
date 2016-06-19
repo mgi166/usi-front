@@ -90,7 +90,7 @@ export default class Board {
     let pawnXcors;
 
     if (placePiece.type === 'P' || placePiece.type === 'p') {
-      pawnXcors = this.indexXOfPiece(placePiece);
+      pawnXcors = this.xCorsOfPiece(placePiece);
     }
 
     this.board.forEach((rows, y) => {
@@ -102,13 +102,15 @@ export default class Board {
           if (y + moveDef.just[0][1] < 0) { return; }
 
           // NOTE: NIFU
-          if (_.includes(pawnXcors, x)) { return; }
+          if (_.includes(pawnXcors, this.invertToIndexX(x))) { return; }
         }
 
         if (placePiece.type === 'p') {
           // NOTE: Does not move, if placed a piece in this point.
           if (y + moveDef.just[0][1] > 8) { return; }
-          if (_.includes(pawnXcors, x)) { return; }
+
+          // NOTE: NIFU
+          if (_.includes(pawnXcors, this.invertToIndexX(x))) { return; }
         }
 
         if (placePiece.type === 'L') {
