@@ -132,14 +132,16 @@ export default class Board {
     });
   }
 
-  indexXOfPiece(searchPiece) {
-    const pieces = this.board.map((rows) => {
-      return rows.map((piece, x) => {
-        return piece.type === searchPiece.type ? x : undefined;
+  xCorsOfPiece(searchPiece) {
+    const pieces = _.zip(...this.board).map((col) => {
+      const piece = col.find((piece) => {
+        return piece.type === searchPiece.type;
       });
+
+      return piece ? piece.x : undefined;
     });
 
-    return _.chain(pieces).flattenDeep().compact().uniq().value();
+    return _.compact(pieces);
   }
 
   promotePiece(piece) {
