@@ -46,18 +46,18 @@ describe('#invertCor', () => {
 
   it('pawn with 2, 7', () => {
     const board = new Board(position());
-    const [x, y] = board().invertCor(2, 7);
-    board().board[y][x].type.should.eql('P');
-    board().board[y][x].x.should.eql(2);
-    board().board[y][x].y.should.eql(7);
+    const [x, y] = board.invertCor(2, 7);
+    board.board[y][x].type.should.eql('P');
+    board.board[y][x].x.should.eql(2);
+    board.board[y][x].y.should.eql(7);
   });
 
   it('* with 3, 6', () => {
     const board = new Board(position());
-    const [x, y] = board().invertCor(3, 6);
-    board().board[y][x].type.should.eql('*');
-    board().board[y][x].x.should.eql(3);
-    board().board[y][x].y.should.eql(6);
+    const [x, y] = board.invertCor(3, 6);
+    board.board[y][x].type.should.eql('*');
+    board.board[y][x].x.should.eql(3);
+    board.board[y][x].y.should.eql(6);
   });
 });
 
