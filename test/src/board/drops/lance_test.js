@@ -6,12 +6,6 @@ import _ from 'lodash';
 describe('#enhancePlaceablePoint', () => {
   describe('black', () => {
     context('the normal pattern', () => {
-      const board = memo().is(() => {
-        const _board = new Board;
-        _board.setBoard(position());
-        return(_board);
-      });
-
       const position = memo().is(() => {
         return (
           [
@@ -23,11 +17,12 @@ describe('#enhancePlaceablePoint', () => {
       });
 
       it('change property of piece that is placeable', () => {
+        const board = new Board(position());
         const piece = Piece.create({ type: 'L', x: 0, y: 0});
 
-        board().enhancePlaceablePoint(piece);
+        board.enhancePlaceablePoint(piece);
 
-        const placeablePieces = board().board.map((row) => {
+        const placeablePieces = board.board.map((row) => {
           return (
             row.filter((cell) => { return(cell.isPlaced); })
           );
@@ -48,12 +43,6 @@ describe('#enhancePlaceablePoint', () => {
 
   describe('white', () => {
     context('the normal pattern', () => {
-      const board = memo().is(() => {
-        const _board = new Board;
-        _board.setBoard(position());
-        return(_board);
-      });
-
       const position = memo().is(() => {
         return (
           [
@@ -71,11 +60,12 @@ describe('#enhancePlaceablePoint', () => {
       });
 
       it('change property of piece that is placeable', () => {
+        const board = new Board(position());
         const piece = Piece.create({ type: 'l', x: 0, y: 0});
 
-        board().enhancePlaceablePoint(piece);
+        board.enhancePlaceablePoint(piece);
 
-        const placeablePieces = board().board.map((row) => {
+        const placeablePieces = board.board.map((row) => {
           return (
             row.filter((cell) => { return(cell.isPlaced); })
           );
