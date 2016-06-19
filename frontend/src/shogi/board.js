@@ -93,7 +93,9 @@ export default class Board {
       pawnXcors = this.xCorsOfPiece(placePiece);
     }
 
-    this.board.forEach((rows, y) => {
+    const newBoard = this.cloneBoard();
+
+    newBoard.board.forEach((rows, y) => {
       rows.forEach((piece, x) => {
         const moveDef = placePiece.moveDef();
 
@@ -132,6 +134,8 @@ export default class Board {
         if (piece.type == '*') { piece.isPlaced = true; }
       });
     });
+
+    return newBoard;
   }
 
   xCorsOfPiece(searchPiece) {
