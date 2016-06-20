@@ -98,20 +98,9 @@ export default class Board {
 
     newBoard.board.forEach((rows, y) => {
       rows.forEach((piece, x) => {
-        if (placePiece.type === 'P') {
+        if (placePiece.type === 'P' || placePiece.type === 'p') {
           // NOTE: NIFU
           if (_.includes(pawnXcors, this.invertToIndexX(x))) return;
-
-          // NOTE: Does not move, if placed a piece in this point.
-          if (y + moveDef.just[0][1] < 0) return;
-        }
-
-        if (placePiece.type === 'p') {
-          // NOTE: NIFU
-          if (_.includes(pawnXcors, this.invertToIndexX(x))) return;
-
-          // NOTE: Does not move, if placed a piece in this point.
-          if (y + moveDef.just[0][1] > 8) return;
         }
 
         if (placePiece.type === 'L') {
@@ -122,11 +111,11 @@ export default class Board {
           if (y + moveDef.fly[0][1] > 8) return;
         }
 
-        if (placePiece.type === 'N') {
+        if (placePiece.type === 'N' || placePiece.type === 'P') {
           if (y + moveDef.just[0][1] < 0) return;
         }
 
-        if (placePiece.type === 'n') {
+        if (placePiece.type === 'n' || placePiece.type === 'p') {
           if (y + moveDef.just[0][1] > 8) return;
         }
 
