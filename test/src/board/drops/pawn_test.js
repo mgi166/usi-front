@@ -4,7 +4,7 @@ import memo from 'memo-is';
 import _ from 'lodash';
 
 describe('Pawn', () => {
-  describe('#enhancePlaceablePoint', () => {
+  describe('#enhanceCanDropPosition', () => {
     describe('black', () => {
       context('the normal pattern', () => {
         const position = memo().is(() => {
@@ -22,13 +22,13 @@ describe('Pawn', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'P', x: 0, y: 0 });
 
-          const placeablePieces = board.enhancePlaceablePoint(piece).board.map((row) => {
+          const enhancedPositions = board.enhanceCanDropPosition(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.isPlaced); })
             );
           });
 
-          _.flattenDeep(placeablePieces).should.eql(
+          _.flattenDeep(enhancedPositions).should.eql(
             [
               Piece.create({ type: '*', x: 8, y: 2, isPlaced: true}),
               Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
@@ -66,13 +66,13 @@ describe('Pawn', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'p', x: 0, y: 0 });
 
-          const placeablePieces = board.enhancePlaceablePoint(piece).board.map((row) => {
+          const enhancedPositions = board.enhanceCanDropPosition(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.isPlaced); })
             );
           });
 
-          _.flattenDeep(placeablePieces).should.eql(
+          _.flattenDeep(enhancedPositions).should.eql(
             [
               Piece.create({ type: '*', x: 9, y: 1, isPlaced: true}),
               Piece.create({ type: '*', x: 9, y: 2, isPlaced: true}),

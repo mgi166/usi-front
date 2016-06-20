@@ -86,7 +86,7 @@ export default class Board {
     return newBoard;
   }
 
-  enhancePlaceablePoint(placePiece) {
+  enhanceCanDropPosition(placePiece) {
     let pawnXcors;
 
     if (placePiece.type === 'P' || placePiece.type === 'p') {
