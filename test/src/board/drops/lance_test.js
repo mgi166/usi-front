@@ -11,6 +11,7 @@ describe('#enhancePlaceablePoint', () => {
           [
             ['*', '*', '*'],
             ['R', '*', '*'],
+            ['*', '*', 'p'],
             ['*', '*', '*']
           ]
         );
@@ -20,9 +21,7 @@ describe('#enhancePlaceablePoint', () => {
         const board = new Board(position());
         const piece = Piece.create({ type: 'L', x: 0, y: 0});
 
-        board.enhancePlaceablePoint(piece);
-
-        const placeablePieces = board.board.map((row) => {
+        const placeablePieces = board.enhancePlaceablePoint(piece).board.map((row) => {
           return (
             row.filter((cell) => { return(cell.isPlaced); })
           );
@@ -34,7 +33,9 @@ describe('#enhancePlaceablePoint', () => {
             Piece.create({ type: '*', x: 7, y: 2, isPlaced: true}),
             Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
             Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
-            Piece.create({ type: '*', x: 7, y: 3, isPlaced: true}),
+            Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 8, y: 4, isPlaced: true}),
+            Piece.create({ type: '*', x: 7, y: 4, isPlaced: true}),
           ]
         );
       });
@@ -49,7 +50,7 @@ describe('#enhancePlaceablePoint', () => {
             ['*', '*'],
             ['*', '*'],
             ['*', '*'],
-            ['*', '*'],
+            ['*', 'P'],
             ['*', '*'],
             ['*', '*'],
             ['b', '*'],
@@ -63,9 +64,7 @@ describe('#enhancePlaceablePoint', () => {
         const board = new Board(position());
         const piece = Piece.create({ type: 'l', x: 0, y: 0});
 
-        board.enhancePlaceablePoint(piece);
-
-        const placeablePieces = board.board.map((row) => {
+        const placeablePieces = board.enhancePlaceablePoint(piece).board.map((row) => {
           return (
             row.filter((cell) => { return(cell.isPlaced); })
           );
@@ -80,7 +79,6 @@ describe('#enhancePlaceablePoint', () => {
             Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
             Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
             Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
-            Piece.create({ type: '*', x: 8, y: 4, isPlaced: true}),
             Piece.create({ type: '*', x: 9, y: 5, isPlaced: true}),
             Piece.create({ type: '*', x: 8, y: 5, isPlaced: true}),
             Piece.create({ type: '*', x: 9, y: 6, isPlaced: true}),
