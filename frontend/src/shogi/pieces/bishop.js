@@ -2,8 +2,8 @@ import Base from './base';
 import * as CONST from '../constants/pieceTypes';
 
 export default class Bishop extends Base {
-  constructor({ type, x, y, movable = false, isPlaced =  false }) {
-    super({ type, x, y, movable, isPlaced });
+  constructor({ type, x, y, movable = false, isDrop =  false }) {
+    super({ type, x, y, movable, isDrop });
 
     if (this.type !== CONST.USI_BISHOP_BLACK_TYPE &&
         this.type !== CONST.USI_BISHOP_WHITE_TYPE &&

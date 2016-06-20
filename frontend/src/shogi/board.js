@@ -119,7 +119,7 @@ export default class Board {
           if (y + moveDef.just[0][1] > 8) return;
         }
 
-        if (piece.type == '*') { piece.isPlaced = true; }
+        if (piece.type == '*') { piece.isDrop = true; }
       });
     });
 
@@ -151,7 +151,7 @@ export default class Board {
     this.board.map((row) => {
       return row.map((piece) => {
         piece.movable = false;
-        piece.isPlaced = false;
+        piece.isDrop = false;
       });
     });
 
