@@ -94,11 +94,10 @@ export default class Board {
     }
 
     const newBoard = this.cloneBoard();
+    const moveDef = placePiece.moveDef();
 
     newBoard.board.forEach((rows, y) => {
       rows.forEach((piece, x) => {
-        const moveDef = placePiece.moveDef();
-
         if (placePiece.type === 'P') {
           // NOTE: NIFU
           if (_.includes(pawnXcors, this.invertToIndexX(x))) { return; }
