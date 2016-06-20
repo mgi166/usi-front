@@ -3,16 +3,16 @@ import * as CONST from './constants/pieceTypes';
 import { getClass } from './pieces/index';
 
 export default class Piece {
-  constructor({ type, x, y, movable = false, isPlaced =  false }) {
+  constructor({ type, x, y, movable = false, isDrop =  false }) {
     this.type = type;
     this.movable = movable;
-    this.isPlaced = isPlaced;
+    this.isDrop = isDrop;
     this.x = x;
     this.y = y;
   }
 
-  static create({ type, x, y, movable, isPlaced }) {
+  static create({ type, x, y, movable, isDrop }) {
     var klass = getClass(type);
-    return new klass({ type: type, x: x, y: y, movable: movable, isPlaced: isPlaced });
+    return new klass({ type: type, x: x, y: y, movable: movable, isDrop: isDrop });
   }
 };

@@ -24,19 +24,19 @@ describe('Lance', () => {
 
           const enhancedPositions = board.enhanceCanDropPosition(piece).board.map((row) => {
             return (
-              row.filter((cell) => { return(cell.isPlaced); })
+              row.filter((cell) => { return(cell.isDrop); })
             );
           });
 
           _.flattenDeep(enhancedPositions).should.eql(
             [
-              Piece.create({ type: '*', x: 8, y: 2, isPlaced: true}),
-              Piece.create({ type: '*', x: 7, y: 2, isPlaced: true}),
-              Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
-              Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 4, isPlaced: true}),
-              Piece.create({ type: '*', x: 7, y: 4, isPlaced: true}),
+              Piece.create({ type: '*', x: 8, y: 2, isDrop: true}),
+              Piece.create({ type: '*', x: 7, y: 2, isDrop: true}),
+              Piece.create({ type: '*', x: 9, y: 3, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 3, isDrop: true}),
+              Piece.create({ type: '*', x: 9, y: 4, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 4, isDrop: true}),
+              Piece.create({ type: '*', x: 7, y: 4, isDrop: true}),
             ]
           );
         });
@@ -67,26 +67,26 @@ describe('Lance', () => {
 
           const enhancedPositions = board.enhanceCanDropPosition(piece).board.map((row) => {
             return (
-              row.filter((cell) => { return(cell.isPlaced); })
+              row.filter((cell) => { return(cell.isDrop); })
             );
           });
 
           _.flattenDeep(enhancedPositions).should.eql(
             [
-              Piece.create({ type: '*', x: 9, y: 1, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 1, isPlaced: true}),
-              Piece.create({ type: '*', x: 9, y: 2, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 2, isPlaced: true}),
-              Piece.create({ type: '*', x: 9, y: 3, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 3, isPlaced: true}),
-              Piece.create({ type: '*', x: 9, y: 4, isPlaced: true}),
-              Piece.create({ type: '*', x: 9, y: 5, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 5, isPlaced: true}),
-              Piece.create({ type: '*', x: 9, y: 6, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 6, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 7, isPlaced: true}),
-              Piece.create({ type: '*', x: 9, y: 8, isPlaced: true}),
-              Piece.create({ type: '*', x: 8, y: 8, isPlaced: true}),
+              Piece.create({ type: '*', x: 9, y: 1, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 1, isDrop: true}),
+              Piece.create({ type: '*', x: 9, y: 2, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 2, isDrop: true}),
+              Piece.create({ type: '*', x: 9, y: 3, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 3, isDrop: true}),
+              Piece.create({ type: '*', x: 9, y: 4, isDrop: true}),
+              Piece.create({ type: '*', x: 9, y: 5, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 5, isDrop: true}),
+              Piece.create({ type: '*', x: 9, y: 6, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 6, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 7, isDrop: true}),
+              Piece.create({ type: '*', x: 9, y: 8, isDrop: true}),
+              Piece.create({ type: '*', x: 8, y: 8, isDrop: true}),
             ]
           );
         });

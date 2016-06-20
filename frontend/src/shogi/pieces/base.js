@@ -2,10 +2,10 @@ import _ from 'lodash';
 import * as CONST from '../constants/pieceTypes';
 
 export default class Base {
-  constructor({ type, x, y, movable = false, isPlaced =  false }) {
+  constructor({ type, x, y, movable = false, isDrop =  false }) {
     this.type = type;
     this.movable = movable;
-    this.isPlaced = isPlaced;
+    this.isDrop = isDrop;
     this.x = x;
     this.y = y;
   }
@@ -113,7 +113,7 @@ export default class Base {
 
   clearPositonalAttrs() {
     this.movable = undefined;
-    this.isPlaced = undefined;
+    this.isDrop = undefined;
     this.x = undefined;
     this.y = undefined;
   }
