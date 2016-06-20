@@ -21,9 +21,7 @@ describe('#enhancePlaceablePoint', () => {
         const board = new Board(position());
         const piece = Piece.create({ type: 'N', x: 0, y: 0 });
 
-        board.enhancePlaceablePoint(piece);
-
-        const placeablePieces = board.board.map((row) => {
+        const placeablePieces = board.enhancePlaceablePoint(piece).board.map((row) => {
           return (
             row.filter((cell) => { return(cell.isPlaced); })
           );
@@ -67,9 +65,7 @@ describe('#enhancePlaceablePoint', () => {
         const board = new Board(position());
         const piece = Piece.create({ type: 'n', x: 0, y: 0 });
 
-        board.enhancePlaceablePoint(piece);
-
-        const placeablePieces = board.board.map((row) => {
+        const placeablePieces = board.enhancePlaceablePoint(piece).board.map((row) => {
           return (
             row.filter((cell) => { return(cell.isPlaced); })
           );
