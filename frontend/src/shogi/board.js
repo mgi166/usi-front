@@ -44,9 +44,9 @@ export default class Board {
     const newBoard = this.cloneBoard();
 
     const [toCorX, toCorY] = [toPiece.x, toPiece.y];
-    const [toIdxX, toIdxY] = this.convertCor(toCorX, toCorY);
+    const [toIdxX, toIdxY] = this.convertCors(toCorX, toCorY);
     const [fromCorX, fromCorY] = [fromPiece.x, fromPiece.y];
-    const [fromIdxX, fromIdxY] = this.convertCor(fromCorX, fromCorY);
+    const [fromIdxX, fromIdxY] = this.convertCors(fromCorX, fromCorY);
 
     fromPiece.x = toCorX;
     fromPiece.y = toCorY;
@@ -130,7 +130,7 @@ export default class Board {
     this.checkPieceExistence(destPiece);
 
     const [destX, destY] = [destPiece.x, destPiece.y];
-    const [destXidx, destYidx] = this.convertCor(destX, destY);
+    const [destXidx, destYidx] = this.convertCors(destX, destY);
 
     const piece = this.enhanceCanDropPosition(holdingPiece).findPiece(destPiece);
 
@@ -216,7 +216,7 @@ export default class Board {
   movablePointsByJust(piece) {
     const [xCor, yCor] = [piece.x, piece.y];
     const moveDef = piece.moveDef();
-    const [x, y] = this.convertCor(xCor, yCor);
+    const [x, y] = this.convertCors(xCor, yCor);
 
     moveDef.just.forEach((def) => {
       const [defX, defY] = def;
@@ -231,7 +231,7 @@ export default class Board {
   movablePointsByFly(piece) {
     const [xCor, yCor] = [piece.x, piece.y];
     const moveDef = piece.moveDef();
-    const [x, y] = this.convertCor(xCor, yCor);
+    const [x, y] = this.convertCors(xCor, yCor);
 
     moveDef.fly.forEach((def) => {
       const [defX, defY] = def;
@@ -281,7 +281,7 @@ export default class Board {
     return yCor - 1;
   }
 
-  convertCor(xCor, yCor) {
+  convertCors(xCor, yCor) {
     return [this.convertToIndexX(xCor), this.convertToIndexY(yCor)];
   }
 
@@ -292,7 +292,7 @@ export default class Board {
 
   findPiece(piece) {
     const [toCorX, toCorY] = [piece.x, piece.y];
-    const [toIdxX, toIdxY] = this.convertCor(toCorX, toCorY);
+    const [toIdxX, toIdxY] = this.convertCors(toCorX, toCorY);
     return this.fetchPiece(toIdxX, toIdxY);
   }
 
