@@ -14,9 +14,9 @@ export default class Board {
 
   createBoard(board) {
     const _board = board.map((row, y) => {
-      const yCor = this.transposeToCorY(y);
+      const yCor = this.convertToCorY(y);
       const rows = row.map((type, x) => {
-        const xCor = this.transposeToCorX(x);
+        const xCor = this.convertToCorX(x);
         return Piece.create({ type: type, x: xCor, y: yCor });
       });
       return(rows);
@@ -265,11 +265,11 @@ export default class Board {
     return newBoard;
   }
 
-  transposeToCorX(xIndex) {
+  convertToCorX(xIndex) {
     return 10 - xIndex - 1;
   }
 
-  transposeToCorY(yIndex) {
+  convertToCorY(yIndex) {
     return yIndex + 1;
   }
 
