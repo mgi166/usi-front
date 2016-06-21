@@ -126,6 +126,26 @@ export default class Board {
     return newBoard;
   }
 
+  dropPiece(holdingPiece, destPiece) {
+    this.checkPieceExistence(destPiece);
+
+    const [destX, destY] = [destPiece.x, destPiece.y];
+    const [destXidx, destYidx] = this.invertCor(destX, destY);
+
+    const piece = this.enhanceCanDropPosition(holdingPiece).findPiece(destPiece);
+
+    // NOTE: If destination piece is not found or does not have `isDrop` property,
+    //       do nothing and return this.
+    if (typeof piece === 'undefined' || !piece.isDrop) return this;
+
+    const newBoard = this.cloneBoard();
+
+    holdingPiece.x = destX;
+    holdingPiece.y = destY;
+    newBoard.board[destYidx][destXidx] = holdingPiece;
+    return newBoard;
+  }
+
   xCorsOfPiece(searchPiece) {
     const pieces = _.zip(...this.board).map((col) => {
       const piece = col.find((piece) => {
