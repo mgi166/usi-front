@@ -129,9 +129,6 @@ export default class Board {
   dropPiece(holdingPiece, destPiece) {
     this.checkPieceExistence(destPiece);
 
-    const [destX, destY] = [destPiece.x, destPiece.y];
-    const [destXidx, destYidx] = this.convertCors(destX, destY);
-
     const piece = this.enhanceCanDropPosition(holdingPiece).findPiece(destPiece);
 
     // NOTE: If destination piece is not found or does not have `isDrop` property,
@@ -139,6 +136,9 @@ export default class Board {
     if (typeof piece === 'undefined' || !piece.isDrop) return this;
 
     const newBoard = this.cloneBoard();
+
+    const [destX, destY] = [destPiece.x, destPiece.y];
+    const [destXidx, destYidx] = this.convertCors(destX, destY);
 
     holdingPiece.x = destX;
     holdingPiece.y = destY;
