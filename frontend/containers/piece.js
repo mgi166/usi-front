@@ -5,17 +5,15 @@ import store from '../stores/index';
 import pieceComponent from '../components/piece';
 
 const mapStateToProps = (state) => {
-  return {
-    board: state.board,
-    turn: state.turn
-  };
+  return {};
 };
 
 // TODO: Refactor.
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPieceClick: (board, piece) => {
+    onPieceClick: (piece) => {
       const state = store.getState();
+      const board = state.shogi.board;
 
       if (!state.shogi.holdingPiece) {
         dispatch(holdPiece(piece));
