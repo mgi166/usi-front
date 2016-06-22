@@ -142,6 +142,7 @@ export default class Board {
 
     holdingPiece.x = destX;
     holdingPiece.y = destY;
+    holdingPiece.dropped = true;
     newBoard.board[destYidx][destXidx] = holdingPiece;
     return newBoard;
   }
