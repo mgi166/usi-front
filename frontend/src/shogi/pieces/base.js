@@ -62,6 +62,7 @@ export default class Base {
   isWhitePromotePlace() {
     if (this.isBlack()) return false;
     if (this.isPromoted()) return false;
+    if (this.dropped) return true;
 
     switch (this.y) {
     case 7:
