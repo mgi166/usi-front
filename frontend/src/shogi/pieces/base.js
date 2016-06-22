@@ -2,10 +2,11 @@ import _ from 'lodash';
 import * as CONST from '../constants/pieceTypes';
 
 export default class Base {
-  constructor({ type, x, y, movable = false, isDrop =  false }) {
+  constructor({ type, x, y, movable = false, isDrop =  false, dropped = false }) {
     this.type = type;
     this.movable = movable;
     this.isDrop = isDrop;
+    this.dropped = dropped;
     this.x = x;
     this.y = y;
   }
