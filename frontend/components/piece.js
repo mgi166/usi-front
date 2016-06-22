@@ -7,9 +7,9 @@ const Piece = ({ piece, onPieceClick }) => {
   };
 
   return (
-    <td className="piece" style={style} onClick={() => onPieceClick(piece)}>
+    <div className="piece" onClick={() => onPieceClick(piece)}>
       <img src={getPieceImage(piece)}></img>
-    </td>
+    </div>
   );
 };
 
