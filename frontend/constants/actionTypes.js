@@ -8,3 +8,4 @@ export const CHANGE_TURN = 'CHANGE_TURN';
 export const SHOW_PROMOTE_MODAL = 'SHOW_PROMOTE_MODAL';
 export const HIDE_PROMOTE_MODAL = 'HIDE_PROMOTE_MODAL';
 export const PROMOTE_PIECE = 'PROMOTE_PIECE';
+export const DROP_PIECE = 'DROP_PIECE';
