@@ -74,6 +74,13 @@ describe('Base', () => {
           });
         });
       });
+
+      context('dropped = true', () => {
+        it('return true', () => {
+          const pawn = Piece.create({ type: 'p', y: 1, dropped: true });
+          pawn.isWhitePromotePlace().should.be.true();
+        });
+      });
     });
   });
 });
