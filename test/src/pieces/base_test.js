@@ -25,6 +25,13 @@ describe('Base', () => {
             pawn.isBlackPromotePlace().should.be.false();
           });
         });
+
+        context('dropped = true', () => {
+          it('return true', () => {
+            const pawn = Piece.create({ type: 'P', y: 9, dropped: true });
+            pawn.isBlackPromotePlace().should.be.true();
+          });
+        });
       });
     });
 
