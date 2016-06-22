@@ -2,8 +2,8 @@ import Base from './base';
 import * as CONST from '../constants/pieceTypes';
 
 export default class Gold extends Base {
-  constructor({ type, x, y, movable = false, isDrop =  false }) {
-    super({ type, x, y, movable, isDrop });
+  constructor({ type, x, y, movable = false, isDrop =  false, dropped }) {
+    super({ type, x, y, movable, isDrop, dropped });
 
     if (this.type !== CONST.USI_GOLD_BLACK_TYPE &&
         this.type !== CONST.USI_GOLD_WHITE_TYPE) {
