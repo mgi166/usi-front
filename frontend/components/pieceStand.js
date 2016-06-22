@@ -1,4 +1,5 @@
 import React from 'react';
+import Piece from '../containers/piece';
 import { getPieceImage } from '../images/shogiPieces/index';
 
 const PieceStand = ({ pieceStand }) => {
@@ -6,7 +7,7 @@ const PieceStand = ({ pieceStand }) => {
     return (
       <tr key={i}>
         <td>
-          <img src={getPieceImage(piece)}></img>
+          <Piece piece={piece} />
         </td>
       </tr>
     );
