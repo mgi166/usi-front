@@ -28,6 +28,8 @@ export default function shogi(state = initialState, action) {
     return { ...state, whitePieceStand: state.whitePieceStand.concat([action.piece.toOpponentPiece()]) };
   case CONST.PROMOTE_PIECE:
     return { ...state, board: state.board.promotePiece(action.piece) };
+  case CONST.ENHANCE_CAN_DROP_POSITION:
+    return { ...state, board: state.board.enhanceCanDropPosition(action.piece) };
   default:
     return state;
   }
