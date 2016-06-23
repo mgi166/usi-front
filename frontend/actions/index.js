@@ -43,3 +43,7 @@ export function promotePiece(piece) {
 export function dropPiece(piece) {
   return { type: CONST.DROP_PIECE, piece };
 }
+
+export function enhanceCanDropPosition(piece) {
+  return { type: CONST.ENHANCE_CAN_DROP_POSITION, piece };
+}
