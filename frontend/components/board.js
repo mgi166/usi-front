@@ -10,7 +10,7 @@ const Board = ({ board }) => {
   const tbody = board.map((row, y) => {
     const rows = row.map((piece, x) => {
       const style = {
-        backgroundColor: piece.movable ? "red" : "white",
+        backgroundColor: (piece.movable || piece.isDrop) ? "red" : "white",
       };
 
       return (
