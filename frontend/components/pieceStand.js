@@ -1,5 +1,5 @@
 import React from 'react';
-import Piece from '../containers/piece';
+import CapturedPiece from '../containers/capturedPiece';
 import { getPieceImage } from '../images/shogiPieces/index';
 
 const PieceStand = ({ pieceStand }) => {
@@ -7,7 +7,7 @@ const PieceStand = ({ pieceStand }) => {
     return (
       <tr key={i}>
         <td>
-          <Piece piece={piece} />
+          <CapturedPiece piece={piece} />
         </td>
       </tr>
     );
