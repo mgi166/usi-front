@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onPieceClick: (piece) => {
       const state = store.getState();
-      const board = state.shogi.board();
+      const board = state.shogi.board;
 
       const holdingPiece = state.shogi.holdingPiece;
 
