@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import pieceComponent from '../components/piece';
-import { holdPiece, enhanceCanDropPosition } from '../actions';
+import { holdPiece, releasePiece, enhanceCanDropPosition } from '../actions';
 import store from '../stores/index';
 
 const mapStateToProps = (state) => {
@@ -21,6 +21,11 @@ const mapDispatchToProps = (dispatch) => {
         // FIX: holdingPiece equals piece. It's confusing.
         dispatch(holdPiece(piece));
         dispatch(enhanceCanDropPosition(piece));
+        return;
+      }
+
+      if (holdingPiece.equals(piece)) {
+        dispatch(releasePiece(piece));
         return;
       }
     }
