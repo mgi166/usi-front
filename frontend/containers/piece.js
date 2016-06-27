@@ -30,11 +30,11 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(dropPiece(piece));
       } else {
         dispatch(movePiece(board, piece));
-      }
 
-      // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
-      if (state.shogi.holdingPiece.isPromotePlace()) {
-        dispatch(showPromoteModal(state.shogi.holdingPiece));
+        // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
+        if (state.shogi.holdingPiece.isPromotePlace()) {
+          dispatch(showPromoteModal(state.shogi.holdingPiece));
+        }
       }
 
       const capturedPiece = store.getState().shogi.board.capturedPiece;
