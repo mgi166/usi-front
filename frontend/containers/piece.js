@@ -1,5 +1,5 @@
 import React from 'react';
-import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand } from '../actions';
+import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand, dropPiece } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
@@ -26,7 +26,11 @@ const mapDispatchToProps = (dispatch) => {
         return;
       }
 
-      dispatch(movePiece(board, piece));
+      if (piece.isDrop) {
+        dispatch(dropPiece(piece));
+      } else {
+        dispatch(movePiece(board, piece));
+      }
 
       // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
       if (state.shogi.holdingPiece.isPromotePlace()) {
