@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import pieceComponent from '../components/piece';
-import { holdPiece, releasePiece, enhanceCanDropPosition } from '../actions';
+import { holdPiece, releasePiece, dropPiece, enhanceCanDropPosition } from '../actions';
 import store from '../stores/index';
 
 const mapStateToProps = (state) => {
