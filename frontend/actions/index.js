@@ -24,8 +24,16 @@ export function addBlackPieceStand(piece) {
   return { type: CONST.ADD_BLACK_PIECE_STAND, piece };
 }
 
+export function removeBlackPieceStand(piece) {
+  return { type: CONST.REMOVE_BLACK_PIECE_STAND, piece };
+}
+
 export function addWhitePieceStand(piece) {
   return { type: CONST.ADD_WHITE_PIECE_STAND, piece };
+}
+
+export function removeWhitePieceStand(piece) {
+  return { type: CONST.REMOVE_WHITE_PIECE_STAND, piece };
 }
 
 export function showPromoteModal(piece) {
