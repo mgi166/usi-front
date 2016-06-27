@@ -144,7 +144,7 @@ export default class Board {
     holdingPiece.y = destY;
     holdingPiece.dropped = true;
     newBoard.board[destYidx][destXidx] = holdingPiece;
-    return newBoard;
+    return newBoard.clearAttrs();
   }
 
   xCorsOfPiece(searchPiece) {
