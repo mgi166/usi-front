@@ -1,5 +1,5 @@
 import React from 'react';
-import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand, dropPiece } from '../actions';
+import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand, dropPiece, removeBlackPieceStand, removeWhitePieceStand } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
@@ -28,6 +28,10 @@ const mapDispatchToProps = (dispatch) => {
 
       if (piece.isDrop) {
         dispatch(dropPiece(piece));
+
+        if (piece.team() === 'white') {
+          dispatch(removeWhitePieceStand(piece));
+        }
       } else {
         dispatch(movePiece(board, piece));
 
