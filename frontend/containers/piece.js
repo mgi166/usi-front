@@ -14,14 +14,15 @@ const mapDispatchToProps = (dispatch) => {
     onPieceClick: (piece) => {
       const state = store.getState();
       const board = state.shogi.board;
+      const holdingPiece = state.shogi.holdingPiece;
 
-      if (!state.shogi.holdingPiece) {
+      if (!holdingPiece) {
         dispatch(holdPiece(piece));
         dispatch(enhanceMovablePoint(board, piece));
         return;
       }
 
-      if (piece.equals(state.shogi.holdingPiece)) {
+      if (piece.equals(holdingPiece)) {
         dispatch(releasePiece(piece));
         return;
       }
@@ -29,15 +30,17 @@ const mapDispatchToProps = (dispatch) => {
       if (piece.isDrop) {
         dispatch(dropPiece(piece));
 
-        if (piece.team() === 'white') {
-          dispatch(removeWhitePieceStand(piece));
+        if (holdingPiece.team() === 'white') {
+          dispatch(removeWhitePieceStand(holdingPiece));
+        } else if (holdingPiece.team() === 'black') {
+          dispatch(removeBlackPieceStand(holdingPiece));
         }
       } else {
         dispatch(movePiece(board, piece));
 
         // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
         if (state.shogi.holdingPiece.isPromotePlace()) {
-          dispatch(showPromoteModal(state.shogi.holdingPiece));
+          dispatch(showPromoteModal(holdingPiece));
         }
       }
 
