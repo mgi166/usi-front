@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default class PieceStand {
   constructor () {
     this.pieceTypes = {};
@@ -19,5 +21,11 @@ export default class PieceStand {
   clear() {
     this.pieceTypes = {};
     this.pieces = new Set;
+  }
+
+  clone() {
+    const newPieceStand = new PieceStand();
+    newPieceStand.pieceTypes = _.cloneDeep(this.pieceTypes);
+    return newPieceStand;
   }
 }
