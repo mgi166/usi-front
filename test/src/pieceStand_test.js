@@ -29,7 +29,6 @@ describe('PieceStand', () => {
         pieceStand.add(piece3);
         pieceStand.add(piece4);
 
-        pieceStand.pieces.size.should.eql(4);
         pieceStand.pieceTypes.should.eql(
           {
             p: 2,
@@ -49,7 +48,6 @@ describe('PieceStand', () => {
       const piece3 = Piece.create({ type: 'b' });
 
       pieceStand.clear();
-      pieceStand.pieces.size.should.eql(0);
       pieceStand.pieceTypes.should.eql({});
     });
   });

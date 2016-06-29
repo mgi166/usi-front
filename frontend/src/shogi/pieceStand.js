@@ -3,7 +3,6 @@ import _ from 'lodash';
 export default class PieceStand {
   constructor () {
     this.pieceTypes = {};
-    this.pieces = new Set;
   }
 
   add(piece) {
@@ -14,13 +13,11 @@ export default class PieceStand {
       this.pieceTypes[piece.type] = 1;
     }
 
-    this.pieces.add(piece);
     return piece;
   }
 
   clear() {
     this.pieceTypes = {};
-    this.pieces = new Set;
   }
 
   clone() {
