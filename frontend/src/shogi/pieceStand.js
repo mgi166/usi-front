@@ -6,14 +6,13 @@ export default class PieceStand {
   }
 
   add(piece) {
-    // TODO: Refactor.
-    if (this.pieceTypes[piece.type]) {
-      this.pieceTypes[piece.type] ++;
-    } else {
-      this.pieceTypes[piece.type] = 1;
-    }
+    const newPieceStand = this.clone();
 
-    return piece;
+    newPieceStand.pieceTypes[piece.type] ?
+      newPieceStand.pieceTypes[piece.type] ++ :
+      newPieceStand.pieceTypes[piece.type] = 1;
+
+    return newPieceStand;
   }
 
   clear() {
