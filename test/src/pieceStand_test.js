@@ -10,13 +10,6 @@ import shallowEqual from 'react-redux/lib/utils/shallowEqual';
 describe('PieceStand', () => {
   describe('#add', () => {
     context('when add new type piece', () => {
-      it('return piece', () => {
-        const pieceStand = new PieceStand;
-        const piece = Piece.create({ type: 'p' });
-
-        pieceStand.add(piece).should.eql(piece);
-      });
-
       it('store the added piece in piece stand', () => {
         const pieceStand = new PieceStand;
         const piece1 = Piece.create({ type: 'p' });
@@ -24,18 +17,25 @@ describe('PieceStand', () => {
         const piece3 = Piece.create({ type: 'l' });
         const piece4 = Piece.create({ type: 'n' });
 
-        pieceStand.add(piece1);
-        pieceStand.add(piece2);
-        pieceStand.add(piece3);
-        pieceStand.add(piece4);
+        const newPieceStand = pieceStand.add(piece1).add(piece2).add(piece3).add(piece4);
 
-        pieceStand.pieceTypes.should.eql(
+        newPieceStand.pieceTypes.should.eql(
           {
             p: 2,
             l: 1,
             n: 1
           }
         );
+      });
+
+      it('return new object', () => {
+        const pieceStand = new PieceStand;
+        const piece = Piece.create({ type: 'p' });
+
+        const newPieceStand = pieceStand.add(piece);
+
+        pieceStand.pieceTypes.should.eql({});
+        newPieceStand.pieceTypes.should.eql({ p: 1 });
       });
     });
   });
@@ -69,17 +69,14 @@ describe('PieceStand', () => {
 
       pieceStand.add(piece1);
       newPieceStand.pieceTypes.should.eql({});
-
-      newPieceStand.add(piece2);
-      pieceStand.pieceTypes.should.eql({ p: 1 });
     });
 
     it('copy the piece types that have old pieceStand', () => {
       const pieceStand = new PieceStand();
       const piece = Piece.create({ type: 'p' });
 
-      pieceStand.add(piece);
-      pieceStand.clone().pieceTypes.should.eql({ p: 1 });
+      const newPieceStand = pieceStand.add(piece);
+      newPieceStand.clone().pieceTypes.should.eql({ p: 1 });
     });
 
     it('`shallowEqual` return false', () => {
