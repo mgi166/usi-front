@@ -5,7 +5,6 @@ import _ from 'lodash';
 
 // NOTE: react-redux
 import shallowEqual from 'react-redux/lib/utils/shallowEqual';
-// import assert from 'power-assert';
 
 describe('PieceStand', () => {
   describe('#add', () => {
