@@ -12,8 +12,8 @@ export function releasePiece(piece) {
   return { type: CONST.RELEASE_PIECE, piece };
 }
 
-export function enhanceMovablePoint(board, piece) {
-  return { type: CONST.ENHANCE_MOVABLE_POINT, board, piece };
+export function enhanceMovablePoint(piece) {
+  return { type: CONST.ENHANCE_MOVABLE_POINT, piece };
 }
 
 export function movePiece(board, piece) {

@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 
       if (!holdingPiece) {
         dispatch(holdPiece(piece));
-        dispatch(enhanceMovablePoint(board, piece));
+        dispatch(enhanceMovablePoint(piece));
         return;
       }
 
