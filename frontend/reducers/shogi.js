@@ -1,5 +1,6 @@
 import * as CONST from '../constants/actionTypes';
 import Shogi from '../src/shogi';
+import _ from 'lodash';
 
 const initialState = {
   holdingPiece: undefined,
@@ -33,7 +34,19 @@ export default function shogi(state = initialState, action) {
   case CONST.DROP_PIECE:
     return { ...state, board: state.board.dropPiece(state.holdingPiece, action.piece), holdingPiece: undefined };
   case CONST.REMOVE_BLACK_PIECE_STAND:
-    return { ...state, blackPieceStand: state.blackPieceStand.filter((piece) => { piece.type !== action.piece.type; }) }
+    // TODO: refactor.
+    let flag = false;
+    const newBlackPieceStand = state.blackPieceStand.reduce((prev, cur, idx, res) => {
+      if (flag) return prev.concat([cur]);
+      if (cur.type === action.piece.type) {
+        flag = true;
+        return prev.concat([undefined]);
+      } else {
+        return prev.concat([cur]);
+      }
+    }, []);
+
+    return { ...state, blackPieceStand: _.compact(newBlackPieceStand) };
   case CONST.REMOVE_WHITE_PIECE_STAND:
     return { ...state, whitePieceStand: state.whitePieceStand.filter((piece) => { piece.type !== action.piece.type; }) }
   default:
