@@ -48,7 +48,18 @@ export default function shogi(state = initialState, action) {
 
     return { ...state, blackPieceStand: _.compact(newBlackPieceStand) };
   case CONST.REMOVE_WHITE_PIECE_STAND:
-    return { ...state, whitePieceStand: state.whitePieceStand.filter((piece) => { piece.type !== action.piece.type; }) }
+    // TODO: refactor.
+    flag = false;
+    const newWhitePieceStand = state.whitePieceStand.reduce((prev, cur, idx, res) => {
+      if (flag) return prev.concat([cur]);
+      if (cur.type === action.piece.type) {
+        flag = true;
+        return prev.concat([undefined]);
+      } else {
+        return prev.concat([cur]);
+      }
+    }, []);
+    return { ...state, whitePieceStand: _.compact(newWhitePieceStand) };
   default:
     return state;
   }
