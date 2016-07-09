@@ -13,12 +13,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onPieceClick: (piece) => {
       const state = store.getState();
-      const board = state.shogi.board;
       const holdingPiece = state.shogi.holdingPiece;
 
       if (!holdingPiece) {
         dispatch(holdPiece(piece));
-        dispatch(enhanceMovablePoint(board, piece));
+        dispatch(enhanceMovablePoint(piece));
         return;
       }
 
@@ -36,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
           dispatch(removeBlackPieceStand(holdingPiece));
         }
       } else {
-        dispatch(movePiece(board, piece));
+        dispatch(movePiece(piece));
 
         // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
         if (state.shogi.holdingPiece.isPromotePlace()) {
