@@ -14,9 +14,9 @@ export default class Board {
 
   createBoard(board) {
     const _board = board.map((row, y) => {
-      const yCor = this.transposeToCorY(y);
+      const yCor = this.convertToCorY(y);
       const rows = row.map((type, x) => {
-        const xCor = this.transposeToCorX(x);
+        const xCor = this.convertToCorX(x);
         return Piece.create({ type: type, x: xCor, y: yCor });
       });
       return(rows);
@@ -44,9 +44,9 @@ export default class Board {
     const newBoard = this.cloneBoard();
 
     const [toCorX, toCorY] = [toPiece.x, toPiece.y];
-    const [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
+    const [toIdxX, toIdxY] = this.convertCors(toCorX, toCorY);
     const [fromCorX, fromCorY] = [fromPiece.x, fromPiece.y];
-    const [fromIdxX, fromIdxY] = this.invertCor(fromCorX, fromCorY);
+    const [fromIdxX, fromIdxY] = this.convertCors(fromCorX, fromCorY);
 
     fromPiece.x = toCorX;
     fromPiece.y = toCorY;
@@ -100,7 +100,7 @@ export default class Board {
       rows.forEach((piece, x) => {
         if (placePiece.type === 'P' || placePiece.type === 'p') {
           // NOTE: NIFU
-          if (_.includes(pawnXcors, this.invertToIndexX(x))) return;
+          if (_.includes(pawnXcors, this.convertToIndexX(x))) return;
         }
 
         if (placePiece.type === 'L') {
@@ -119,11 +119,32 @@ export default class Board {
           if (y + moveDef.just[0][1] > 8) return;
         }
 
-        if (piece.type == '*') { piece.isPlaced = true; }
+        if (piece.type == '*') { piece.isDrop = true; }
       });
     });
 
     return newBoard;
+  }
+
+  dropPiece(holdingPiece, destPiece) {
+    this.checkPieceExistence(destPiece);
+
+    const piece = this.enhanceCanDropPosition(holdingPiece).findPiece(destPiece);
+
+    // NOTE: If destination piece is not found or does not have `isDrop` property,
+    //       do nothing and return this.
+    if (typeof piece === 'undefined' || !piece.isDrop) return this;
+
+    const newBoard = this.cloneBoard();
+
+    const [destX, destY] = [destPiece.x, destPiece.y];
+    const [destXidx, destYidx] = this.convertCors(destX, destY);
+
+    holdingPiece.x = destX;
+    holdingPiece.y = destY;
+    holdingPiece.dropped = true;
+    newBoard.board[destYidx][destXidx] = holdingPiece;
+    return newBoard.clearAttrs();
   }
 
   xCorsOfPiece(searchPiece) {
@@ -151,7 +172,7 @@ export default class Board {
     this.board.map((row) => {
       return row.map((piece) => {
         piece.movable = false;
-        piece.isPlaced = false;
+        piece.isDrop = false;
       });
     });
 
@@ -196,7 +217,7 @@ export default class Board {
   movablePointsByJust(piece) {
     const [xCor, yCor] = [piece.x, piece.y];
     const moveDef = piece.moveDef();
-    const [x, y] = this.invertCor(xCor, yCor);
+    const [x, y] = this.convertCors(xCor, yCor);
 
     moveDef.just.forEach((def) => {
       const [defX, defY] = def;
@@ -211,7 +232,7 @@ export default class Board {
   movablePointsByFly(piece) {
     const [xCor, yCor] = [piece.x, piece.y];
     const moveDef = piece.moveDef();
-    const [x, y] = this.invertCor(xCor, yCor);
+    const [x, y] = this.convertCors(xCor, yCor);
 
     moveDef.fly.forEach((def) => {
       const [defX, defY] = def;
@@ -245,24 +266,24 @@ export default class Board {
     return newBoard;
   }
 
-  transposeToCorX(xIndex) {
+  convertToCorX(xIndex) {
     return 10 - xIndex - 1;
   }
 
-  transposeToCorY(yIndex) {
+  convertToCorY(yIndex) {
     return yIndex + 1;
   }
 
-  invertToIndexX(xCor) {
+  convertToIndexX(xCor) {
     return 9 - xCor;
   }
 
-  invertToIndexY(yCor) {
+  convertToIndexY(yCor) {
     return yCor - 1;
   }
 
-  invertCor(xCor, yCor) {
-    return [this.invertToIndexX(xCor), this.invertToIndexY(yCor)];
+  convertCors(xCor, yCor) {
+    return [this.convertToIndexX(xCor), this.convertToIndexY(yCor)];
   }
 
   fetchPiece(xIndex, yIndex) {
@@ -272,7 +293,7 @@ export default class Board {
 
   findPiece(piece) {
     const [toCorX, toCorY] = [piece.x, piece.y];
-    const [toIdxX, toIdxY] = this.invertCor(toCorX, toCorY);
+    const [toIdxX, toIdxY] = this.convertCors(toCorX, toCorY);
     return this.fetchPiece(toIdxX, toIdxY);
   }
 

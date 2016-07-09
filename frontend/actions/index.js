@@ -24,8 +24,16 @@ export function addBlackPieceStand(piece) {
   return { type: CONST.ADD_BLACK_PIECE_STAND, piece };
 }
 
+export function removeBlackPieceStand(piece) {
+  return { type: CONST.REMOVE_BLACK_PIECE_STAND, piece };
+}
+
 export function addWhitePieceStand(piece) {
   return { type: CONST.ADD_WHITE_PIECE_STAND, piece };
+}
+
+export function removeWhitePieceStand(piece) {
+  return { type: CONST.REMOVE_WHITE_PIECE_STAND, piece };
 }
 
 export function showPromoteModal(piece) {
@@ -38,4 +46,12 @@ export function hidePromoteModal() {
 
 export function promotePiece(piece) {
   return { type: CONST.PROMOTE_PIECE, piece };
+}
+
+export function dropPiece(piece) {
+  return { type: CONST.DROP_PIECE, piece };
+}
+
+export function enhanceCanDropPosition(piece) {
+  return { type: CONST.ENHANCE_CAN_DROP_POSITION, piece };
 }

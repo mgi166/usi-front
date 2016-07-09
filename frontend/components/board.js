@@ -9,8 +9,14 @@ import WhitePieceStand from '../containers/whitePieceStand';
 const Board = ({ board }) => {
   const tbody = board.map((row, y) => {
     const rows = row.map((piece, x) => {
+      const style = {
+        backgroundColor: (piece.movable || piece.isDrop) ? "red" : "white",
+      };
+
       return (
-          <Piece key={x} piece={piece} />
+        <td key={x} style={style}>
+          <Piece piece={piece} />
+        </td>
       );
     });
     return(<tr key={y}>{rows}</tr>);

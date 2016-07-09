@@ -2,8 +2,8 @@ import Base from './base';
 import * as CONST from '../constants/pieceTypes';
 
 export default class Lance extends Base {
-  constructor({ type, x, y, movable = false, isPlaced =  false }) {
-    super({ type, x, y, movable, isPlaced });
+  constructor({ type, x, y, movable, isDrop, dropped }) {
+    super({ type, x, y, movable, isDrop, dropped });
 
     if (this.type !== CONST.USI_LANCE_BLACK_TYPE &&
         this.type !== CONST.USI_LANCE_WHITE_TYPE &&

@@ -2,10 +2,11 @@ import _ from 'lodash';
 import * as CONST from '../constants/pieceTypes';
 
 export default class Base {
-  constructor({ type, x, y, movable = false, isPlaced =  false }) {
+  constructor({ type, x, y, movable = false, isDrop =  false, dropped = false }) {
     this.type = type;
     this.movable = movable;
-    this.isPlaced = isPlaced;
+    this.isDrop = isDrop;
+    this.dropped = dropped;
     this.x = x;
     this.y = y;
   }
@@ -46,6 +47,7 @@ export default class Base {
   isBlackPromotePlace() {
     if (this.isWhite()) return false;
     if (this.isPromoted()) return false;
+    if (this.dropped) return true;
 
     switch (this.y) {
     case 1:
@@ -60,6 +62,7 @@ export default class Base {
   isWhitePromotePlace() {
     if (this.isBlack()) return false;
     if (this.isPromoted()) return false;
+    if (this.dropped) return true;
 
     switch (this.y) {
     case 7:
@@ -113,7 +116,7 @@ export default class Base {
 
   clearPositonalAttrs() {
     this.movable = undefined;
-    this.isPlaced = undefined;
+    this.isDrop = undefined;
     this.x = undefined;
     this.y = undefined;
   }

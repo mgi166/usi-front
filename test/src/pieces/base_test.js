@@ -25,6 +25,13 @@ describe('Base', () => {
             pawn.isBlackPromotePlace().should.be.false();
           });
         });
+
+        context('dropped = true', () => {
+          it('return true', () => {
+            const pawn = Piece.create({ type: 'P', y: 9, dropped: true });
+            pawn.isBlackPromotePlace().should.be.true();
+          });
+        });
       });
     });
 
@@ -65,6 +72,13 @@ describe('Base', () => {
             const pawn = Piece.create({ type: 'p', y: 1 });
             pawn.isWhitePromotePlace().should.be.false();
           });
+        });
+      });
+
+      context('dropped = true', () => {
+        it('return true', () => {
+          const pawn = Piece.create({ type: 'p', y: 1, dropped: true });
+          pawn.isWhitePromotePlace().should.be.true();
         });
       });
     });

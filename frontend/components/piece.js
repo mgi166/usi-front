@@ -1,15 +1,11 @@
 import React from 'react';
 import { getPieceImage } from '../images/shogiPieces/index';
 
-const Piece = ({ piece, board, onPieceClick }) => {
-  const style = {
-    backgroundColor: piece.movable ? "red" : "white"
-  };
-
+const Piece = ({ piece, onPieceClick }) => {
   return (
-    <td className="piece" style={style} onClick={() => onPieceClick(board, piece)}>
+    <div className="piece" onClick={() => onPieceClick(piece)}>
       <img src={getPieceImage(piece)}></img>
-    </td>
+    </div>
   );
 };
 

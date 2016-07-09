@@ -1,38 +1,47 @@
 import React from 'react';
-import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand } from '../actions';
+import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand, dropPiece, removeBlackPieceStand, removeWhitePieceStand } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
 
 const mapStateToProps = (state) => {
-  return {
-    board: state.board,
-    turn: state.turn
-  };
+  return {};
 };
 
 // TODO: Refactor.
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPieceClick: (board, piece) => {
+    onPieceClick: (piece) => {
       const state = store.getState();
+      const board = state.shogi.board;
+      const holdingPiece = state.shogi.holdingPiece;
 
-      if (!state.shogi.holdingPiece) {
+      if (!holdingPiece) {
         dispatch(holdPiece(piece));
         dispatch(enhanceMovablePoint(board, piece));
         return;
       }
 
-      if (piece.equals(state.shogi.holdingPiece)) {
+      if (piece.equals(holdingPiece)) {
         dispatch(releasePiece(piece));
         return;
       }
 
-      dispatch(movePiece(board, piece));
+      if (piece.isDrop) {
+        dispatch(dropPiece(piece));
 
-      // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
-      if (state.shogi.holdingPiece.isPromotePlace()) {
-        dispatch(showPromoteModal(state.shogi.holdingPiece));
+        if (holdingPiece.team() === 'white') {
+          dispatch(removeWhitePieceStand(holdingPiece));
+        } else if (holdingPiece.team() === 'black') {
+          dispatch(removeBlackPieceStand(holdingPiece));
+        }
+      } else {
+        dispatch(movePiece(board, piece));
+
+        // NOTE: Should be FIX that holdingPiece changes x, y after movePiece action.
+        if (state.shogi.holdingPiece.isPromotePlace()) {
+          dispatch(showPromoteModal(holdingPiece));
+        }
       }
 
       const capturedPiece = store.getState().shogi.board.capturedPiece;
