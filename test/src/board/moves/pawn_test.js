@@ -3,7 +3,7 @@ import Piece from '../../../../frontend/src/shogi/piece';
 import memo from 'memo-is';
 import _ from 'lodash';
 
-describe('#enhanceMovablePoint', () => {
+describe('#enhanceMovablePosition', () => {
   describe('black', () => {
     context('match the piece to coordinate', () => {
       context('exists movable coordinates', () => {
@@ -20,7 +20,7 @@ describe('#enhanceMovablePoint', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'P', x: 8, y: 2 });
 
-          const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+          const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -46,7 +46,7 @@ describe('#enhanceMovablePoint', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'P', x: 9, y: 1 });
 
-          const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+          const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -71,7 +71,7 @@ describe('#enhanceMovablePoint', () => {
         const board = new Board(position());
         const piece = Piece.create({ type: 'P', x: 8, y: 2 });
 
-        (() => { return board.enhanceMovablePoint(piece); }).should.throw();;
+        (() => { return board.enhanceMovablePosition(piece); }).should.throw();;
       });
     });
 
@@ -95,7 +95,7 @@ describe('#enhanceMovablePoint', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'p', x: 8, y: 1 });
 
-          const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+          const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -121,7 +121,7 @@ describe('#enhanceMovablePoint', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'p', x: 9, y: 2 });
 
-          const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+          const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
             return (
               row.filter((cell) => { return(cell.movable); })
             );
@@ -146,7 +146,7 @@ describe('#enhanceMovablePoint', () => {
         const board = new Board(position());
         const piece = Piece.create({ type: 'p', x: 9, y: 1 });
 
-        (() => { return board.enhanceMovablePoint(piece); }).should.throw();;
+        (() => { return board.enhanceMovablePosition(piece); }).should.throw();;
       });
     });
 
