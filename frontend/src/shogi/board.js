@@ -33,7 +33,7 @@ export default class Board {
       return this.cloneBoard().clearAttrs();
     }
 
-    if (! this.enhanceMovablePoint(fromPiece).findPiece(toPiece).movable) {
+    if (! this.enhanceMovablePosition(fromPiece).findPiece(toPiece).movable) {
       return this.cloneBoard().clearAttrs();
     }
 
@@ -61,7 +61,7 @@ export default class Board {
     return newBoard;
   }
 
-  enhanceMovablePoint(piece) {
+  enhanceMovablePosition(piece) {
     this.checkPieceExistence(piece);
     const moveDef = piece.moveDef();
 
@@ -74,13 +74,13 @@ export default class Board {
     // if moveDef has just property, piece moves just coordinates on board.
     //
     if (moveDef.just) {
-      newBoard.movablePointsByJust(piece);
+      newBoard.movablePositionsByJust(piece);
     }
 
     // if moveDef has fly property, piece moves recursion on board.
     //
     if (moveDef.fly) {
-      newBoard.movablePointsByFly(piece);
+      newBoard.movablePositionsByFly(piece);
     }
 
     return newBoard;
@@ -214,7 +214,7 @@ export default class Board {
 
   // if moveDef has just property, piece moves just coordinates on board.
   //
-  movablePointsByJust(piece) {
+  movablePositionsByJust(piece) {
     const [xCor, yCor] = [piece.x, piece.y];
     const moveDef = piece.moveDef();
     const [x, y] = this.convertCors(xCor, yCor);
@@ -229,7 +229,7 @@ export default class Board {
     });
   }
 
-  movablePointsByFly(piece) {
+  movablePositionsByFly(piece) {
     const [xCor, yCor] = [piece.x, piece.y];
     const moveDef = piece.moveDef();
     const [x, y] = this.convertCors(xCor, yCor);

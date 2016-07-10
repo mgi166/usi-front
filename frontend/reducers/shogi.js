@@ -17,9 +17,9 @@ export default function shogi(state = initialState, action) {
   case CONST.RELEASE_PIECE:
     if (action.piece.isEmpty()) return state;
     return { ...state, board: state.board.cloneBoard().clearAttrs(), holdingPiece: undefined };
-  case CONST.ENHANCE_MOVABLE_POINT:
+  case CONST.ENHANCE_MOVABLE_POSITION:
     if (action.piece.isEmpty()) return state;
-    return { ...state, board: state.board.enhanceMovablePoint(action.piece) };
+    return { ...state, board: state.board.enhanceMovablePosition(action.piece) };
   case CONST.MOVE_PIECE:
     if (!state.holdingPiece) return state;
     const newBoard = state.board.movePiece(state.holdingPiece, action.piece);

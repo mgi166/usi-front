@@ -39,7 +39,7 @@ describe('shogi', () => {
 
       it('new state have piece at `holdingPiece`', () => {
         const piece = Piece.create({ type: 'P', x: 8, y: 2 });
-        const action = Action.enhanceMovablePoint(piece);
+        const action = Action.enhanceMovablePosition(piece);
         const state = { board: board() };
         shogi(state, action).board.should.eql(expectedBoard());
       });
@@ -48,7 +48,7 @@ describe('shogi', () => {
     context('given empty piece', () => {
       it('does not change the state', () => {
         const piece = Piece.create({ type: '*' });
-        const action = Action.enhanceMovablePoint(piece);
+        const action = Action.enhanceMovablePosition(piece);
         const state = {};
 
         shogi(state, action).should.eql(state);

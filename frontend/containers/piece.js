@@ -1,5 +1,5 @@
 import React from 'react';
-import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePoint, addBlackPieceStand, addWhitePieceStand, dropPiece, removeBlackPieceStand, removeWhitePieceStand } from '../actions';
+import { movePiece, holdPiece, releasePiece, showPromoteModal, enhanceMovablePosition, addBlackPieceStand, addWhitePieceStand, dropPiece, removeBlackPieceStand, removeWhitePieceStand } from '../actions';
 import { connect } from 'react-redux';
 import store from '../stores/index';
 import pieceComponent from '../components/piece';
@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 
       if (!holdingPiece) {
         dispatch(holdPiece(piece));
-        dispatch(enhanceMovablePoint(piece));
+        dispatch(enhanceMovablePosition(piece));
         return;
       }
 
