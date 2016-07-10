@@ -4,7 +4,7 @@ import memo from 'memo-is';
 import _ from 'lodash';
 
 describe('Lance', () => {
-  describe('#enhanceMovablePoint', () => {
+  describe('#enhanceMovablePosition', () => {
     describe('black', () => {
       context('match the piece of coordinate', () => {
         context('exists movable coordinates', () => {
@@ -25,7 +25,7 @@ describe('Lance', () => {
             const board = new Board(position());
             const piece = Piece.create({ type: 'L', x: 8, y: 5 });
 
-            const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+            const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
               return (
                 row.filter((cell) => { return(cell.movable); })
               );
@@ -56,7 +56,7 @@ describe('Lance', () => {
             const board = new Board(position());
             const piece = Piece.create({ type: 'L', x: 8, y: 1 });
 
-            const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+            const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
               return (
                 row.filter((cell) => { return(cell.movable); })
               );
@@ -84,7 +84,7 @@ describe('Lance', () => {
             const board = new Board(position());
             const piece = Piece.create({ type: 'L', x: 8, y: 5 });
 
-            const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+            const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
               return (
                 row.filter((cell) => { return(cell.movable); })
               );
@@ -115,7 +115,7 @@ describe('Lance', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'L', x: 7, y: 2 });
 
-          (() => { return board.enhanceMovablePoint(piece); }).should.throw();
+          (() => { return board.enhanceMovablePosition(piece); }).should.throw();
         });
       });
 
@@ -143,7 +143,7 @@ describe('Lance', () => {
             const board = new Board(position());
             const piece = Piece.create({ type: 'l', x: 8, y: 2 });
 
-            const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+            const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
               return (
                 row.filter((cell) => { return(cell.movable); })
               );
@@ -174,7 +174,7 @@ describe('Lance', () => {
             const board = new Board(position());
             const piece = Piece.create({ type: 'l', x: 8, y: 2 });
 
-            var movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+            var movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
               return (
                 row.filter((cell) => { return(cell.movable); })
               );
@@ -202,7 +202,7 @@ describe('Lance', () => {
             const board = new Board(position());
             const piece = Piece.create({ type: 'l', x: 8, y: 2 });
 
-            const movablePieces = board.enhanceMovablePoint(piece).board.map((row) => {
+            const movablePieces = board.enhanceMovablePosition(piece).board.map((row) => {
               return (
                 row.filter((cell) => { return(cell.movable); })
               );
@@ -233,7 +233,7 @@ describe('Lance', () => {
           const board = new Board(position());
           const piece = Piece.create({ type: 'l', x: 7, y: 2 });
 
-          (() => { return board.enhanceMovablePoint(piece); }).should.throw();
+          (() => { return board.enhanceMovablePosition(piece); }).should.throw();
         });
       });
 

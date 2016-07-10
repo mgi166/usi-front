@@ -3,7 +3,7 @@ import Piece from '../../../../frontend/src/shogi/piece';
 import memo from 'memo-is';
 import _ from 'lodash';
 
-describe('#enhanceMovablePoint', () => {
+describe('#enhanceMovablePosition', () => {
   context('black', () => {
     const position = memo().is(() => {
       return (
@@ -19,7 +19,7 @@ describe('#enhanceMovablePoint', () => {
       const board = new Board(position());
       const piece = Piece.create({type: 'S', x: 8, y: 2});
 
-      board.enhanceMovablePoint(piece).board.should.eql(
+      board.enhanceMovablePosition(piece).board.should.eql(
         [
           [
             Piece.create({ movable: true, type: '*', x: 9, y: 1 }),
@@ -56,7 +56,7 @@ describe('#enhanceMovablePoint', () => {
       const board = new Board(position());
       const piece = Piece.create({type: 's', x: 8, y: 2});
 
-      board.enhanceMovablePoint(piece).board.should.eql(
+      board.enhanceMovablePosition(piece).board.should.eql(
         [
           [
             Piece.create({ movable: true, type: '*', x: 9, y: 1 }),
