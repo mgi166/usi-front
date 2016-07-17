@@ -31,7 +31,7 @@ export default class Base {
     throw new Error('Implement this method in subclass');
   }
 
-  equals(piece) {
+  is(piece) {
     return (
       this.type === piece.type &&
       this.movable === piece.movable &&
