@@ -7,8 +7,8 @@ table.board {
 }
 
 table, th, td {
-   border: 1px solid black;
    height: 0 auto;
+   background-color: #000000;
 }
 
 td {
