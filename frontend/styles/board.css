@@ -11,9 +11,14 @@ table.board {
 
 table, th, td {
    border: 1px solid black;
+   height: 0 auto;
 }
 
 td {
     width: 55px;
     height: 55px;
+}
+
+table div {
+    height: 100%;
 }
