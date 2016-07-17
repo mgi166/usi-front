@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
         return;
       }
 
-      if (holdingPiece.equals(piece)) {
+      if (holdingPiece.is(piece)) {
         dispatch(releasePiece(piece));
         return;
       }

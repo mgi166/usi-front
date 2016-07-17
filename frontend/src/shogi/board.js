@@ -29,7 +29,7 @@ export default class Board {
     this.checkPieceExistence(fromPiece);
     this.checkPieceExistence(toPiece);
 
-    if (fromPiece.equals(toPiece)) {
+    if (fromPiece.is(toPiece)) {
       return this.cloneBoard().clearAttrs();
     }
 
@@ -191,7 +191,7 @@ export default class Board {
   //
   matchPiece(piece) {
     const isUndefined = typeof this.findPiece(piece) === 'undefined';
-    const isEqualPiece = this.findPiece(piece).equals(
+    const isEqualPiece = this.findPiece(piece).is(
       Piece.create({
         x: piece.x,
         y: piece.y,
