@@ -1,9 +1,6 @@
 table.board {
     width: 20%;
     height: 420px;
-    boarder-collapse: separate;
-    background-size: contain;
-    background-repeat: no-repeat;
     text-align: center;
     vertical-align: middle;
     table-layout: fixed;
