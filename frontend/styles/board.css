@@ -4,11 +4,7 @@ table.board {
     text-align: center;
     vertical-align: middle;
     table-layout: fixed;
-}
-
-table, th, td {
-   height: 0 auto;
-   background-color: #000000;
+    height: 0 auto;
 }
 
 td {

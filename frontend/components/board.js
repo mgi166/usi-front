@@ -14,12 +14,12 @@ const Board = ({ board }) => {
       };
 
       return (
-        <td key={x} style={style}>
+        <td key={x} style={style} className="board">
           <Piece piece={piece} />
         </td>
       );
     });
-    return(<tr key={y}>{rows}</tr>);
+    return(<tr key={y} className="board">{rows}</tr>);
   });
 
   return (
@@ -30,7 +30,7 @@ const Board = ({ board }) => {
           <WhitePieceStand />
         </Col>
         <Col xs={6}>
-          <table className="board">
+          <table className="board" style={{backgroundColor: 'black'}}>
             <tbody>{tbody}</tbody>
           </table>
         </Col>
