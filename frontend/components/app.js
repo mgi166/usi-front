@@ -6,7 +6,7 @@ import WhitePieceStand from '../containers/whitePieceStand';
 
 const App = () => {
   return (
-    <div>
+    <div className="app" style={{padding: '4em'}}>
       <Grid>
         <Row center="xs">
           <Col xs={1}>
