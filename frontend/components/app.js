@@ -8,14 +8,14 @@ const App = () => {
   return (
     <div className="app" style={{padding: '4em'}}>
       <Grid>
-        <Row center="xs">
-          <Col xs={1}>
+        <Row xs={12} around="xs">
+          <Col>
             <WhitePieceStand />
           </Col>
-          <Col xs={6}>
+          <Col>
             <Board />
           </Col>
-          <Col xs={1}>
+          <Col>
             <BlackPieceStand />
           </Col>
         </Row>
